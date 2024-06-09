@@ -2,7 +2,7 @@ import logo from "../../../assets/website_logo.png";
 import { FaSearch } from "react-icons/fa";
 const Header2 = () => {
   return (
-    <div className="flex justify-between items-center border p-2">
+    <div className="container mx-auto bg-slate-100 flex justify-between items-center border p-2">
       <div>
         <img className="w-44" src={logo} alt="Website Logo" />
       </div>
