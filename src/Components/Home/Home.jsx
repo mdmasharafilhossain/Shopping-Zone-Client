@@ -1,9 +1,10 @@
+import Header2 from "./Header2/Header2";
 
 
 const Home = () => {
     return (
         <div>
-            <h1>Home</h1>
+            <Header2></Header2>
         </div>
     );
 };
