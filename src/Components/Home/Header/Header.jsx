@@ -238,7 +238,7 @@ const Header = () => {
                 <button><FaCartPlus className="text-2xl"/></button>
               </label>
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side z-50">
               <label
                 htmlFor="my-drawer-4"
                 aria-label="close sidebar"
