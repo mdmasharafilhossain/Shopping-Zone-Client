@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../../../assets/website_logo.png";
 import { TiShoppingCart } from "react-icons/ti";
+import { IoIosSearch } from "react-icons/io";
+import { FaCartPlus } from "react-icons/fa";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -107,9 +109,9 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="navbar-center hidden lg:flex  h-5">
+        <div className="navbar-center hidden lg:flex  h-2">
           <ul className="menu menu-horizontal">
-            <li className="border-r-2  border-orange-500 pr-1">
+            <li className="border-r-2  border-orange-500  ">
               <NavLink
                 to="/feedback"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
@@ -124,8 +126,8 @@ const Header = () => {
                 <TiShoppingCart className="text-orange-500 text-2xl" />
                 Shop Now
               </NavLink>
-              
             </li>
+
             <li className="border-r-2  border-orange-500 pr-1">
               <details>
                 <summary>All Category</summary>
@@ -172,7 +174,10 @@ const Header = () => {
                 Blog
               </NavLink>
             </li>
-            <li className="border-r-2  border-orange-500 pr-1">
+            <li
+              className="border-r-2  border-orange-500 pr-1"
+              style={{ marginRight: "1rem" }}
+            >
               <NavLink
                 to="/feedback"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
@@ -188,7 +193,7 @@ const Header = () => {
                 Contact Us
               </NavLink>
             </li>
-            <li className="border-r-2  border-orange-500 pr-1">
+            <li>
               <NavLink
                 to="/feedback"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
@@ -206,11 +211,50 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end border">
-          <div className="border-l mr-72">
-            <input type="text" placeholder="Search For Products" className="border rounded-l py-2 px-1 focus:border-orange-500 focus:outline-none"
+        <div className="navbar-end space-x-5 mr-16">
+          <div className="border-l  flex">
+            <input
+              type="text"
+              placeholder="Search For Products"
+              className="border rounded-lg py-2 px-2 focus:border-orange-500 focus:outline-none"
             />
+            <button className="-ml-8">
+              <IoIosSearch className="text-2xl" />
+            </button>
           </div>
+          
+          <div>
+            <button className="ml-2 border  border-orange-500 text-xs md:text-base lg:text-base font-medium rounded-md  hover:border-orange-500 hover:bg-orange-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
+              Login/SignUp
+            </button>
+          </div>
+          <div className="drawer drawer-end">
+            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content">
+              <label
+                htmlFor="my-drawer-4"
+                className="drawer-button btn"
+              >
+                <button><FaCartPlus className="text-2xl"/></button>
+              </label>
+            </div>
+            <div className="drawer-side">
+              <label
+                htmlFor="my-drawer-4"
+                aria-label="close sidebar"
+                className="drawer-overlay"
+              ></label>
+              <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                <li>
+                  <a>Sidebar Item 1</a>
+                </li>
+                <li>
+                  <a>Sidebar Item 2</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
           <div></div>
         </div>
       </div>
