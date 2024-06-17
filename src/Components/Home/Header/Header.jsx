@@ -128,7 +128,7 @@ const Header = () => {
               </NavLink>
             </li>
 
-            <li className="border-r-2  border-orange-500 pr-1">
+            <li className="border-r-2  border-orange-500 pr-1 z-50">
               <details>
                 <summary>All Category</summary>
                 <ul className="p-2">
