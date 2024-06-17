@@ -5,7 +5,7 @@ const AllCategories = () => {
         <div className="ml-10">
             <SectionTitle heading={"Categories"}>
                 
-            </SectionTitle>
+             </SectionTitle>
         </div>
     );
 };
