@@ -1,0 +1,52 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/S0jg1Ct/girs-removebg-preview.png",
+      "category": "Girls",
+      "title": "Girls"
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/2KRkSHw/boys-removebg-preview.png",
+      "category": "Boys",
+      "title": "Boys"
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/qYLznTL/pp-696x389.jpg",
+      "category": "Mobile",
+      "title": "Mobile"
+    },
+    {
+      "id": 4,
+      "image": "https://i.ibb.co/tBDyjCW/61-Tt-t-P0ew-L-AC-SL1200.jpg",
+      "category": "Caps",
+      "title": "Caps"
+    },
+    {
+      "id": 5,
+      "image": "https://i.ibb.co/0FVXd86/running-shoes-2048px-9718.jpg",
+      "category": "Shoes",
+      "title": "Shoes"
+    },
+    {
+      "id": 6,
+      "image": "https://i.ibb.co/34BwWmC/images.jpg",
+      "category": "Trimmers",
+      "title": "Trimmers"
+    },
+    {
+      "id": 7,
+      "image": "https://i.ibb.co/17vhmQ8/Solove-Xiaomi-N9-Mini-Portable-Usb-Fan.jpg",
+      "category": "UsbFans",
+      "title": "USB Fan"
+    },
+    {
+      "id": 8,
+      "image": "https://i.ibb.co/g3gFfgt/bluetoothheadphones-2048px-0876.jpg",
+      "category": "HeadPhones",
+      "title": "Headphones"
+    }
+    
+  ]
+  
