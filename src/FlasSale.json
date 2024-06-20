@@ -1,0 +1,79 @@
+[
+    {
+        "image": "https://i.ibb.co/5T1s6xt/shirt-removebg-preview.png",
+        "name": "Shirt",
+        "color": "Blue",
+        "price": 799.99,
+        "seller_email": "mahi@gmail.com",
+        "rating": 4.5,
+        "size": "M,XL,XXL",
+        "brand": "No Brand",
+        "warranty": ""
+    },
+    {
+        "image": "https://i.ibb.co/NZWyvwm/shirt-2-removebg-preview.png",
+        "name": "Formal Gorgeous Shirt",
+        "color": "White",
+        "price": 1299.99,
+        "seller_email": "seller2@gmail.com",
+        "rating": 4.8,
+        "size": "S,M,XL,XXL",
+        "brand": "No Brand",
+        "warranty": ""
+    },
+    {
+        "image": "https://i.ibb.co/7X0VRwS/pujabi-white-removebg-preview.png",
+        "name": "Punjabi",
+        "color": "White",
+        "price": 1199.99,
+        "seller_email": "mahi@gmail.com",
+        "rating": 4.7,
+        "size": "M,XL,XXL",
+        "brand": "No Brand",
+        "warranty": ""
+    },
+    {
+        "image": "https://i.ibb.co/5kHsRLq/punjabi-golden-removebg-preview.png",
+        "name": "Punjabi",
+        "color": "Rose Gold",
+        "price": 1299.99,
+        "seller_email": "mashrafilmahi007@gmail.com",
+        "rating": 4.4,
+        "size": "S,M,XL,XXL",
+        "brand": "No Brand",
+        "warranty": ""
+    },
+    {
+        "image": "https://i.ibb.co/dBqwtHW/three-pis-pink-removebg-preview.png",
+        "name": "Salwar Kameez",
+        "color": "Pink",
+        "price": 1199.99,
+        "seller_email": "seller@gmail.com",
+        "rating": 4.6,
+        "size": "",
+        "brand": "No Brand",
+        "warranty": ""
+    },
+    {
+        "image": "https://i.ibb.co/8mCP88x/maxi-white-removebg-preview.png",
+        "name": "New Gorgeous Maxi",
+        "color": "White",
+        "price": 599.99,
+        "seller_email": "seller@gmail.com",
+        "rating": 4.3,
+        "size": "",
+        "brand": "No Brand",
+        "warranty": ""
+    },
+    {
+        "image": "https://i.ibb.co/Rcwzq8n/Wedding-Sharee-5-1-removebg-preview.png",
+        "name": "Wedding Sharee",
+        "color": "White",
+        "price": 2399.99,
+        "seller_email": "seller@gmail.com",
+        "rating": 4.9,
+        "size": "",
+        "brand": "No Brand",
+        "warranty": ""
+    }
+]

@@ -1,0 +1,10 @@
+/* Custom Swiper navigation arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: orange; /* Change arrow color to orange */
+}
+
+/* Hide pagination dots */
+.swiper-pagination {
+  display: none; /* Hide the pagination dots */
+}
