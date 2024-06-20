@@ -1,15 +1,15 @@
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import Countdown from "react-countdown";
-import './FlashSale.css'
+
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-
-
-import { Navigation, Mousewheel, Keyboard } from 'swiper/modules';
+import "swiper/css/autoplay";
+import './FlashSale.css'
+import { Navigation, Mousewheel, Keyboard,Autoplay } from 'swiper/modules';
 import useAxiosPublic from "../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
@@ -71,7 +71,11 @@ const FlashSale = () => {
           spaceBetween={20}
           mousewheel={true}
           keyboard={true}
-          modules={[Navigation, Mousewheel, Keyboard]}
+          modules={[Navigation, Mousewheel, Keyboard, Autoplay ]}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
           className="mySwiper"
         >
           {sales.map(sale => (

@@ -26,7 +26,6 @@ const Banner = () => {
         <SwiperSlide>
          <div>
          <img className=" h-[130px] md:h-[200px] lg:h-[410px] lg:w-[2000px]" src={banner1} alt="Banner 1" />
-         {/* <button className="btn border-orange-500 hover:bg-orange-400 absolute inset-0 m-auto w-fit h-fit top-1/2 left-5 transform -translate-y-1/2 px-10">Shop Now</button> */}
          <button className="btn absolute border-orange-500 hover:bg-orange-400 px-10 top-3/4  lg:left-[500px] transform -translate-y-1/2">Shop Now</button>
          </div>
         </SwiperSlide>
