@@ -94,7 +94,7 @@ const FlashSale = () => {
                           <AiOutlineHeart size={24} />
                         </button>
                       </div>
-                      <img className="w-40 h-40 mb-2 mx-auto object-scale-down hover:scale-110 transition-all" src={sale.image} alt={sale.name} />
+                      <img className="w-40 h-40 mb-2 mx-auto object-scale-down  hover:scale-110 transition-all" src={sale.image} alt={sale.name} />
                       <h3 className="text-base font-semibold mt-3">{sale.name}</h3>
                       <p className="text-base text-orange-600 ">ট {sale.discount_price}</p>
                       <div className="flex gap-3">
