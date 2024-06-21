@@ -13,7 +13,7 @@ const FlashSaleDetails = () => {
     return (
         <div>
             <h1 className="mt-20">{InfoCard.length}</h1>
-            <img src={InfoCard.image} alt="" />
+            <img  src={InfoCard.image} alt="" />
         </div>
     );
 };
