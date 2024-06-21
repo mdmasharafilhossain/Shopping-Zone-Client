@@ -12,7 +12,12 @@ const FlashSaleDetails = () => {
     return (
         <div className="flex mt-40 ml-40">
             <div className="relative w-52 h-80 mr-10">
-                <ImageZoom src={InfoCard.image} alt={InfoCard.name} />
+            <div className="block lg:hidden">
+                    <img className="w-full h-full object-cover" src={InfoCard.image} alt={InfoCard.name} />
+                </div>
+                <div className="hidden lg:block">
+                    <ImageZoom src={InfoCard.image} alt={InfoCard.name} />
+                </div>
               
             </div>
         </div>
