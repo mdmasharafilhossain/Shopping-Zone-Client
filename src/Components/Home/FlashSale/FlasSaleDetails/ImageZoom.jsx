@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+
 
 const ImageZoom = ({ src, alt }) => {
     const [isZoomed, setIsZoomed] = useState(false);
@@ -23,7 +24,7 @@ const ImageZoom = ({ src, alt }) => {
         <div className="relative w-full h-full" onMouseEnter={handleMouseEnter} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
             <img className="w-full h-full object-cover" src={src} alt={alt} />
             {isZoomed && (
-                <div className="absolute inset-y-0 left-full w-80 h-80 bg-no-repeat z-10 border border-gray-300" style={{ backgroundImage: `url(${src})`, backgroundSize: '200%', backgroundPosition: backgroundPosition }}></div>
+                <div className="absolute ml-20 inset-y-0 left-full w-96 h-96 bg-no-repeat z-10 border border-gray-300" style={{ backgroundImage: `url(${src})`, backgroundSize: '200%', backgroundPosition: backgroundPosition }}></div>
             )}
         </div>
     );
