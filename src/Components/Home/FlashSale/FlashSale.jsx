@@ -51,6 +51,8 @@ const FlashSale = () => {
     }
   });
 
+  const ShowData = sales.slice(0,7);
+
   return (
     <div className="ml-10 mr-5">
       <div className="flex justify-between items-center">
@@ -78,10 +80,12 @@ const FlashSale = () => {
           }}
           className="mySwiper"
         >
-          {sales.map(sale => (
+          {ShowData.map(sale => (
             <SwiperSlide key={sale._id}>
-              <div className="flex justify-center">
-                <img className="w-40" src={sale.image} alt="image" />
+              <div className="border items-center text-center space-y-2 p-5 rounded-lg">
+                <img className="w-40 h-40 mx-auto object-scale-down  hover:scale-110 transition-all" src={sale.image} alt={sale.name} />
+                <h1 className="font-bold">{sale.name}</h1>
+                <p></p>
               </div>
             </SwiperSlide>
           ))}
