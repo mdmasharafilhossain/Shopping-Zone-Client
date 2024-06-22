@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
         element:<Home></Home>
        },
        {
-        path:"/sale/:id",
+        path:"flashSale/sale/:id",
         element:<FlashSaleDetails></FlashSaleDetails>,
         loader: ()=>fetch('http://localhost:5000/flashSale')
        },
