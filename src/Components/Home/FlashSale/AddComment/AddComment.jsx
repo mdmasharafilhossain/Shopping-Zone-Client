@@ -1,6 +1,10 @@
 import { useRef, useState } from 'react';
+import useAxiosPublic from '../../../Shared/Hooks/useAxiosPublic/useAxiosPublic';
+const image_Hosting_key = "23272cf172fd85ad9006a154ec724204";
+const Imgae_hosting_key = `https://api.imgbb.com/1/upload?key=${image_Hosting_key}`
 
 const AddComment = ({InfoCard}) => {
+    const AxiosPublic = useAxiosPublic();
     const [reviews, setReviews] = useState([]);
     const [rating, setRating] = useState('');
     const formRef = useRef(null);
@@ -8,15 +12,23 @@ const AddComment = ({InfoCard}) => {
     
     
     
-    const handleSubmit = e =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
         const form = e.target;
         
         const name = form.name.value;
-        const photo = form.image.value;
+        // const photo = form.image.value;
         const customer_rating = rating;
         const review = form.rating.value;
-        
+        const imageFile = form.image.files[0];
+        const formData = new FormData();
+        formData.append('image', imageFile);
+       const res = await AxiosPublic.post(Imgae_hosting_key,formData,{
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+       });
+        const photo = res.data.data.display_url;
         const UpdateProducts = {name,photo,customer_rating,review,code}
         console.log(UpdateProducts);
         
