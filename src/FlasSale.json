@@ -1,11 +1,11 @@
 [
     {
-        "id": 1,
+        "code": 1,
         "image": "https://i.ibb.co/5T1s6xt/shirt-removebg-preview.png",
         "name": "Shirt",
         "color": "Blue",
         "price": 799.99,
-        "discount_price": 699.99, 
+        "discount_price": 699.99,
         "seller_email": "mahi@gmail.com",
         "rating": 4.5,
         "size": "M,XL,XXL",
@@ -14,12 +14,12 @@
         "details": "This versatile blue shirt is perfect for both casual and formal occasions. Made from high-quality fabric, it ensures comfort and durability. Available in multiple sizes, it’s a great addition to any wardrobe."
     },
     {
-        "id": 2,
+        "code": 2,
         "image": "https://i.ibb.co/NZWyvwm/shirt-2-removebg-preview.png",
         "name": "Formal Gorgeous Shirt",
         "color": "White",
         "price": 1299.99,
-        "discount_price": 1099.99, 
+        "discount_price": 1099.99,
         "seller_email": "seller2@gmail.com",
         "rating": 4.8,
         "size": "S,M,XL,XXL",
@@ -28,12 +28,12 @@
         "details": "This elegant white shirt adds a touch of sophistication to any outfit. Ideal for formal events, it offers a sleek and polished look. Its high rating reflects customer satisfaction with its quality and style."
     },
     {
-        "id": 3,
+        "code": 3,
         "image": "https://i.ibb.co/7X0VRwS/pujabi-white-removebg-preview.png",
         "name": "Punjabi",
         "color": "White",
         "price": 1199.99,
-        "discount_price": 999.99, 
+        "discount_price": 999.99,
         "seller_email": "mahi@gmail.com",
         "rating": 4.7,
         "size": "M,XL,XXL",
@@ -42,7 +42,7 @@
         "details": "This traditional white Punjabi is perfect for cultural celebrations and festive occasions. Its comfortable fit and stylish design make it a popular choice among customers."
     },
     {
-        "id": 4,
+        "code": 4,
         "image": "https://i.ibb.co/5kHsRLq/punjabi-golden-removebg-preview.png",
         "name": "Punjabi",
         "color": "Rose Gold",
@@ -56,12 +56,12 @@
         "details": "This stylish rose gold Punjabi is an excellent choice for special occasions and festivals. It combines traditional design with a modern color, making it a standout piece in any wardrobe."
     },
     {
-        "id": 5,
+        "code": 5,
         "image": "https://i.ibb.co/dBqwtHW/three-pis-pink-removebg-preview.png",
         "name": "Salwar Kameez",
         "color": "Pink",
         "price": 1199.99,
-        "discount_price": 999.99, 
+        "discount_price": 999.99,
         "seller_email": "seller@gmail.com",
         "rating": 4.6,
         "size": "",
@@ -70,7 +70,7 @@
         "details": "This beautiful pink Salwar Kameez is perfect for festive and casual wear. The vibrant color and elegant design make it a popular choice among women looking for comfort and style."
     },
     {
-        "id": 6,
+        "code": 6,
         "image": "https://i.ibb.co/8mCP88x/maxi-white-removebg-preview.png",
         "name": "New Gorgeous Maxi",
         "color": "White",
@@ -84,12 +84,12 @@
         "details": "This gorgeous white maxi dress is perfect for both casual outings and special events. Its elegant design and comfortable fit make it a favorite choice among fashion-forward women."
     },
     {
-        "id": 7,
+        "code": 7,
         "image": "https://i.ibb.co/Rcwzq8n/Wedding-Sharee-5-1-removebg-preview.png",
         "name": "Wedding Sharee",
         "color": "White",
         "price": 2399.99,
-        "discount_price": 1999.99, 
+        "discount_price": 1999.99,
         "seller_email": "seller@gmail.com",
         "rating": 4.9,
         "size": "",
