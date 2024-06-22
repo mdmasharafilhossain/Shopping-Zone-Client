@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
 import useAxiosPublic from "../../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
+
+// hosting on imgBB 
 const image_Hosting_key = "23272cf172fd85ad9006a154ec724204";
 const Imgae_hosting_key = `https://api.imgbb.com/1/upload?key=${image_Hosting_key}`;
 

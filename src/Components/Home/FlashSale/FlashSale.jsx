@@ -9,7 +9,7 @@ import { Navigation, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
 import useAxiosPublic from "../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { AiOutlineHeart } from 'react-icons/ai'; // Add the icon import
+import { AiOutlineHeart } from 'react-icons/ai';
 
 const FlashSale = () => {
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -55,9 +55,9 @@ const FlashSale = () => {
       <div className="flex justify-between items-center">
         <SectionTitle heading={"Flash Sale"} />
         <Countdown date={Date.now() + 1000000000} renderer={renderer} />
-        <button className="bg-orange-500 mt-20 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600 transition">
+        <Link to="/flashSale"><button className="bg-orange-500 mt-20 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600 transition">
           View All
-        </button>
+        </button></Link>
       </div>
       <hr className="mt-5 border-t-2 border-gray-300" />
 
