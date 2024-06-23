@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import logo from "../../../assets/website_logo.png";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoIosSearch } from "react-icons/io";
@@ -142,7 +142,7 @@ const Header = () => {
               </details>
             </li>
 
-            <li className="border-r-2  border-orange-500 pr-1">
+            {/* <li className="border-r-2  border-orange-500 pr-1">
               <NavLink
                 to="/feedback"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
@@ -157,8 +157,8 @@ const Header = () => {
                 <TiShoppingCart className="text-orange-500 text-2xl" />
                 Eid Offer
               </NavLink>
-            </li>
-            <li className="border-r-2  border-orange-500 pr-1">
+            </li> */}
+            {/* <li className="border-r-2  border-orange-500 pr-1">
               <NavLink
                 to="/feedback"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
@@ -173,7 +173,7 @@ const Header = () => {
                 <TiShoppingCart className="text-orange-500 text-2xl" />
                 Blog
               </NavLink>
-            </li>
+            </li> */}
             <li
               className="border-r-2  border-orange-500 pr-1"
               style={{ marginRight: "1rem" }}
@@ -212,21 +212,21 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-5 mr-16">
-          <div className="border-l  flex">
-            <input
-              type="text"
-              placeholder="Search For Products"
-              className="border rounded-lg py-2 px-2 focus:border-orange-500 focus:outline-none"
-            />
-            <button className="-ml-8">
-              <IoIosSearch className="text-2xl" />
-            </button>
-          </div>
+        <div className="border-l flex">
+      <input
+        type="text"
+        placeholder="Search For Products"
+        className="border rounded-lg py-2 px-6 focus:border-orange-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-80 xl:w-96"
+      />
+      <button className="-ml-6 border px-1  r rounded-r-md bg-orange-100 hover:bg-orange-400">
+        <IoIosSearch className="text-2xl text-orange-600 hover:text-white" />
+      </button>
+    </div>
           
           <div>
-            <button className="ml-2 border  border-orange-500 text-xs md:text-base lg:text-base font-medium rounded-md  hover:border-orange-500 hover:bg-orange-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
+            <Link to="/login"><button className="ml-2 border  border-orange-500 text-xs md:text-base lg:text-base font-medium rounded-md  hover:border-orange-500 hover:bg-orange-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
               Login/SignUp
-            </button>
+            </button></Link>
           </div>
           <div className="drawer drawer-end">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
