@@ -16,7 +16,7 @@ const AllFlashSale = () => {
     data: { result: Flashsales = [] } = {},
     isLoading,
   } = useQuery({
-    queryKey: ["Flashsales", sortOrder, selectedColor,typeSelect],
+    queryKey: ["Flashsales", sortOrder, selectedColor, typeSelect],
     queryFn: async () => {
       const res = await AxiosPublic.get(`/flashSale?sort=${sortOrder}&color=${selectedColor}&type=${typeSelect}`);
       return res.data;
@@ -27,13 +27,11 @@ const AllFlashSale = () => {
     return <div>Loading...</div>;
   }
 
-  // filter area
-
-  const handleTypeSort = (e) =>{
+  const handleTypeSort = (e) => {
     const type = e.target.value;
     setTypeSelect(type);
     refetch();
-  }
+  };
 
   const handleSort = (e) => {
     const order = e.target.value;
@@ -47,8 +45,15 @@ const AllFlashSale = () => {
     refetch();
   };
 
+  const handleReset = () => {
+    setSortOrder("");
+    setSelectedColor("");
+    setTypeSelect("");
+    refetch();
+  };
+
   const colors = ["white", "pink", "Rose Gold", "Blue", "Green", "Yellow"];
-  const types = ["Men","Women","Kids"]
+  const types = ["Men", "Women", "Kids"];
 
   return (
     <div>
@@ -62,80 +67,79 @@ const AllFlashSale = () => {
           onChange={handleSort}
           value={sortOrder}
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Default
           </option>
           <option value="lowToHigh">Low price to high price</option>
-          <option value="highToLow">High price to Low price</option>
+          <option value="highToLow">High price to low price</option>
         </select>
       </div>
 
-      {/* Filter Component */}
-      
-
-      {/* Main Div */}
       <div className="flex justify-evenly mb-10">
-        {/* Filter div */}
         <div className="p-4 border rounded-lg w-64 mt-20">
-        <h2 className="text-xl font-bold mb-4">Filter</h2>
-               {/* Colors Filter  */}
-        <div className="mb-4">
-  <div className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-    <input type="checkbox" className="peer" />
-    <div className="collapse-title text-lg font-medium">Color</div>
-    <div className="collapse-content">
-      <form className="mt-2">
-        {colors.map((color) => (
-          <div key={color} className="flex items-center mb-2">
-            <input
-              type="radio"
-              name="brand"
-              value={color}
-              id={color}
-              className="radio radio-primary border-orange-600 hover:border-orange-600 checked:bg-orange-600 checked:border-orange-600"
-              onChange={handleColorSort}
-              checked={selectedColor === color}
-            />
-            <label htmlFor={color} className="ml-2">
-              {color}
-            </label>
+          <h2 className="text-xl font-bold mb-4">Filter</h2>
+          <div className="mb-4">
+            <div className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+              <input type="checkbox" className="peer" />
+              <div className="collapse-title text-lg font-medium">Color</div>
+              <div className="collapse-content">
+                <form className="mt-2">
+                  {colors.map((color) => (
+                    <div key={color} className="flex items-center mb-2">
+                      <input
+                        type="radio"
+                        name="brand"
+                        value={color}
+                        id={color}
+                        className="radio radio-primary border-orange-600 hover:border-orange-600 checked:bg-orange-600 checked:border-orange-600"
+                        onChange={handleColorSort}
+                        checked={selectedColor === color}
+                      />
+                      <label htmlFor={color} className="ml-2">
+                        {color}
+                      </label>
+                    </div>
+                  ))}
+                </form>
+              </div>
+            </div>
           </div>
-        ))}
-      </form>
-    </div>
-  </div>
-</div>
 
-{/* Types filter */}
-<div className="mb-4">
-  <div className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-    <input type="checkbox" className="peer" />
-    <div className="collapse-title text-lg font-medium">Types</div>
-    <div className="collapse-content">
-      <form className="mt-2">
-        {types.map((type) => (
-          <div key={type} className="flex items-center mb-2">
-            <input
-              type="radio"
-              name="type"
-              value={type}
-              id={type}
-              className="radio radio-primary border-orange-600 hover:border-orange-600 checked:bg-orange-600 checked:border-orange-600"
-              onChange={handleTypeSort}
-              checked={typeSelect === type}
-            />
-            <label htmlFor={type} className="ml-2">
-              {type}
-            </label>
+          <div className="mb-4">
+            <div className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+              <input type="checkbox" className="peer" />
+              <div className="collapse-title text-lg font-medium">Types</div>
+              <div className="collapse-content">
+                <form className="mt-2">
+                  {types.map((type) => (
+                    <div key={type} className="flex items-center mb-2">
+                      <input
+                        type="radio"
+                        name="type"
+                        value={type}
+                        id={type}
+                        className="radio radio-primary border-orange-600 hover:border-orange-600 checked:bg-orange-600 checked:border-orange-600"
+                        onChange={handleTypeSort}
+                        checked={typeSelect === type}
+                      />
+                      <label htmlFor={type} className="ml-2">
+                        {type}
+                      </label>
+                    </div>
+                  ))}
+                </form>
+              </div>
+            </div>
           </div>
-        ))}
-      </form>
-    </div>
-  </div>
-</div>
 
-      </div>
-        {/* Cart div */}
+          <button
+            className="btn btn-outline btn-warning w-full mt-4"
+            onClick={handleReset}
+          >
+            Reset Filters
+          </button>
+        </div>
+
         {Flashsales.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-20">
             {Flashsales.map((sale) => {
