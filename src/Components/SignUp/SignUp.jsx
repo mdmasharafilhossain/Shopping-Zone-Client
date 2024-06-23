@@ -19,7 +19,7 @@ const SignUp = () => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  const handleConfirmPasswordChange = (e) => {
+   const handleConfirmPasswordChange = (e) => {
     const confirmPassword = e.target.value;
     const password = document.getElementById("password").value;
 
