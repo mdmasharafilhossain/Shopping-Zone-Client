@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import logo from "../../../assets/website_logo.png";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoIosSearch } from "react-icons/io";
@@ -224,9 +224,9 @@ const Header = () => {
     </div>
           
           <div>
-            <button className="ml-2 border  border-orange-500 text-xs md:text-base lg:text-base font-medium rounded-md  hover:border-orange-500 hover:bg-orange-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
+            <Link to="/login"><button className="ml-2 border  border-orange-500 text-xs md:text-base lg:text-base font-medium rounded-md  hover:border-orange-500 hover:bg-orange-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
               Login/SignUp
-            </button>
+            </button></Link>
           </div>
           <div className="drawer drawer-end">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />

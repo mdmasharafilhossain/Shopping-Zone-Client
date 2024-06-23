@@ -3,6 +3,7 @@ import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Home/Home";
 import FlashSaleDetails from "../Home/FlashSale/FlasSaleDetails/FlashSaleDetails";
 import AllFlashSale from "../Home/FlashSale/AllFlashSale/AllFlashSale";
+import Login from "../Login/Login";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
        {
         path:"/flashSale",
         element:<AllFlashSale></AllFlashSale>
+       },
+       {
+        path:"/login",
+        element:<Login></Login>
        }
 
 

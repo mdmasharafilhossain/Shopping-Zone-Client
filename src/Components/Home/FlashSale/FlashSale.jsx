@@ -40,7 +40,7 @@ const FlashSale = () => {
   };
 
   const AxiosPublic = useAxiosPublic();
-  const { refetch, data: { result: sales = [] } = {} } = useQuery({
+  const {  data: { result: sales = [] } = {} } = useQuery({
     queryKey: ['sales'],
     queryFn: async () => {
       const res = await AxiosPublic.get("/flashSale");
