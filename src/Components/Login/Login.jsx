@@ -77,7 +77,7 @@ const Login = () => {
             console.log(error);
         })
       }
-      const handleForgotPassword = () => {
+       const handleForgotPassword = () => {
         const email = emailRef.current.value;
         if (!email) {
           console.log("please provide an email", emailRef.current.value);
