@@ -58,20 +58,20 @@ const Login = () => {
                 email:result.user?.email
             }
              console.log(PeopleInfo);
-            // AxiosPublic.post('/users',PeopleInfo)
-            // .then(res=>{
-            //     console.log(res.data);
-            //     if(res.data.insertedId){
-            //         console.log("user Added Database")
-            //         Swal.fire({
-            //             title: 'Done',
-            //             text: 'Register Successfully',
-            //             icon: 'success',
-            //             confirmButtonText: 'Ok'
-            //         });
-            //         navigate('/');
-            //     }
-            // })
+            AxiosPublic.post('/users',PeopleInfo)
+            .then(res=>{
+                console.log(res.data);
+                if(res.data.insertedId){
+                    console.log("user Added Database")
+                    Swal.fire({
+                        title: 'Done',
+                        text: 'Login Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+                    navigate('/');
+                }
+            })
         })
         .catch(error =>{
             console.log(error);
@@ -172,6 +172,9 @@ const Login = () => {
                   >
                     <FcGoogle className="text-xl" /> Continue with Google
                   </button>
+                  {
+                    errorMessage && <p className="text-sm font-bold text-red-700">{errorMessage}</p>
+                }
 
                   <label className="label">
                     <Link to="/signup">
