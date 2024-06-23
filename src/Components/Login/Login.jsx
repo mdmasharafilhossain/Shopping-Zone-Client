@@ -52,7 +52,7 @@ const Login = () => {
         SignInWithGoogle(auth,googleProvider)
         .then(result=>{
             console.log(result);
-            const PeopleInfo = {
+             const PeopleInfo = {
                 name:result.user?.displayName,
                 photo: result.user?.photoURL,
                 email:result.user?.email
