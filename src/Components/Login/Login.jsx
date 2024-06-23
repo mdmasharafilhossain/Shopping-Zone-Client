@@ -37,7 +37,7 @@ const Login = () => {
               icon: 'success',
               confirmButtonText: 'Ok'
             })
-            
+            navigate("/");
         })
         .catch(error =>{
           console.error(error);

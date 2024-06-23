@@ -10,6 +10,11 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [subMenuOpen, setSubMenuOpen] = useState({});
   const { user, LogOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    LogOut()
+        .then()
+        .catch()
+}
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -249,7 +254,7 @@ const Header = () => {
           </a>
         </li>
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <li><button onClick={handleLogOut}>Logout</button></li>
       </ul>
     </div>
   
