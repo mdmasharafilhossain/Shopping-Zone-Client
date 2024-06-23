@@ -47,7 +47,7 @@ const SignUp = () => {
             setErrorMessage("Password should be at least 6 characters")
             return
         }
-        else if (!/[A-Z]/.test(password)) {
+         else if (!/[A-Z]/.test(password)) {
             setErrorMessage("You shuold have atleast one uppercase letter")
             return
         }
