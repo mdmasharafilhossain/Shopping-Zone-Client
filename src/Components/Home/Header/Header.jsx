@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink,Link } from "react-router-dom";
 import logo from "../../../assets/website_logo.png";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoIosSearch } from "react-icons/io";
 import { FaCartPlus } from "react-icons/fa";
+import { AuthContext } from "../../AuthProviders/AuthProviders";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [subMenuOpen, setSubMenuOpen] = useState({});
+  const { user, LogOut } = useContext(AuthContext);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -224,9 +226,45 @@ const Header = () => {
     </div>
           
           <div>
-            <Link to="/login"><button className="ml-2 border  border-orange-500 text-xs md:text-base lg:text-base font-medium rounded-md  hover:border-orange-500 hover:bg-orange-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
+           {
+            user ? <div>
+                 
+                 <div className="dropdown dropdown-end">
+                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+  <div className="w-9 rounded-full">
+    <img
+      alt="User Photo"
+      src={user?.photoURL} 
+    />
+  </div>
+  <h1 className="text-[10px] w-20 truncate">{user?.displayName?.length > 8 ? `${user.displayName.substring(0, 8)}...` : user.displayName}</h1>
+</div>
+      <ul
+        tabIndex={0}
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box  mt-3 w-52 p-2 shadow z-50">
+        <li>
+          <a className="justify-between">
+            Profile
+            <span className="badge">New</span>
+          </a>
+        </li>
+        <li><a>Settings</a></li>
+        <li><a>Logout</a></li>
+      </ul>
+    </div>
+  
+
+            </div>
+
+            : 
+
+            <div>
+
+<Link to="/login"><button className="ml-2 border  border-orange-500 text-xs md:text-base lg:text-base font-medium rounded-md  hover:border-orange-500 hover:bg-orange-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
               Login/SignUp
             </button></Link>
+            </div>
+           }
           </div>
           <div className="drawer drawer-end">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
