@@ -57,7 +57,7 @@ const Login = () => {
                 photo: result.user?.photoURL,
                 email:result.user?.email
             }
-            console.log(PeopleInfo);
+             console.log(PeopleInfo);
             // AxiosPublic.post('/users',PeopleInfo)
             // .then(res=>{
             //     console.log(res.data);
