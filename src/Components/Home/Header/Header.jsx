@@ -218,12 +218,12 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end space-x-5 mr-16">
+        <div className="navbar-end space-x-7 mr-16">
         <div className="border-l flex">
       <input
         type="text"
         placeholder="Search For Products"
-        className="border rounded-lg py-2 px-6 focus:border-orange-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-80 xl:w-96"
+        className="border rounded-lg py-2 px-6 focus:border-orange-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-[450px] xl:w-96"
       />
       <button className="-ml-6 border px-1  r rounded-r-md bg-orange-100 hover:bg-orange-400">
         <IoIosSearch className="text-2xl text-orange-600 hover:text-white" />
