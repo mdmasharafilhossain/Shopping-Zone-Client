@@ -24,7 +24,11 @@ const AllFlashSale = () => {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner text-error text-9xl"></span>
+      </div>
+    );
   }
 
   const handleTypeSort = (e) => {
