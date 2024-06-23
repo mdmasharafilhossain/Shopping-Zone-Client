@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProviders/AuthProviders";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -16,7 +16,7 @@ const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [show, setShow] = useState(false);
 
-  const location = useLocation();
+//   const location = useLocation();
   const navigate = useNavigate();
   
    const handleConfirmPasswordChange = (e) => {
