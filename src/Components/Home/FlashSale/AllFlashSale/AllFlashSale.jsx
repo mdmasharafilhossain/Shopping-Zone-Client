@@ -9,15 +9,16 @@ const AllFlashSale = () => {
   const AxiosPublic = useAxiosPublic();
   const [sortOrder, setSortOrder] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
+  const [typeSelect, setTypeSelect] = useState("");
 
   const {
     refetch,
     data: { result: Flashsales = [] } = {},
     isLoading,
   } = useQuery({
-    queryKey: ["Flashsales", sortOrder, selectedColor],
+    queryKey: ["Flashsales", sortOrder, selectedColor,typeSelect],
     queryFn: async () => {
-      const res = await AxiosPublic.get(`/flashSale?sort=${sortOrder}&color=${selectedColor}`);
+      const res = await AxiosPublic.get(`/flashSale?sort=${sortOrder}&color=${selectedColor}&type=${typeSelect}`);
       return res.data;
     },
   });
@@ -26,13 +27,21 @@ const AllFlashSale = () => {
     return <div>Loading...</div>;
   }
 
+  // filter area
+
+  const handleTypeSort = (e) =>{
+    const type = e.target.value;
+    setTypeSelect(type);
+    refetch();
+  }
+
   const handleSort = (e) => {
     const order = e.target.value;
     setSortOrder(order);
     refetch();
   };
 
-  const handleBrandChange = (e) => {
+  const handleColorSort = (e) => {
     const color = e.target.value;
     setSelectedColor(color);
     refetch();
@@ -44,7 +53,7 @@ const AllFlashSale = () => {
   return (
     <div>
       <img className="w-full h-32" src={Sale_Banner} alt="Sale" />
-      <div className="flex gap-2 justify-end mr-40">
+      <div className="flex gap-2 justify-end mr-24 mt-10">
         <div>
           <p className="text-lg mt-1">Sort by:</p>
         </div>
@@ -65,9 +74,9 @@ const AllFlashSale = () => {
       
 
       {/* Main Div */}
-      <div className="flex justify-evenly">
+      <div className="flex justify-evenly mb-10">
         {/* Filter div */}
-        <div className="p-4 border rounded-lg w-64">
+        <div className="p-4 border rounded-lg w-64 mt-20">
         <h2 className="text-xl font-bold mb-4">Filter</h2>
                {/* Colors Filter  */}
         <div className="mb-4">
@@ -84,7 +93,7 @@ const AllFlashSale = () => {
               value={color}
               id={color}
               className="radio radio-primary border-orange-600 hover:border-orange-600 checked:bg-orange-600 checked:border-orange-600"
-              onChange={handleBrandChange}
+              onChange={handleColorSort}
               checked={selectedColor === color}
             />
             <label htmlFor={color} className="ml-2">
@@ -98,11 +107,37 @@ const AllFlashSale = () => {
 </div>
 
 {/* Types filter */}
+<div className="mb-4">
+  <div className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+    <input type="checkbox" className="peer" />
+    <div className="collapse-title text-lg font-medium">Types</div>
+    <div className="collapse-content">
+      <form className="mt-2">
+        {types.map((type) => (
+          <div key={type} className="flex items-center mb-2">
+            <input
+              type="radio"
+              name="type"
+              value={type}
+              id={type}
+              className="radio radio-primary border-orange-600 hover:border-orange-600 checked:bg-orange-600 checked:border-orange-600"
+              onChange={handleTypeSort}
+              checked={typeSelect === type}
+            />
+            <label htmlFor={type} className="ml-2">
+              {type}
+            </label>
+          </div>
+        ))}
+      </form>
+    </div>
+  </div>
+</div>
 
       </div>
         {/* Cart div */}
         {Flashsales.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-20">
             {Flashsales.map((sale) => {
               const DiscountPercentage = Math.round(
                 ((sale.price - sale.discount_price) / sale.price) * 100
