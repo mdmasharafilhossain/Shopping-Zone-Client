@@ -62,7 +62,7 @@ const FlashSaleDetails = () => {
                 name: InfoCard.name,
                 image: InfoCard.image,
                 price: InfoCard.price,
-                discountPrice: InfoCard.discount_price,
+                 discountPrice: InfoCard.discount_price,
                 discountPercentage: DiscountPercentage,
                 details: InfoCard.details,
                 seller_email:InfoCard.seller_email,
