@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import ImageZoom from "./ImageZoom";
 import AddComment from "../AddComment/AddComment";
 import Header from "../../Header/Header";
@@ -12,12 +12,24 @@ const FlashSaleDetails = () => {
     const AxiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext);
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const InfoCard = CardsInfo?.result?.find(brand => brand._id === id);
 
     const DiscountPercentage = Math.round(((InfoCard?.price - InfoCard?.discount_price) / InfoCard?.price) * 100);
 
     const handleAddToCart = async () => {
+        if (!user?.email) {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "Please log in to add items to the cart",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate('/login');
+            return;
+        }
         try {
             const res = await AxiosPublic.post('/cart', {
                 productCode: InfoCard.code,
@@ -56,6 +68,17 @@ const FlashSaleDetails = () => {
     };
 
     const handleBuyNow = async () => {
+        if (!user?.email) {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "Please log in to add items to the cart",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate('/login');
+            return;
+        }
         try {
             const res = await AxiosPublic.post('/buy', {
                 productCode: InfoCard.code,

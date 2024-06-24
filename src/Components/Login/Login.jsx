@@ -69,8 +69,9 @@ const Login = () => {
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     });
-                    navigate('/');
+                    
                 }
+                navigate('/');
             })
         })
         .catch(error =>{
