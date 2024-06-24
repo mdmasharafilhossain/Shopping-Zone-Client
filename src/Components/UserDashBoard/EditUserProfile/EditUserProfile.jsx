@@ -44,7 +44,7 @@ const EditUserProfile = () => {
   return (
     <div>
       <h2 className='text-center font-bold mt-6 text-2xl md:text-4xl'>
-        Edit <span className='text-[#FF3811]'>Profile</span>
+         Edit <span className='text-[#FF3811]'>Profile</span>
       </h2>
       <hr className='my-2' />
 
