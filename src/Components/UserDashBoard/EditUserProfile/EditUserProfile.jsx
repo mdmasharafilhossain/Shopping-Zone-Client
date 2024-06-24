@@ -9,8 +9,8 @@ const EditUserProfile = () => {
   const AxiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const {  data: users = [], isLoading} = useQuery({
-    queryKey: ['users'],
+  const {  data: users = [],} = useQuery({
+     queryKey: ['users'],
 
     queryFn: async () => {
         const res = await AxiosPublic.get(`/users/profile/${user.email}`);
