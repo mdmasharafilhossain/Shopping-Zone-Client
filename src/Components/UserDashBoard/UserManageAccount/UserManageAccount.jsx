@@ -42,12 +42,12 @@ const UserManageAccount = () => {
                    <div className="grid grid-cols-3 text-center">
                    <h1 className="text-lg">Full Name: <br></br><span className="font-bold">{customer.name}</span></h1>
                    <h1 className="text-lg">Email: <br></br><span className="font-bold">{customer.email}</span></h1>
-                   <h1 className="text-lg">Mobile: <br></br><span className="font-bold">{customer.phone || "Not Set"}</span></h1>
+                   <h1 className="text-lg">Mobile: <br></br><span className="font-bold">{customer.number || "Not Set"}</span></h1>
                    </div>
                    <div className="grid grid-cols-3 text-center mt-20">
-                   <h1 className="text-lg">Current Location: <br></br><span className="font-bold">{customer.location || "Not Set"}</span></h1>
+                   <h1 className="text-lg">Current Location: <br></br><span className="font-bold">{customer.address || "Not Set"}</span></h1>
                    <h1 className="text-lg">Gender: <br></br><span className="font-bold">{customer.gender || "Not Set"}</span></h1>
-                   <h1 className="text-lg">Date of birth: <br></br><span className="font-bold">{customer.date || "Not Set"}</span></h1>
+                   <h1 className="text-lg">Date of birth: <br></br><span className="font-bold">{customer.birthday_date || "Not Set"}</span></h1>
                    </div>
                  
                     </div>

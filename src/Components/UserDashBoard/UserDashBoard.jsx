@@ -64,7 +64,7 @@ const UserDashBoard = () => {
                   onClick={handleRouteClick}
                   className="font-bold text-sm text-white"
                 >
-                  <NavLink
+                   <NavLink
                     to="/userdashboard/account"
                     className={({ isActive }) =>
                       isActive ? "text-white border hover:bg-none" : ""
@@ -85,7 +85,7 @@ const UserDashBoard = () => {
                     }
                   >
                     <FiEdit />
-                    Edit Profile
+                    Update Profile
                   </NavLink>
                 </li>
                 <li
