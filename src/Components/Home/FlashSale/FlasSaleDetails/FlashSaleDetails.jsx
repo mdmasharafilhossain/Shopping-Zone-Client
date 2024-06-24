@@ -31,7 +31,7 @@ const FlashSaleDetails = () => {
                 <h1 className="text-lg  w-[54%]">{InfoCard.details}</h1>
                       <p className="text-3xl text-orange-600 ">ট {InfoCard?.discount_price}</p>
                       <div className="flex gap-3">
-                        <p className="text-sm text-gray-600 line-through">ট {InfoCard?.price}</p>
+                         <p className="text-sm text-gray-600 line-through">ট {InfoCard?.price}</p>
                         <p className="text-sm">
                           -{DiscountPercentage}%
                         </p>
