@@ -21,7 +21,7 @@ const EditUserProfile = () => {
     console.log(UsersInfo)
     const UsersDetails = await AxiosPublic.patch('/users', UsersInfo);
     console.log("Database: ",UsersDetails.data)
-    if (UsersDetails.data.modifiedCount) {
+     if (UsersDetails.data.modifiedCount) {
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -29,6 +29,15 @@ const EditUserProfile = () => {
         showConfirmButton: false,
         timer: 1500
       });
+    }
+    else{
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "No Change",
+            showConfirmButton: false,
+            timer: 1500
+          });
     }
   };
 
