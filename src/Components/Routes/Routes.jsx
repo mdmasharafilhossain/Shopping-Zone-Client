@@ -6,6 +6,7 @@ import AllFlashSale from "../Home/FlashSale/AllFlashSale/AllFlashSale";
 import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
 import UserDashBoard from "../UserDashBoard/UserDashBoard";
+import UserManageAccount from "../UserDashBoard/UserManageAccount/UserManageAccount";
 
 export const router = createBrowserRouter([
     {
@@ -46,8 +47,11 @@ export const router = createBrowserRouter([
       path:"/userdashboard",
       element:<UserDashBoard></UserDashBoard>,
       children:[
+        {
+          path:"/userdashboard/manageaccount",
+          element:<UserManageAccount></UserManageAccount>
+        }
 
-        
       ]
     }
   ]);
