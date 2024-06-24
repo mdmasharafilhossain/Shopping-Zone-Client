@@ -249,7 +249,7 @@ const Header = () => {
         className="menu menu-sm dropdown-content bg-base-100 rounded-box  mt-3 w-52 p-2 shadow z-50">
         <li>
           <Link to="/userdashboard"><a className="justify-between">
-            Dashboard
+            My Account
            
           </a></Link>
         </li>
@@ -274,12 +274,15 @@ const Header = () => {
           <div className="drawer drawer-end">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-              <label
-                htmlFor="my-drawer-4"
-                className="drawer-button btn"
-              >
-                <button><FaCartPlus className="text-2xl"/></button>
-              </label>
+            <label htmlFor="my-drawer-4" className="drawer-button btn relative">
+  <button className="relative">
+    <FaCartPlus className="text-2xl" />
+    <span className="absolute -top-2 -right-2 h-5 w-5 bg-orange-500 text-white text-xs flex items-center justify-center rounded-full">
+      1
+    </span>
+  </button>
+</label>
+
             </div>
             <div className="drawer-side z-50">
               <label

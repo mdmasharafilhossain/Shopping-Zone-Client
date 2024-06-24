@@ -1,13 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { FiEdit } from "react-icons/fi";
-import { FiAlignJustify } from "react-icons/fi";
+import { FiEdit, FiAlignJustify } from "react-icons/fi";
 import { BiBriefcase } from "react-icons/bi";
-import {  FaHome, FaBook } from "react-icons/fa";
-import { MdOutlineAccountBox } from "react-icons/md";
+import { FaHome, FaBook } from "react-icons/fa";
+import { MdOutlineAccountBox, MdPeopleAlt, MdReport } from "react-icons/md";
 import { TiNews } from "react-icons/ti";
-
-import { MdPeopleAlt, MdReport } from "react-icons/md";
 import { FcStatistics } from "react-icons/fc";
 import { AuthContext } from "../AuthProviders/AuthProviders";
 
@@ -60,154 +57,121 @@ const UserDashBoard = () => {
               </div>
 
               <ul className="menu p-4 py-auto">
-                <li
-                  onClick={handleRouteClick}
-                  className="font-bold text-sm text-white"
-                >
-                   <NavLink
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                  <NavLink
                     to="/userdashboard/account"
                     className={({ isActive }) =>
-                      isActive ? "text-white border hover:bg-none" : ""
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
                     <MdOutlineAccountBox />
                     My Profile
                   </NavLink>
                 </li>
-                <li
-                  onClick={handleRouteClick}
-                  className="font-bold text-sm text-white"
-                >
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/userdashboard/edit"
                     className={({ isActive }) =>
-                      isActive ? "text-white border" : ""
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
                     <FiEdit />
                     Update Profile
                   </NavLink>
                 </li>
-                <li
-                  onClick={handleRouteClick}
-                  className="font-bold text-sm text-white"
-                >
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/AllJobPost"
                     className={({ isActive }) =>
-                      isActive ? "border text-white hover:none" : ""
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
                     <BiBriefcase />
                     All Job Post
                   </NavLink>
                 </li>
-                <li
-                  onClick={handleRouteClick}
-                  className="font-bold text-sm text-white"
-                >
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/create-news"
                     className={({ isActive }) =>
-                      isActive ? "border" : ""
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
                     <TiNews />
                     Create News
                   </NavLink>
                 </li>
-                <li
-                  onClick={handleRouteClick}
-                  className="font-bold text-sm text-white"
-                >
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/all-news"
                     className={({ isActive }) =>
-                      isActive ? "border" : ""
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
                     <TiNews />
                     All News
                   </NavLink>
                 </li>
-                <li
-                  onClick={handleRouteClick}
-                  className="font-bold text-sm text-white"
-                >
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/PremiumUser"
                     className={({ isActive }) =>
-                      isActive ? "border" : ""
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
                     <MdPeopleAlt />
                     Premium Users
                   </NavLink>
                 </li>
-                <li
-                  onClick={handleRouteClick}
-                  className="font-bold text-sm text-white"
-                >
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/premiumusercourses"
                     className={({ isActive }) =>
-                      isActive ? "border" : ""
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
                     <FaBook />
                     Add Courses
                   </NavLink>
                 </li>
-                <li
-                  onClick={handleRouteClick}
-                  className="font-bold text-sm text-white"
-                >
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/allpremiumcourses"
                     className={({ isActive }) =>
-                      isActive ? "border" : ""
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
                     <FaBook />
                     Premium User Courses
                   </NavLink>
                 </li>
-                <li
-                  onClick={handleRouteClick}
-                  className="font-bold text-sm text-white"
-                >
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/alljobreport"
                     className={({ isActive }) =>
-                      isActive ? "border" : ""
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
                     <MdReport />
                     Job Report
                   </NavLink>
                 </li>
-                <li
-                  onClick={handleRouteClick}
-                  className="font-bold text-sm text-white"
-                >
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/Statistics"
                     className={({ isActive }) =>
-                      isActive ? "border" : ""
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
                     <FcStatistics />
                     Statistics
                   </NavLink>
                 </li>
-                <li
-                  onClick={handleHomeRouteClick}
-                  className="font-bold text-sm text-white"
-                >
+                <li onClick={handleHomeRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/"
                     className={({ isActive }) =>
-                      isActive ? "border" : ""
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
                     <FaHome />
