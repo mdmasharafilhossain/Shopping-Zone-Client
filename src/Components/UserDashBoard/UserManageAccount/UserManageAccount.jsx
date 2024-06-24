@@ -38,7 +38,7 @@ const UserManageAccount = () => {
                {
                 users?.map(customer=><div key={customer._id}>
                     
-                    <div className="border px-10 py-10 bg-slate-100">
+                    <div className="border rounded-lg mt-10 px-10 py-10 bg-slate-100">
                    <div className="flex justify-between">
                    <h1 className="text-lg">Full Name: <br></br><span className="font-bold">{customer.name}</span></h1>
                    <h1 className="text-lg">Email: <br></br><span className="font-bold">{customer.email}</span></h1>
@@ -50,7 +50,7 @@ const UserManageAccount = () => {
                    </div>
                    <button
           type='submit'
-          className='group relative my-2 h-10 w-full overflow-hidden bg-white text-base shadow-md rounded-full'
+          className='group mt-10 relative my-2 h-10 w-full overflow-hidden bg-white text-base shadow-md rounded-full'
         >
           <div className='absolute inset-0 w-1/12 bg-[#FF3811] transition-all duration-[300ms] ease-out group-hover:w-full'></div>
           <span className='relative group-hover:text-white text-black uppercase font-semibold tracking-wider'>
