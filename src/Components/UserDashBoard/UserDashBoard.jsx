@@ -1,12 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-
+import { FiEdit } from "react-icons/fi";
 import { FiAlignJustify } from "react-icons/fi";
 import { BiBriefcase } from "react-icons/bi";
 import {  FaHome, FaBook } from "react-icons/fa";
 import { MdOutlineAccountBox } from "react-icons/md";
 import { TiNews } from "react-icons/ti";
-import { FaPeopleGroup } from "react-icons/fa6";
+
 import { MdPeopleAlt, MdReport } from "react-icons/md";
 import { FcStatistics } from "react-icons/fc";
 import { AuthContext } from "../AuthProviders/AuthProviders";
@@ -71,7 +71,7 @@ const UserDashBoard = () => {
                     }
                   >
                     <MdOutlineAccountBox />
-                    My Account
+                    My Profile
                   </NavLink>
                 </li>
                 <li
@@ -79,13 +79,13 @@ const UserDashBoard = () => {
                   className="font-bold text-sm text-white"
                 >
                   <NavLink
-                    to="/AdminDashboard/AllHiringManagers"
+                    to="/userdashboard/edit"
                     className={({ isActive }) =>
                       isActive ? "text-white border" : ""
                     }
                   >
-                    <FaPeopleGroup />
-                    All Hiring Managers
+                    <FiEdit />
+                    Edit Profile
                   </NavLink>
                 </li>
                 <li
