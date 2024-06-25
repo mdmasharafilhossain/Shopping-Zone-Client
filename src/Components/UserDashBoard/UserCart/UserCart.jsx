@@ -1,22 +1,58 @@
-
+import  { useState } from 'react';
 import useCart from '../../Shared/Hooks/useCart/useCart';
 
+import Swal from 'sweetalert2';
+import useAxiosPublic from '../../Shared/Hooks/useAxiosPublic/useAxiosPublic';
+
 const UserCart = () => {
-    const [cart] = useCart();
-    const shippingCost = 70; 
-
-    console.log("data", cart);
-
-    
-    const formatNumber = (number) => {
-        return number.toFixed(4);
+    const [cart, setCart] = useCart(); 
+    const [loading, setLoading] = useState(false);
+    const AxiosPublic = useAxiosPublic();
+    // remove 
+    const handleDelete = async (_id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                setLoading(true);
+                try {
+                    const res = await AxiosPublic.delete(`/cart/${_id}`);
+                    if (res.data.deletedCount) {
+                        
+                        setCart(cart.filter(item => item._id !== _id));
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Delete Successful",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Delete operation failed!",
+                        });
+                    }
+                } catch (error) {
+                    console.error("Error deleting item:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong while deleting!",
+                    });
+                } finally {
+                    setLoading(false);
+                }
+            }
+        });
     };
-
-    
-    const subtotal = cart.reduce((acc, item) => acc + item.discountPrice * item.quantity, 0);
-
-   
-    const total = subtotal + shippingCost;
 
     return (
         <div className="container mx-auto p-4">
@@ -25,54 +61,59 @@ const UserCart = () => {
             </h2>
             <hr className="my-2" />
 
-            {cart.length === 0 ? (
-                <p className="text-center mt-4">Your cart is empty</p>
+            {loading ? (
+                <p className="text-center mt-4">Loading...</p>
             ) : (
-                <div className="flex flex-col md:flex-row">
-                    <div className="w-full md:w-3/4 p-4">
-                        {cart.map(item => (
-                            <div key={item._id} className="flex justify-between items-center border-b py-4">
-                                <div className="flex items-center max-w-72">
-                                    <img src={item.image} alt={item.name} className="w-20 h-20 object-cover" />
-                                    <div className="ml-4">
-                                        <p className="font-bold">{item.name}</p>
-                                        <p>Seller Email: {item.seller_email}</p>
-                                        <p>Quantity: {item.quantity}</p>
+                cart.length === 0 ? (
+                    <p className="text-center mt-4">Your cart is empty</p>
+                ) : (
+                    <div className="flex flex-col md:flex-row">
+                        <div className="w-full md:w-3/4 p-4">
+                            {cart.map(item => (
+                                <div key={item._id} className="flex justify-between items-center border-b py-4">
+                                    <div className="flex items-center max-w-72">
+                                        <img src={item.image} alt={item.name} className="w-20 h-20 object-cover" />
+                                        <div className="ml-4">
+                                            <p className="font-bold">{item.name}</p>
+                                            <p>Seller Email: {item.seller_email}</p>
+                                            <p>Quantity: {item.quantity}</p>
+                                        </div>
                                     </div>
+                                    <div className="flex items-center">
+                                        <p className="text-xl font-bold">{item.discountPrice * item.quantity} ৳</p>
+                                        {item.discountPercentage && (
+                                            <div className="ml-2 bg-red-500 text-white text-sm p-1 rounded">-{item.discountPercentage}%</div>
+                                        )}
+                                    </div>
+                                    <button className="ml-4 text-red-500" onClick={() => handleDelete(item._id)}>REMOVE</button>
                                 </div>
-                                <div className="flex items-center">
-                                    <p className="text-xl font-bold">{formatNumber(item.discountPrice * item.quantity)} ৳</p>
-                                    {item.discountPercentage && (
-                                        <div className="ml-2 bg-red-500 text-white text-sm p-1 rounded">-{item.discountPercentage}%</div>
-                                    )}
+                            ))}
+                        </div>
+                        <div className="w-full md:w-1/4 p-4">
+                            <div className="border p-4 rounded">
+                                <h3 className="font-bold text-lg">Order Summary</h3>
+                                <div className="mt-4">
+                                    <div className="flex justify-between">
+                                        <p>Cart Subtotal</p>
+                                        <p>{cart.reduce((acc, item) => acc + item.discountPrice * item.quantity, 0)} ৳</p>
+                                    </div>
+                                    <div className="flex justify-between mt-2">
+                                        <p>Shipping</p>
+                                        <p>0 ৳</p> {/* Assuming shipping is always 0 in this example */}
+                                    </div>
+                                    <hr className="my-2" />
+                                    <div className="flex justify-between font-bold">
+                                        <p>Total</p>
+                                        <p>{cart.reduce((acc, item) => acc + item.discountPrice * item.quantity, 0)} ৳</p>
+                                    </div>
+                                    <button className="mt-4 w-full bg-orange-500 text-white py-2 rounded">Proceed To Checkout</button>
                                 </div>
-                                <button className="ml-4 text-red-500">REMOVE</button>
+                                <p className="text-sm mt-2">Checkout now and earn 187 Points for this order</p>
+                                <p className="text-sm">Applies only to registered customers, may vary when logged in.</p>
                             </div>
-                        ))}
-                    </div>
-                    <div className="w-full md:w-1/4 p-4">
-                        <div className="border p-4 rounded">
-                            <h3 className="font-bold text-lg">Order Summary</h3>
-                            <div className="mt-4">
-                                <div className="flex justify-between">
-                                    <p>Cart Subtotal</p>
-                                    <p>{formatNumber(subtotal)} ৳</p>
-                                </div>
-                                <div className="flex justify-between mt-2">
-                                    <p>Shipping</p>
-                                    <p>{shippingCost} ৳</p>
-                                </div>
-                                <hr className="my-2" />
-                                <div className="flex justify-between font-bold">
-                                    <p>Total</p>
-                                    <p>{formatNumber(total)} ৳</p>
-                                </div>
-                                <button className="mt-4 w-full bg-orange-500 text-white py-2 rounded">Proceed To Checkout</button>
-                            </div>
-                           
                         </div>
                     </div>
-                </div>
+                )
             )}
         </div>
     );
