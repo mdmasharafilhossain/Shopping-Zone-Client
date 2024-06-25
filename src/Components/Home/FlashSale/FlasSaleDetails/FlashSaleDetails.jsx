@@ -6,6 +6,8 @@ import Header from "../../Header/Header";
 import useAxiosPublic from "../../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 import { AuthContext } from "../../../AuthProviders/AuthProviders";
 import Swal from "sweetalert2";
+import Rating from 'react-rating';
+import { FaStar, FaRegStar } from 'react-icons/fa';
 
 const FlashSaleDetails = () => {
     const CardsInfo = useLoaderData();
@@ -161,6 +163,18 @@ const FlashSaleDetails = () => {
                         <button onClick={decrementQuantity} className="px-3 py-1 border rounded">-</button>
                         <span>{quantity}</span>
                         <button onClick={incrementQuantity} className="px-3 py-1 border rounded">+</button>
+                    </div>
+
+                    {/* Rating display */}
+                    <div className="flex items-center gap-3">
+                       
+                        <Rating
+                            initialRating={InfoCard?.rating}
+                            readonly
+                            emptySymbol={<FaRegStar />}
+                            fullSymbol={<FaStar />}
+                        />
+                        <span>({InfoCard?.rating})</span>
                     </div>
 
                     {/* Buttons */}
