@@ -114,7 +114,7 @@ const Login = () => {
             <div className="flex flex-col w-full">
               <div className="text-center">
                 <h1 className="text-2xl md:text-3xl font-semibold mb-5">
-                  Log in to HireMaster{" "}
+                  Log in to <span className="text-orange-600">ShoppingZone</span>{" "}
                 </h1>
               </div>
               <div>

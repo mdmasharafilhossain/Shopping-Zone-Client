@@ -138,7 +138,7 @@ const Header = () => {
             </li>
             <li className="border-r-2 border-orange-500 pr-1 z-50">
               <details>
-                <summary>All Category</summary>
+                <summary className="text-[15px] font-bold mt-[2px]">All Category</summary>
                 <ul className="p-2">
                   <li>
                     <a>Submenu 1</a>
