@@ -1,9 +1,22 @@
-import React from 'react';
+
 import useCart from '../../Shared/Hooks/useCart/useCart';
 
 const UserCart = () => {
     const [cart] = useCart();
-    console.log("data",cart);
+    const shippingCost = 70; 
+
+    console.log("data", cart);
+
+    
+    const formatNumber = (number) => {
+        return number.toFixed(4);
+    };
+
+    
+    const subtotal = cart.reduce((acc, item) => acc + item.discountPrice * item.quantity, 0);
+
+   
+    const total = subtotal + shippingCost;
 
     return (
         <div className="container mx-auto p-4">
@@ -18,25 +31,20 @@ const UserCart = () => {
                 <div className="flex flex-col md:flex-row">
                     <div className="w-full md:w-3/4 p-4">
                         {cart.map(item => (
-                            <div key={item.id} className="flex justify-between items-center border-b py-4">
-                                <div className="flex items-center">
+                            <div key={item._id} className="flex justify-between items-center border-b py-4">
+                                <div className="flex items-center max-w-72">
                                     <img src={item.image} alt={item.name} className="w-20 h-20 object-cover" />
                                     <div className="ml-4">
                                         <p className="font-bold">{item.name}</p>
                                         <p>Seller Email: {item.seller_email}</p>
-                                        <p>Color: {item.color}</p>
+                                        <p>Quantity: {item.quantity}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center">
-                                    <p className="text-xl font-bold">{item.price} ৳</p>
-                                    {item.discount && (
-                                        <div className="ml-2 bg-red-500 text-white text-sm p-1 rounded">-{item.discount}%</div>
+                                    <p className="text-xl font-bold">{formatNumber(item.discountPrice * item.quantity)} ৳</p>
+                                    {item.discountPercentage && (
+                                        <div className="ml-2 bg-red-500 text-white text-sm p-1 rounded">-{item.discountPercentage}%</div>
                                     )}
-                                    <div className="ml-4 flex items-center border p-1">
-                                        <button className="px-2">-</button>
-                                        <input type="text" value={item.quantity} readOnly className="w-8 text-center" />
-                                        <button className="px-2">+</button>
-                                    </div>
                                 </div>
                                 <button className="ml-4 text-red-500">REMOVE</button>
                             </div>
@@ -48,21 +56,20 @@ const UserCart = () => {
                             <div className="mt-4">
                                 <div className="flex justify-between">
                                     <p>Cart Subtotal</p>
-                                    <p>{cart.reduce((acc, item) => acc + item.price * item.quantity, 0)} ৳</p>
+                                    <p>{formatNumber(subtotal)} ৳</p>
                                 </div>
                                 <div className="flex justify-between mt-2">
                                     <p>Shipping</p>
-                                    <p>0 ৳</p>
+                                    <p>{shippingCost} ৳</p>
                                 </div>
                                 <hr className="my-2" />
                                 <div className="flex justify-between font-bold">
                                     <p>Total</p>
-                                    <p>{cart.reduce((acc, item) => acc + item.price * item.quantity, 0)} ৳</p>
+                                    <p>{formatNumber(total)} ৳</p>
                                 </div>
                                 <button className="mt-4 w-full bg-orange-500 text-white py-2 rounded">Proceed To Checkout</button>
                             </div>
-                            <p className="text-sm mt-2">Checkout now and earn 187 Points for this order</p>
-                            <p className="text-sm">Applies only to registered customers, may vary when logged in.</p>
+                           
                         </div>
                     </div>
                 </div>
