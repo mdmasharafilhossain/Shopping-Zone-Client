@@ -77,11 +77,11 @@ const handleWhiteList = async (sale) => {
       name: sale.name,
       image: sale.image,
       price: sale.price,
-      discountPrice: sale.discount_price,
-      discountPercentage: sale.discountPercentage,
+      discount_price: sale.discount_price,
+      discountPercentage: sale.discountPercentage || "",
       details: sale.details,
       seller_email: sale.seller_email,
-      customer_email: user.email,
+      customer_email: user?.email,
       productSize: sale.productSize,
       rating: sale.rating,
       quantity: sale.quantity
@@ -95,6 +95,15 @@ const handleWhiteList = async (sale) => {
         timer: 1500
       });
       
+    }
+    else{
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: `Already Added`,
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
   } catch (error) {
     console.error('Error adding to whitelist:', error);
