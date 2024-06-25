@@ -6,11 +6,13 @@ import { IoIosSearch, IoMdContact } from "react-icons/io";
 import { FaCartPlus, FaListAlt, FaStore } from "react-icons/fa";
 import { AuthContext } from "../../AuthProviders/AuthProviders";
 import { IoHomeOutline } from "react-icons/io5";
+import useCart from "../../Shared/Hooks/useCart/useCart";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [subMenuOpen, setSubMenuOpen] = useState({});
   const { user, LogOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     LogOut()
@@ -253,7 +255,7 @@ const Header = () => {
                 <button className="relative">
                   <FaCartPlus className="text-2xl" />
                   <span className="absolute -top-2 -right-2 h-5 w-5 bg-orange-500 text-white text-xs flex items-center justify-center rounded-full">
-                    1
+                    {cart.length}
                   </span>
                 </button>
               </label>

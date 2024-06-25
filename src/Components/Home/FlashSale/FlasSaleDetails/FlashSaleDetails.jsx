@@ -8,6 +8,7 @@ import { AuthContext } from "../../../AuthProviders/AuthProviders";
 import Swal from "sweetalert2";
 import Rating from 'react-rating';
 import { FaStar, FaRegStar } from 'react-icons/fa';
+import useCart from "../../../Shared/Hooks/useCart/useCart";
 
 const FlashSaleDetails = () => {
     const CardsInfo = useLoaderData();
@@ -15,6 +16,7 @@ const FlashSaleDetails = () => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const navigate = useNavigate();
+    const [,refetch] = useCart();
 
     const InfoCard = CardsInfo?.result?.find(brand => brand._id === id);
     const [quantity, setQuantity] = useState(1);
@@ -59,6 +61,7 @@ const FlashSaleDetails = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                refetch();
             }
         } catch (error) {
             console.error('Error adding to cart:', error);
