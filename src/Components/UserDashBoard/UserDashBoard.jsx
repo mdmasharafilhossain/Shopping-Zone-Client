@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { FiEdit, FiAlignJustify } from "react-icons/fi";
-
+import { FaCheckCircle } from 'react-icons/fa'; 
 import { FaHome } from "react-icons/fa";
 import { MdOutlineAccountBox } from "react-icons/md";
 import { GiShoppingCart } from "react-icons/gi";
@@ -91,17 +91,17 @@ const UserDashBoard = () => {
                     My Cart
                   </NavLink>
                 </li>
-                {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
-                    to="/AdminDashboard/create-news"
+                    to="/userdashboard/whiteList"
                     className={({ isActive }) =>
                       isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
-                    <TiNews />
-                    Create News
+                     <FaCheckCircle />
+                    My White List
                   </NavLink>
-                </li> */}
+                </li>
                 {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/all-news"
