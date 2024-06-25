@@ -4,6 +4,7 @@ import { FiEdit, FiAlignJustify } from "react-icons/fi";
 
 import { FaHome } from "react-icons/fa";
 import { MdOutlineAccountBox } from "react-icons/md";
+import { GiShoppingCart } from "react-icons/gi";
 
 
 import { AuthContext } from "../AuthProviders/AuthProviders";
@@ -79,17 +80,17 @@ const UserDashBoard = () => {
                     Update Profile
                   </NavLink>
                 </li>
-                {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
-                    to="/AdminDashboard/AllJobPost"
+                    to="/userdashboard/myCart"
                     className={({ isActive }) =>
                       isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
-                    <BiBriefcase />
-                    All Job Post
+                    <GiShoppingCart/>
+                    My Cart
                   </NavLink>
-                </li> */}
+                </li>
                 {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/create-news"
