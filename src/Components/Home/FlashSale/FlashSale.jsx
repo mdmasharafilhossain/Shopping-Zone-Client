@@ -10,6 +10,8 @@ import useAxiosPublic from "../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { AiOutlineHeart } from 'react-icons/ai';
+import Rating from "react-rating";
+import { FaStar, FaRegStar } from 'react-icons/fa';
 
 const FlashSale = () => {
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -102,6 +104,17 @@ const FlashSale = () => {
                       <div className="flex gap-3">
                         <p className="text-sm text-gray-600 line-through">ট {sale.price}</p>
                       </div>
+                      {/* Rating */}
+                      <div className="flex items-center gap-3 mt-5">
+                        
+                        <Rating
+                            initialRating={sale?.rating}
+                            readonly
+                            emptySymbol={<FaRegStar color="orange" />}
+                            fullSymbol={<FaStar color="orange" />}
+                        />
+                        <span className="">({sale?.rating})</span>
+                    </div>
                       </div>
                       </Link>
                     </div>
