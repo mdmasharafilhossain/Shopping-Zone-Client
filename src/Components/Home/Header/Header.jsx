@@ -1,20 +1,24 @@
 import { useContext, useState } from "react";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logo from "../../../assets/website_logo.png";
-import { TiShoppingCart } from "react-icons/ti";
-import { IoIosSearch } from "react-icons/io";
-import { FaCartPlus } from "react-icons/fa";
+
+import { IoIosSearch, IoMdContact } from "react-icons/io";
+import { FaCartPlus, FaListAlt, FaStore } from "react-icons/fa";
 import { AuthContext } from "../../AuthProviders/AuthProviders";
+import { IoHomeOutline } from "react-icons/io5";
+import useCart from "../../Shared/Hooks/useCart/useCart";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [subMenuOpen, setSubMenuOpen] = useState({});
   const { user, LogOut } = useContext(AuthContext);
+  const [cart] = useCart();
+
   const handleLogOut = () => {
     LogOut()
-        .then()
-        .catch()
-}
+      .then()
+      .catch();
+  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -28,8 +32,8 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-slate-100 shadow-xl">
-      <div className=" container mx-auto navbar  ">
+    <div className="bg-slate-100 shadow-xl fixed top-0 left-0 right-0 z-50">
+      <div className="container mx-auto navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -112,32 +116,34 @@ const Header = () => {
           </div>
           <div>
             <div>
-              <img className=" md:w-44 lg:w-44" src={logo} alt="Website Logo" />
+              <img className="md:w-44 lg:w-44" src={logo} alt="Website Logo" />
             </div>
           </div>
         </div>
-        <div className="navbar-center hidden lg:flex  h-2">
+        <div className="navbar-center hidden lg:flex h-2">
           <ul className="menu menu-horizontal">
-            <li className="border-r-2  border-orange-500  ">
+            <li className="border-r-2 border-orange-500">
               <NavLink
-                to="/feedback"
+                to="/"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-red-700 underline"
+                    ? "text-orange-500 underline"
                     : ""
                 }
               >
-                <TiShoppingCart className="text-orange-500 text-2xl" />
-                Shop Now
+                <IoHomeOutline className="text-orange-500 text-2xl" />
+                Home
               </NavLink>
             </li>
-
-            <li className="border-r-2  border-orange-500 pr-1 z-50">
+            <li className="border-r-2 border-orange-500 pr-1 z-50">
               <details>
-                <summary>All Category</summary>
+                <summary className="text-[15px] font-bold">
+                  <FaListAlt className="inline text-orange-500 text-2xl mr-1" />
+                  All Category
+                </summary>
                 <ul className="p-2">
                   <li>
                     <a>Submenu 1</a>
@@ -148,41 +154,8 @@ const Header = () => {
                 </ul>
               </details>
             </li>
-
-            {/* <li className="border-r-2  border-orange-500 pr-1">
-              <NavLink
-                to="/feedback"
-                style={{ fontWeight: "bold", fontSize: "15px" }}
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? "text-red-700 underline"
-                    : ""
-                }
-              >
-                <TiShoppingCart className="text-orange-500 text-2xl" />
-                Eid Offer
-              </NavLink>
-            </li> */}
-            {/* <li className="border-r-2  border-orange-500 pr-1">
-              <NavLink
-                to="/feedback"
-                style={{ fontWeight: "bold", fontSize: "15px" }}
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? "text-red-700 underline"
-                    : ""
-                }
-              >
-                <TiShoppingCart className="text-orange-500 text-2xl" />
-                Blog
-              </NavLink>
-            </li> */}
             <li
-              className="border-r-2  border-orange-500 pr-1"
+              className="border-r-2 border-orange-500 pr-1"
               style={{ marginRight: "1rem" }}
             >
               <NavLink
@@ -196,7 +169,7 @@ const Header = () => {
                     : ""
                 }
               >
-                <TiShoppingCart className="text-orange-500 text-2xl" />
+                <IoMdContact className="text-orange-500 text-2xl" />
                 Contact Us
               </NavLink>
             </li>
@@ -212,77 +185,80 @@ const Header = () => {
                     : ""
                 }
               >
-                <TiShoppingCart className="text-orange-500 text-2xl" />
+                <FaStore className="text-orange-500 text-2xl" />
                 Become Seller
               </NavLink>
             </li>
           </ul>
         </div>
         <div className="navbar-end space-x-7 mr-16">
-        <div className="border-l flex">
-      <input
-        type="text"
-        placeholder="Search For Products"
-        className="border rounded-lg py-2 px-6 focus:border-orange-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-[450px] xl:w-96"
-      />
-      <button className="-ml-6 border px-1  r rounded-r-md bg-orange-100 hover:bg-orange-400">
-        <IoIosSearch className="text-2xl text-orange-600 hover:text-white" />
-      </button>
-    </div>
-          
+          <div className="border-l flex">
+            <input
+              type="text"
+              placeholder="Search For Products"
+              className="border rounded-lg py-2 px-6 focus:border-orange-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-[450px] xl:w-96"
+            />
+            <button className="-ml-6 border px-1 rounded-r-md bg-orange-100 hover:bg-orange-400">
+              <IoIosSearch className="text-2xl text-orange-600 hover:text-white" />
+            </button>
+          </div>
           <div>
-           {
-            user ? <div>
-                 
-                 <div className="dropdown dropdown-end">
-                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-  <div className="w-9 rounded-full">
-    <img
-      alt="User Photo"
-      src={user?.photoURL} 
-    />
-  </div>
-  <h1 className="text-[10px] w-20 truncate">{user?.displayName?.length > 8 ? `${user.displayName.substring(0, 8)}...` : user.displayName}</h1>
-</div>
-      <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box  mt-3 w-52 p-2 shadow z-50">
-        <li>
-          <Link to="/userdashboard"><a className="justify-between">
-            My Account
-           
-          </a></Link>
-        </li>
-        <li><a>Settings</a></li>
-        <li><button onClick={handleLogOut}>Logout</button></li>
-      </ul>
-    </div>
-  
-
-            </div>
-
-            : 
-
-            <div>
-
-<Link to="/login"><button className="ml-2 border  border-orange-500 text-xs md:text-base lg:text-base font-medium rounded-md  hover:border-orange-500 hover:bg-orange-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
-              Login/SignUp
-            </button></Link>
-            </div>
-           }
+            {user ? (
+              <div>
+                <div className="dropdown dropdown-end">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-9 rounded-full">
+                      <img alt="User Photo" src={user?.photoURL} />
+                    </div>
+                    <h1 className="text-[10px] w-20 truncate">
+                      {user?.displayName?.length > 8
+                        ? `${user.displayName.substring(0, 8)}...`
+                        : user.displayName}
+                    </h1>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-50"
+                  >
+                    <li>
+                      <Link to="/userdashboard">
+                        <a className="justify-between">My Account</a>
+                      </Link>
+                    </li>
+                    <li>
+                      <a>Settings</a>
+                    </li>
+                    <li>
+                      <button onClick={handleLogOut}>Logout</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <Link to="/login">
+                  <button className="ml-2 border border-orange-500 text-xs md:text-base lg:text-base font-medium rounded-md hover:border-orange-500 hover:bg-orange-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
+                    Login/SignUp
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
           <div className="drawer drawer-end">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-            <label htmlFor="my-drawer-4" className="drawer-button btn relative">
-  <button className="relative">
-    <FaCartPlus className="text-2xl" />
-    <span className="absolute -top-2 -right-2 h-5 w-5 bg-orange-500 text-white text-xs flex items-center justify-center rounded-full">
-      1
-    </span>
-  </button>
-</label>
-
+              <label htmlFor="my-drawer-4" className="drawer-button btn relative">
+                <button className="relative">
+                  <FaCartPlus className="text-2xl" />
+                  <span className="absolute -top-2 -right-2 h-5 w-5 bg-orange-500 text-white text-xs flex items-center justify-center rounded-full">
+                    {cart.length}
+                  </span>
+                </button>
+              </label>
             </div>
             <div className="drawer-side z-50">
               <label
@@ -300,7 +276,6 @@ const Header = () => {
               </ul>
             </div>
           </div>
-
           <div></div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import SignUp from "../SignUp/SignUp";
 import UserDashBoard from "../UserDashBoard/UserDashBoard";
 import UserManageAccount from "../UserDashBoard/UserManageAccount/UserManageAccount";
 import EditUserProfile from "../UserDashBoard/EditUserProfile/EditUserProfile";
+import UserCart from "../UserDashBoard/UserCart/UserCart";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
         {
           path:"/userdashboard/edit",
           element:<EditUserProfile></EditUserProfile> 
+        },
+        {
+          path:"/userdashboard/myCart",
+          element:<UserCart></UserCart>
         }
 
       ]

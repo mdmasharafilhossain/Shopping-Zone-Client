@@ -4,6 +4,8 @@ import Sale_Banner from "../../../../assets/sale bannwr.png";
 import { Link } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useState } from "react";
+import Rating from "react-rating";
+import { FaStar, FaRegStar } from 'react-icons/fa';
 
 const AllFlashSale = () => {
   const AxiosPublic = useAxiosPublic();
@@ -183,6 +185,17 @@ const AllFlashSale = () => {
                           ট {sale.price}
                         </p>
                       </div>
+                      {/* Rating */}
+                      <div className="flex items-center gap-3 mt-5">
+                        
+                        <Rating
+                            initialRating={sale?.rating}
+                            readonly
+                            emptySymbol={<FaRegStar color="orange" />}
+                            fullSymbol={<FaStar color="orange" />}
+                        />
+                        <span className="">({sale?.rating})</span>
+                    </div>
                     </div>
                   </Link>
                 </div>

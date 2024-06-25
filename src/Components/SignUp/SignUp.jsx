@@ -130,7 +130,7 @@ const SignUp = () => {
            <div className="container mx-auto w-3/4 lg:w-3/5 overflow-hidden my-20 md:my-32 ">
         <div className="border px-10 md:px-16 lg:px-24 py-10 md:py-14 lg:py-20 rounded-2xl space-y-10">
           <h2 className="text-2xl md:text-3xl font-semibold text-center">
-            Sign up to HireMaster
+            Sign up to <span className="text-orange-500">ShoppingZone</span>
           </h2>
           <button
             onClick={hadleGoogleLogin}
