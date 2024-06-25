@@ -18,7 +18,8 @@ const FlashSaleDetails = () => {
 
     const InfoCard = CardsInfo?.result?.find(brand => brand._id === id);
     const [quantity, setQuantity] = useState(1);
-    const [selectedSize, setSelectedSize] = useState(InfoCard?.size.split(',')[0] || ''); // Set the default size to the first available size
+    const sizes = InfoCard?.size ? InfoCard.size.split(',') : ['One Size'];
+    const [selectedSize, setSelectedSize] = useState(sizes[0]);
 
     const DiscountPercentage = Math.round(((InfoCard?.price - InfoCard?.discount_price) / InfoCard?.price) * 100);
 
@@ -132,7 +133,7 @@ const FlashSaleDetails = () => {
                     <div className="block lg:hidden">
                         <img className="w-80 h-full object-cover shadow-xl bg-slate-200" src={InfoCard?.image} alt={InfoCard?.name} />
                     </div>
-                    <div className="hidden lg:block w-80 h-96 border hover:border-orange-500 p-5">
+                    <div className="hidden lg:block w-80 h-[400px] border hover:border-orange-500 p-5">
                         <ImageZoom className="" src={InfoCard?.image} alt={InfoCard?.name} />
                     </div>
                 </div>
@@ -140,6 +141,17 @@ const FlashSaleDetails = () => {
                 {/* Text div */}
                 <div className="space-y-3">
                     <h1 className="text-3xl font-bold">{InfoCard?.name}</h1>
+                    {/* Rating display */}
+                    <div className="flex items-center gap-3">
+                        
+                        <Rating
+                            initialRating={InfoCard?.rating}
+                            readonly
+                            emptySymbol={<FaRegStar color="orange" />}
+                            fullSymbol={<FaStar color="orange" />}
+                        />
+                        <span>({InfoCard?.rating})</span>
+                    </div>
                     <h1 className="text-lg w-[54%]">{InfoCard.details}</h1>
                     <p className="text-3xl text-orange-600 ">ট {InfoCard?.discount_price}</p>
                     <div className="flex gap-3">
@@ -151,7 +163,7 @@ const FlashSaleDetails = () => {
                     <div className="flex items-center gap-3">
                         <span>Size</span>
                         <select value={selectedSize} onChange={handleSizeChange} className="px-3 py-1 border rounded">
-                            {InfoCard?.size.split(',').map(size => (
+                            {sizes.map(size => (
                                 <option key={size} value={size}>{size}</option>
                             ))}
                         </select>
@@ -165,17 +177,7 @@ const FlashSaleDetails = () => {
                         <button onClick={incrementQuantity} className="px-3 py-1 border rounded">+</button>
                     </div>
 
-                    {/* Rating display */}
-                    <div className="flex items-center gap-3">
-                       
-                        <Rating
-                            initialRating={InfoCard?.rating}
-                            readonly
-                            emptySymbol={<FaRegStar />}
-                            fullSymbol={<FaStar />}
-                        />
-                        <span>({InfoCard?.rating})</span>
-                    </div>
+                    
 
                     {/* Buttons */}
                     <div className="flex gap-10">
