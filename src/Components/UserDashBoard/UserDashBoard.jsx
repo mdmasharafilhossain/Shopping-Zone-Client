@@ -1,11 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { FiEdit, FiAlignJustify } from "react-icons/fi";
-import { BiBriefcase } from "react-icons/bi";
-import { FaHome, FaBook } from "react-icons/fa";
-import { MdOutlineAccountBox, MdPeopleAlt, MdReport } from "react-icons/md";
-import { TiNews } from "react-icons/ti";
-import { FcStatistics } from "react-icons/fc";
+
+import { FaHome } from "react-icons/fa";
+import { MdOutlineAccountBox } from "react-icons/md";
+
+
 import { AuthContext } from "../AuthProviders/AuthProviders";
 
 const UserDashBoard = () => {
@@ -79,7 +79,7 @@ const UserDashBoard = () => {
                     Update Profile
                   </NavLink>
                 </li>
-                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/AllJobPost"
                     className={({ isActive }) =>
@@ -89,8 +89,8 @@ const UserDashBoard = () => {
                     <BiBriefcase />
                     All Job Post
                   </NavLink>
-                </li>
-                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                </li> */}
+                {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/create-news"
                     className={({ isActive }) =>
@@ -100,8 +100,8 @@ const UserDashBoard = () => {
                     <TiNews />
                     Create News
                   </NavLink>
-                </li>
-                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                </li> */}
+                {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/all-news"
                     className={({ isActive }) =>
@@ -111,8 +111,8 @@ const UserDashBoard = () => {
                     <TiNews />
                     All News
                   </NavLink>
-                </li>
-                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                </li> */}
+                {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/PremiumUser"
                     className={({ isActive }) =>
@@ -122,8 +122,8 @@ const UserDashBoard = () => {
                     <MdPeopleAlt />
                     Premium Users
                   </NavLink>
-                </li>
-                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                </li> */}
+                {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/premiumusercourses"
                     className={({ isActive }) =>
@@ -133,8 +133,8 @@ const UserDashBoard = () => {
                     <FaBook />
                     Add Courses
                   </NavLink>
-                </li>
-                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                </li> */}
+                {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/allpremiumcourses"
                     className={({ isActive }) =>
@@ -144,8 +144,8 @@ const UserDashBoard = () => {
                     <FaBook />
                     Premium User Courses
                   </NavLink>
-                </li>
-                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                </li> */}
+                {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/alljobreport"
                     className={({ isActive }) =>
@@ -155,8 +155,8 @@ const UserDashBoard = () => {
                     <MdReport />
                     Job Report
                   </NavLink>
-                </li>
-                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                </li> */}
+                {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/Statistics"
                     className={({ isActive }) =>
@@ -166,7 +166,7 @@ const UserDashBoard = () => {
                     <FcStatistics />
                     Statistics
                   </NavLink>
-                </li>
+                </li> */}
                 <li onClick={handleHomeRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/"
