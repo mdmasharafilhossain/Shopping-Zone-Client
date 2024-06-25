@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../../assets/website_logo.png";
-import { TiShoppingCart } from "react-icons/ti";
-import { IoIosSearch } from "react-icons/io";
-import { FaCartPlus } from "react-icons/fa";
+
+import { IoIosSearch, IoMdContact } from "react-icons/io";
+import { FaCartPlus, FaListAlt, FaStore } from "react-icons/fa";
 import { AuthContext } from "../../AuthProviders/AuthProviders";
 import { IoHomeOutline } from "react-icons/io5";
 
@@ -138,7 +138,10 @@ const Header = () => {
             </li>
             <li className="border-r-2 border-orange-500 pr-1 z-50">
               <details>
-                <summary className="text-[15px] font-bold mt-[2px]">All Category</summary>
+                <summary className="text-[15px] font-bold">
+                  <FaListAlt className="inline text-orange-500 text-2xl mr-1" />
+                  All Category
+                </summary>
                 <ul className="p-2">
                   <li>
                     <a>Submenu 1</a>
@@ -164,7 +167,7 @@ const Header = () => {
                     : ""
                 }
               >
-                <TiShoppingCart className="text-orange-500 text-2xl" />
+                <IoMdContact className="text-orange-500 text-2xl" />
                 Contact Us
               </NavLink>
             </li>
@@ -180,7 +183,7 @@ const Header = () => {
                     : ""
                 }
               >
-                <TiShoppingCart className="text-orange-500 text-2xl" />
+                <FaStore className="text-orange-500 text-2xl" />
                 Become Seller
               </NavLink>
             </li>
