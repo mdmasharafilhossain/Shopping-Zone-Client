@@ -16,6 +16,7 @@ const FlashSaleDetails = () => {
 
     const InfoCard = CardsInfo?.result?.find(brand => brand._id === id);
     const [quantity, setQuantity] = useState(1);
+    const [selectedSize, setSelectedSize] = useState(InfoCard?.size.split(',')[0] || ''); // Set the default size to the first available size
 
     const DiscountPercentage = Math.round(((InfoCard?.price - InfoCard?.discount_price) / InfoCard?.price) * 100);
 
@@ -42,12 +43,12 @@ const FlashSaleDetails = () => {
                 details: InfoCard.details,
                 seller_email: InfoCard.seller_email,
                 customer_email: user?.email,
-                productSize: InfoCard.size,
+                productSize: selectedSize,
                 rating: InfoCard.rating,
                 quantity: quantity
             });
             console.log('Added to cart:', res.data);
-            if(res.data.insertedId){
+            if (res.data.insertedId) {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -91,12 +92,12 @@ const FlashSaleDetails = () => {
                 details: InfoCard.details,
                 seller_email: InfoCard.seller_email,
                 customer_email: user?.email,
-                productSize: InfoCard.size,
+                productSize: selectedSize,
                 rating: InfoCard.rating,
                 quantity: quantity
             });
             console.log('Purchased:', res.data);
-            if(res.data.success){
+            if (res.data.success) {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -119,6 +120,7 @@ const FlashSaleDetails = () => {
 
     const incrementQuantity = () => setQuantity(prev => prev + 1);
     const decrementQuantity = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
+    const handleSizeChange = (e) => setSelectedSize(e.target.value);
 
     return (
         <div>
@@ -141,6 +143,16 @@ const FlashSaleDetails = () => {
                     <div className="flex gap-3">
                         <p className="text-sm text-gray-600 line-through">ট {InfoCard?.price}</p>
                         <p className="text-sm">-{DiscountPercentage}%</p>
+                    </div>
+
+                    {/* Size selector */}
+                    <div className="flex items-center gap-3">
+                        <span>Size</span>
+                        <select value={selectedSize} onChange={handleSizeChange} className="px-3 py-1 border rounded">
+                            {InfoCard?.size.split(',').map(size => (
+                                <option key={size} value={size}>{size}</option>
+                            ))}
+                        </select>
                     </div>
 
                     {/* Quantity controls */}
