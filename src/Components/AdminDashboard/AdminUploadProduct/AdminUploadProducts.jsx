@@ -74,7 +74,7 @@ const AdminUploadProducts = () => {
                 <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">Upload <span className='text-[#FF3811]'>Products</span></h2>
             </div>
             
-            <div className="mt-10 border-2 rounded-md border-orange-500 ml-10">
+            <div className="mt-10 border-2 mb-10 rounded-md border-orange-500 ml-10">
             
 
             <div className="px-10 py-10">
@@ -193,7 +193,7 @@ const AdminUploadProducts = () => {
                     </div>
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text">Details Of Your Product&</span>
+                            <span className="label-text">Details Of Your Product*</span>
                             
                         </div>
                         <input 
@@ -216,7 +216,7 @@ const AdminUploadProducts = () => {
                     </select>
                     <select {...register("category")}
                         className="select select-bordered w-full ">
-                        <option disabled selected>Select Category</option>
+                        <option disabled selected>Select Category*</option>
                         <option value="Men">Men</option>
                         <option value="Women">Women</option>
                         <option value="Kids">Kids</option>

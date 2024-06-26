@@ -6,11 +6,11 @@ import { FiAlignJustify } from "react-icons/fi";
 import { FaUsers } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { useState } from "react";
-import { TiNews } from "react-icons/ti";
+// import { TiNews } from "react-icons/ti";
 import { FaPeopleGroup } from "react-icons/fa6";
-import { MdPeopleAlt } from "react-icons/md";
-import { MdReport } from "react-icons/md";
-import { FaBook } from "react-icons/fa";
+// import { MdPeopleAlt } from "react-icons/md";
+// import { MdReport } from "react-icons/md";
+// import { FaBook } from "react-icons/fa";
 import { FcStatistics } from "react-icons/fc";
 import { AuthContext } from "../AuthProviders/AuthProviders";
 
@@ -133,7 +133,7 @@ const AdminDashboard = () => {
                     Upload New Products
                   </NavLink>
                 </li>
-                <li
+                {/* <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'
                 >
@@ -202,7 +202,7 @@ const AdminDashboard = () => {
                    <MdReport />
                    Job Report
                   </NavLink>
-                </li>
+                </li> */}
                 <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'
