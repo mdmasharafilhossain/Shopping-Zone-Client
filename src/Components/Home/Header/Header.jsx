@@ -175,7 +175,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/feedback"
+                to="/seller_signUp"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
                 className={({ isActive, isPending }) =>
                   isPending
@@ -232,6 +232,11 @@ const Header = () => {
                     <Link to="/AdminDashboard">
                     <li>
                       <a>Admin Dashboard</a>
+                    </li>
+                    </Link>
+                    <Link to="/SellerDashboard">
+                     <li>
+                      <a>Seller Dashboard</a>
                     </li>
                     </Link>
                     <li>

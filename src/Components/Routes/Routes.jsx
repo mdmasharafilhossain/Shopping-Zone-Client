@@ -15,6 +15,8 @@ import AllUsers from "../AdminDashboard/AllUsers/AllUsers";
 import AdminAllProducts from "../AdminDashboard/AdminAllProducts/AdminAllProducts";
 import AdminPRoductDetails from "../AdminDashboard/AdminProductsDetails/AdminPRoductDetails";
 import AdminUploadProducts from "../AdminDashboard/AdminUploadProduct/AdminUploadProducts";
+import Seller_Signup from "../SignUp/Seller_SignUp/Seller_Signup";
+import SellerLogin from "../Login/SellerLogin/SellerLogin";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +43,14 @@ export const router = createBrowserRouter([
        {
         path:"/signup",
         element:<SignUp></SignUp>
+       },
+       {
+        path:"/seller_signUp",
+        element:<Seller_Signup></Seller_Signup>
+       },
+       {
+        path:"/seller_login",
+        element:<SellerLogin></SellerLogin>
        }
 
 
