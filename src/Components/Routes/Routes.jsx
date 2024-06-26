@@ -10,6 +10,7 @@ import UserManageAccount from "../UserDashBoard/UserManageAccount/UserManageAcco
 import EditUserProfile from "../UserDashBoard/EditUserProfile/EditUserProfile";
 import UserCart from "../UserDashBoard/UserCart/UserCart";
 import UserWhiteList from "../UserDashBoard/UserWhiteList/UserWhiteList";
+import AdminDashboard from "../AdminDashboard/AdminDashboard";
 
 export const router = createBrowserRouter([
     {
@@ -66,6 +67,16 @@ export const router = createBrowserRouter([
           path:"/userdashboard/whiteList",
           element:<UserWhiteList></UserWhiteList>
         }
+
+      ]
+    },
+
+    // Admin Dashboard
+    {
+      path:"/admindashboard",
+      element:<AdminDashboard></AdminDashboard>,
+      children:[
+        
 
       ]
     }
