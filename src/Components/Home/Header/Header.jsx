@@ -234,6 +234,11 @@ const Header = () => {
                       <a>Admin Dashboard</a>
                     </li>
                     </Link>
+                    <Link to="/SellerDashboard">
+                    <li>
+                      <a>Seller Dashboard</a>
+                    </li>
+                    </Link>
                     <li>
                       <button onClick={handleLogOut}>Logout</button>
                     </li>

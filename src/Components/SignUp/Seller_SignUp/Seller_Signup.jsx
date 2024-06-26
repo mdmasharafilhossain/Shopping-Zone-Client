@@ -3,15 +3,15 @@ import { Link,  useNavigate } from "react-router-dom";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-import { getAuth, updateProfile } from "firebase/auth";
+import {  updateProfile } from "firebase/auth";
 
 
 import Swal from "sweetalert2";
 
 import { AuthContext } from "../../AuthProviders/AuthProviders";
 import useAxiosPublic from "../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
-import app from "../../FireBase/firebase";
-const auth = getAuth(app);
+
+
 
 const Seller_Signup = () => {
     const { createUser } = useContext(AuthContext);
@@ -79,15 +79,17 @@ const Seller_Signup = () => {
                 });
                  const Seller_Info = {
                     name:name,
+                    password:password,
                     photo: photo,
                     email:email,
                     number:number,
                     address:address,
                     Bank_Account_Number:account,
                     NID_Number:nid,
+                    role:"seller"
 
  }
-                 AxiosPublic.post('/users',Seller_Info)
+                 AxiosPublic.post('/sellers',Seller_Info)
                  .then(res =>{
                     if(res.data.insertedId){
                         console.log("user Added Database")
@@ -266,7 +268,7 @@ const Seller_Signup = () => {
     <p className="text-xs sm:text-base">
       Already have an account?
     </p>
-    <Link to="/login" className="">
+    <Link to="/seller_login" className="">
       <button className="text-xs sm:text-base underline text-amber-500 font-bold">
         Login
       </button>
