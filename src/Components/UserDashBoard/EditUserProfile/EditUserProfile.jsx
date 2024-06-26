@@ -9,8 +9,8 @@ const EditUserProfile = () => {
   const AxiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const {  data: users = [],} = useQuery({
-     queryKey: ['users'],
+  const {  data: EditUsers = [],} = useQuery({
+     queryKey: ['EditUsers'],
 
     queryFn: async () => {
         const res = await AxiosPublic.get(`/users/profile/${user.email}`);
@@ -62,7 +62,7 @@ const EditUserProfile = () => {
 
       <div className="ml-10">
         {
-            users.map(user=><form key={user._id}
+            EditUsers.map(user=><form key={user._id}
                 onSubmit={handleSubmit(onSubmit)}
                 className='border container mx-auto my-10 rounded-3xl'
               >
