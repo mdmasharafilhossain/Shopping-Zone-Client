@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import useAxiosPublic from '../../Shared/Hooks/useAxiosPublic/useAxiosPublic';
 import { AuthContext } from '../../AuthProviders/AuthProviders';
 const AllUsers = () => {
-    const [page,setPage]= useState(0);
+      const [page,setPage]= useState(0);
     
     const AxiosPublic = useAxiosPublic();
     const {loading} = useContext(AuthContext);
