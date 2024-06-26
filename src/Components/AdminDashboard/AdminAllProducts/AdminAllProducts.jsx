@@ -67,10 +67,10 @@ const handleRemove = async (_id) => {
     return (
         <div>
             <div className="flex justify-evenly my-6 mb-10">
-                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">All <span className='text-[#FF3811]'>Products</span></h2>
+                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">Manage All <span className='text-[#FF3811]'>Products</span></h2>
             </div>
 
-            <div className="grid grid-cols-5 gap-10 ml-10">
+            <div className="grid grid-cols-5 gap-10 ml-10 mb-10">
             {AllProducts.map(sale => {
             const DiscountPercentage = Math.round(((sale.price - sale.discount_price) / sale.price) * 100);
             return (

@@ -2,7 +2,7 @@ import Rating from "react-rating";
 import { useLoaderData, useParams } from "react-router-dom";
 import { FaStar, FaRegStar } from 'react-icons/fa'
 import ImageZoom from "../../Home/FlashSale/FlasSaleDetails/ImageZoom";
-import { useState } from "react";
+
 
 const AdminPRoductDetails = () => {
     const CardsInfo = useLoaderData();
@@ -10,9 +10,8 @@ const AdminPRoductDetails = () => {
    const InfoCard = CardsInfo?.find(brand => brand._id === id);
     console.log("InfoCard",InfoCard)
     const DiscountPercentage = Math.round(((InfoCard?.price - InfoCard?.discount_price) / InfoCard?.price) * 100);
-    const sizes = InfoCard?.size ? InfoCard.size.split(',') : ['One Size'];
-    const [selectedSize, setSelectedSize] = useState(sizes[0]);
-    const handleSizeChange = (e) => setSelectedSize(e.target.value);
+   
+    
     return (
         <div>
            <div className="flex mt-40 ml-40">
