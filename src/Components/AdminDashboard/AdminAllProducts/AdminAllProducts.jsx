@@ -8,6 +8,7 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 import { CgDetailsMore } from "react-icons/cg";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const AdminAllProducts = () => {
@@ -104,10 +105,12 @@ const handleRemove = async (_id) => {
                     </div>
                     {/* Button */}
                     <div className="flex gap-2 mt-2">
-                                            <button onClick={() => handleDetails(sale)}
+                                           <Link to={`/AdminDashboard/product/${sale._id}`}>
+                                           <button 
                                                 className="border flex py-2 px-3 text-sm font-bold rounded-md border-orange-600 hover:bg-orange-600 hover:shadow-xl hover:text-white">
                                                <CgDetailsMore className="mt-1"/> Details
                                             </button>
+                                           </Link>
                                             <button onClick={() =>handleRemove (sale?._id)}
                                              className="border flex py-2 px-3 text-sm font-bold rounded-md border-red-600 hover:bg-red-600 hover:shadow-xl hover:text-white">
                                                 <MdDelete className="mt-1"/> Remove
