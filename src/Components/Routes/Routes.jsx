@@ -18,6 +18,7 @@ import AdminUploadProducts from "../AdminDashboard/AdminUploadProduct/AdminUploa
 import Seller_Signup from "../SignUp/Seller_SignUp/Seller_Signup";
 import SellerLogin from "../Login/SellerLogin/SellerLogin";
 import MakePayment from "../MakePayment/MakePayment";
+import Stripe from "../MakePayment/Stripe/Stripe";
 
 export const router = createBrowserRouter([
     {
@@ -58,7 +59,15 @@ export const router = createBrowserRouter([
          {
           path:"/MakePaymentRoute",
           element:<MakePayment></MakePayment>
-         } 
+         },
+         {
+          path: "/stripeGateway",
+          element: (
+            
+              <Stripe></Stripe>
+            
+          ),
+        }, 
 
 
 

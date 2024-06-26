@@ -1,8 +1,9 @@
 
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import CheckoutForm from './CheckoutForm';
+
 import { useNavigate } from 'react-router-dom';
+import CheckoutForm from '../CheckoutForm/CheckoutForm';
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
