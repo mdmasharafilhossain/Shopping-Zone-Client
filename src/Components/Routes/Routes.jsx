@@ -17,6 +17,7 @@ import AdminPRoductDetails from "../AdminDashboard/AdminProductsDetails/AdminPRo
 import AdminUploadProducts from "../AdminDashboard/AdminUploadProduct/AdminUploadProducts";
 import Seller_Signup from "../SignUp/Seller_SignUp/Seller_Signup";
 import SellerLogin from "../Login/SellerLogin/SellerLogin";
+import MakePayment from "../MakePayment/MakePayment";
 
 export const router = createBrowserRouter([
     {
@@ -51,7 +52,13 @@ export const router = createBrowserRouter([
        {
         path:"/seller_login",
         element:<SellerLogin></SellerLogin>
-       }
+       },
+
+      //  ---------Payment--------
+         {
+          path:"/MakePaymentRoute",
+          element:<MakePayment></MakePayment>
+         } 
 
 
 
