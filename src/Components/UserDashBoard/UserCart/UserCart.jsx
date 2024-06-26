@@ -100,7 +100,7 @@ const UserCart = () => {
                                     <p>{formatNumber(total)} ৳</p>
                                 </div>
                                 <Link to="/MakePaymentRoute">
-                                <button className="mt-4 w-full bg-orange-500 text-white py-2 rounded">Make Payment</button>
+                                 <button className="mt-4 w-full bg-orange-500 text-white  py-2 rounded">Make Payment</button>
                                 </Link>
                             </div>
                         </div>
