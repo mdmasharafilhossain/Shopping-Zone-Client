@@ -7,13 +7,14 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 
 import { CgDetailsMore } from "react-icons/cg";
 import { MdDelete } from "react-icons/md";
+import Swal from "sweetalert2";
 
 
 const AdminAllProducts = () => {
     const AxiosPublic = useAxiosPublic();
     const {user} = useContext(AuthContext);
 
-    const {  data: AllProducts = [], isLoading} = useQuery({
+    const {  data: AllProducts = [], isLoading,refetch} = useQuery({
         queryKey: ['AllProducts'],
 
         queryFn: async () => {
@@ -25,6 +26,36 @@ const AdminAllProducts = () => {
 
     })
   console.log(user?.email)
+
+//   Remove functionality 
+const handleRemove = async (_id) => {
+    console.log("cart", _id);
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            const res = await AxiosPublic.delete(`allProducts/user/${_id}`);
+            console.log(res.data);
+            if (res.data.deletedCount) {
+                refetch();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Deleted Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+};
+  
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -38,7 +69,7 @@ const AdminAllProducts = () => {
                 <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">All <span className='text-[#FF3811]'>Products</span></h2>
             </div>
 
-            <div className="grid grid-cols-4 gap-10 ml-10">
+            <div className="grid grid-cols-5 gap-10 ml-10">
             {AllProducts.map(sale => {
             const DiscountPercentage = Math.round(((sale.price - sale.discount_price) / sale.price) * 100);
             return (
