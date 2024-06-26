@@ -3,7 +3,7 @@ import useAxiosPublic from '../../Shared/Hooks/useAxiosPublic/useAxiosPublic';
 import useCart from '../../Shared/Hooks/useCart/useCart';
 
 const UserCart = () => {
-    const [cart, refetch] = useCart();
+    const [cart, refetch,isLoading] = useCart();
     const shippingCost = 70; 
     const AxiosPublic = useAxiosPublic();
     console.log("data", cart);
@@ -42,7 +42,13 @@ const UserCart = () => {
             }
         });
     };
-
+    if (isLoading) {
+        return (
+          <div className="flex justify-center items-center min-h-screen">
+            <span className="loading loading-spinner text-error text-9xl"></span>
+          </div>
+        );
+      }
     return (
         <div className="container mx-auto p-4">
             <h2 className="text-center font-bold mt-6 text-2xl md:text-4xl">

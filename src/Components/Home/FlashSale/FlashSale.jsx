@@ -84,7 +84,7 @@ const handleWhiteList = async (sale) => {
       customer_email: user?.email,
       productSize: sale.productSize,
       rating: sale.rating,
-      quantity: sale.quantity
+      quantity: sale.quantity || ""
     });
     if (res.data.insertedId) {
       Swal.fire({
