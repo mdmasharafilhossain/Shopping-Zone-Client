@@ -109,7 +109,7 @@ const AllUsers = () => {
                 <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">All <span className='text-[#FF3811]'>Job Seeker List</span></h2>
                
             </div>
-            <div className=" ml-10">
+             <div className=" ml-10">
                 <table className="table  border-separate w-3/4 md:w-1/2 lg:w-full">
                     {/* head */}
                     <thead>
