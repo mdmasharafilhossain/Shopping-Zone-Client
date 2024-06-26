@@ -27,7 +27,7 @@ const AllUsers = () => {
 
     })
 
-     const handleMakeAdmin = user =>{
+      const handleMakeAdmin = user =>{
         AxiosPublic.patch(`/users/admin/${user._id}`)
         .then(res=>{
            
