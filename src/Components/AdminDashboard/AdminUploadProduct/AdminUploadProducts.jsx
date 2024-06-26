@@ -14,7 +14,7 @@ const AdminUploadProducts = () => {
     const AxiosPublic = useAxiosPublic();
    
 
-    const {  data: AllProducts = [], isLoading,refetch} = useQuery({
+    const {  data: AllProducts = [],} = useQuery({
         queryKey: ['AllProducts'],
 
         queryFn: async () => {
