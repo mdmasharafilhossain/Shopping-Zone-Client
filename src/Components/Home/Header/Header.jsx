@@ -229,7 +229,7 @@ const Header = () => {
                         <a className="justify-between">My Account</a>
                       </Link>
                     </li>
-                    <Link to="/admindashboard">
+                    <Link to="/AdminDashboard">
                     <li>
                       <a>Admin Dashboard</a>
                     </li>
