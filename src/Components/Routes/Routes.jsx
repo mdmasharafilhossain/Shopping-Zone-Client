@@ -14,6 +14,7 @@ import AdminDashboard from "../AdminDashboard/AdminDashboard";
 import AllUsers from "../AdminDashboard/AllUsers/AllUsers";
 import AdminAllProducts from "../AdminDashboard/AdminAllProducts/AdminAllProducts";
 import AdminPRoductDetails from "../AdminDashboard/AdminProductsDetails/AdminPRoductDetails";
+import AdminUploadProducts from "../AdminDashboard/AdminUploadProduct/AdminUploadProducts";
 
 export const router = createBrowserRouter([
     {
@@ -91,6 +92,10 @@ export const router = createBrowserRouter([
           path:"/AdminDashboard/product/:id",
           element:<AdminPRoductDetails></AdminPRoductDetails>,
           loader: ()=>fetch('http://localhost:5000/allProducts')
+        },
+        {
+          path:"/AdminDashboard/NewProduct",
+          element:<AdminUploadProducts></AdminUploadProducts>
         }
 
       ]
