@@ -18,7 +18,7 @@ const AllUsers = () => {
     const { refetch, data: {result : users = [], UsersCount = 0} = {} } = useQuery({
         queryKey: ['users',page],
         enabled:!loading,
-        queryFn: async () => {
+         queryFn: async () => {
             const res = await AxiosPublic.get(`/users/pagination?page=${page}`);
             
             return res.data;
