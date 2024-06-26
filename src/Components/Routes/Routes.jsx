@@ -12,6 +12,9 @@ import UserCart from "../UserDashBoard/UserCart/UserCart";
 import UserWhiteList from "../UserDashBoard/UserWhiteList/UserWhiteList";
 import AdminDashboard from "../AdminDashboard/AdminDashboard";
 import AllUsers from "../AdminDashboard/AllUsers/AllUsers";
+import AdminAllProducts from "../AdminDashboard/AdminAllProducts/AdminAllProducts";
+import AdminPRoductDetails from "../AdminDashboard/AdminProductsDetails/AdminPRoductDetails";
+import AdminUploadProducts from "../AdminDashboard/AdminUploadProduct/AdminUploadProducts";
 
 export const router = createBrowserRouter([
     {
@@ -81,6 +84,19 @@ export const router = createBrowserRouter([
           path: "/AdminDashboard/AllUsers",
           element:<AllUsers></AllUsers>
         },
+        {
+          path:"/AdminDashboard/AllProducts",
+          element:<AdminAllProducts></AdminAllProducts>
+        },
+        {
+          path:"/AdminDashboard/product/:id",
+          element:<AdminPRoductDetails></AdminPRoductDetails>,
+          loader: ()=>fetch('http://localhost:5000/allProducts')
+        },
+        {
+          path:"/AdminDashboard/NewProduct",
+          element:<AdminUploadProducts></AdminUploadProducts>
+        }
 
       ]
     }

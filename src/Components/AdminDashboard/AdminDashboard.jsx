@@ -1,16 +1,16 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { useContext, useEffect } from "react";
-
+import { FiPackage } from 'react-icons/fi';
+import { FaUpload } from 'react-icons/fa';
 import { FiAlignJustify } from "react-icons/fi";
-import { BiBriefcase } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { useState } from "react";
-import { TiNews } from "react-icons/ti";
+// import { TiNews } from "react-icons/ti";
 import { FaPeopleGroup } from "react-icons/fa6";
-import { MdPeopleAlt } from "react-icons/md";
-import { MdReport } from "react-icons/md";
-import { FaBook } from "react-icons/fa";
+// import { MdPeopleAlt } from "react-icons/md";
+// import { MdReport } from "react-icons/md";
+// import { FaBook } from "react-icons/fa";
 import { FcStatistics } from "react-icons/fc";
 import { AuthContext } from "../AuthProviders/AuthProviders";
 
@@ -59,7 +59,7 @@ const AdminDashboard = () => {
               aria-label='close sidebar'
               className='drawer-overlay'
             ></label>
-            <ul className='menu p-4 sticky top-0  w-60 min-h-screen z-50 bg-orange-600 text-base-content'>
+            <ul className='menu p-4 sticky top-0  w-60 min-h-screen z-50 bg-orange-600 text-base-content '>
               <div className='space-y-2 mb-10'>
                 <img
                   className='w-20 ml-16 mt-6 rounded-full'
@@ -70,7 +70,7 @@ const AdminDashboard = () => {
                   {user?.displayName || user?.name}
                 </h1>
               </div>
-
+            
               {/* Sidebar content here */}
 
               <ul className='menu p-4  py-auto'>
@@ -109,14 +109,14 @@ const AdminDashboard = () => {
                   className='font-bold text-sm text-white'
                 >
                   <NavLink
-                    to='/AdminDashboard/AllJobPost'
+                    to='/AdminDashboard/AllProducts'
                     className={({ isActive }) =>
                       `{ ${isActive ? " border text-white hover:none " : " "}}`
                     }
                   >
                     {" "}
-                    <BiBriefcase />
-                    All Job Post
+                    <FiPackage />
+                    All Products
                   </NavLink>
                 </li>
                 <li
@@ -124,16 +124,16 @@ const AdminDashboard = () => {
                   className='font-bold text-sm text-white'
                 >
                   <NavLink
-                    to='/AdminDashboard/create-news'
+                    to='/AdminDashboard/NewProduct'
                     className={({ isActive }) =>
                       `{ ${isActive ? " border  " : " "}}`
                     }
                   >
-                    <TiNews />
-                    Create News
+                    <FaUpload />
+                    Upload New Products
                   </NavLink>
                 </li>
-                <li
+                {/* <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'
                 >
@@ -202,7 +202,7 @@ const AdminDashboard = () => {
                    <MdReport />
                    Job Report
                   </NavLink>
-                </li>
+                </li> */}
                 <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'

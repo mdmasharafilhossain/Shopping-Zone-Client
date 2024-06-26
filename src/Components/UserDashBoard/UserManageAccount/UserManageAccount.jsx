@@ -8,8 +8,8 @@ const UserManageAccount = () => {
     const AxiosPublic = useAxiosPublic();
     const {user} = useContext(AuthContext);
 
-    const {  data: users = [], isLoading} = useQuery({
-        queryKey: ['users'],
+    const {  data: ManageUsers = [], isLoading} = useQuery({
+        queryKey: ['ManageUsers'],
 
         queryFn: async () => {
             const res = await AxiosPublic.get(`/users/profile/${user.email}`);
@@ -36,7 +36,7 @@ const UserManageAccount = () => {
       {/* Profile */}
             <div>
                {
-                users?.map(customer=><div key={customer._id}>
+                ManageUsers?.map(customer=><div key={customer._id}>
                     
                     <div className="border rounded-lg mt-10 px-10 py-10 bg-slate-100">
                    <div className="grid grid-cols-3 text-center">
