@@ -2,8 +2,11 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 
 import Swal from "sweetalert2";
-import UseAxiosSecure from "../Hooks/UseAxiosSecure/UseAxiosSecure";
-import { AuthContext } from "../AuthProvider/AuthProvider";
+
+
+import useAxiosSecure from "../../Shared/Hooks/useAxiosSecure/useAxiosSecure";
+import { AuthContext } from "../../AuthProviders/AuthProviders";
+import useCart from "../../Shared/Hooks/useCart/useCart";
 
 const CheckoutForm = () => {
   const [clicked, setClicked] = useState(false);
@@ -13,17 +16,20 @@ const CheckoutForm = () => {
   const [error, setError] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-  const axiosSecure = UseAxiosSecure();
-  const PayAblePrice = 16.99;
+  const axiosSecure = useAxiosSecure();
+  const [cart,refetch] = useCart();
+  const PayAblePrice = cart.reduce((total, item) => total + item.price, 0);
 
   useEffect(() => {
-    axiosSecure
-      .post("/create-payment-intent", { price: PayAblePrice })
-      .then((res) => {
-        
-        setClinetSecret(res.data.clientSecret);
-      });
-  }, [axiosSecure, PayAblePrice]);
+    if (PayAblePrice > 0) {
+        axiosSecure.post('/create-payment-intent', { price: PayAblePrice })
+            .then(res => {
+                console.log(res.data.clientSecret);
+                setClinetSecret(res.data.clientSecret);
+            })
+    }
+
+}, [axiosSecure, PayAblePrice])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -84,9 +90,12 @@ const CheckoutForm = () => {
         // Save info in database
 
         const payment = {
-          email: user.email,
-          name: user.displayName,
+          User_email: user?.email,
+          User_name: user.displayName,
           price: PayAblePrice,
+          code:cart.map(item => item?.productCode),
+          name:cart.map(item =>item?.name),
+          seller_email:cart.map(item=>item?.seller_email),
           date: new Date(),
           transaction_ID: paymentIntent.id,
         };
