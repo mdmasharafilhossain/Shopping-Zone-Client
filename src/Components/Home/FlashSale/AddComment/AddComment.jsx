@@ -1,9 +1,9 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import useAxiosPublic from "../../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 
 // hosting on imgBB 
-const image_Hosting_key = "23272cf172fd85ad9006a154ec724204";
-const Imgae_hosting_key = `https://api.imgbb.com/1/upload?key=${image_Hosting_key}`;
+
+const Imgae_hosting_key = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`;
 
 const AddComment = ({ InfoCard }) => {
   const AxiosPublic = useAxiosPublic();
@@ -31,21 +31,6 @@ const AddComment = ({ InfoCard }) => {
     const photo = res.data.data.display_url;
     const UpdateProducts = { name, photo, customer_rating, review, code };
     console.log(UpdateProducts);
-
-    //   axiosSecure.put(`/users/profile/${user.email}`,UpdateProducts)
-    //   .then(res=>{
-    //     console.log(res.data);
-    //     if(res.data.modifiedCount > 0){
-    //         refetch();
-    //         Swal.fire({
-    //             position: "top-end",
-    //             icon: "success",
-    //             title: `Update Successfully`,
-    //             showConfirmButton: false,
-    //             timer: 1500
-    //           });
-    //     }
-    //  })
     e.target.reset();
   };
   return (
