@@ -79,7 +79,7 @@ const AdminAllProducts = () => {
                                             </button>
                                             <button onClick={() =>handleRemove (sale?._id)}
                                              className="border flex py-2 px-3 text-sm font-bold rounded-md border-red-600 hover:bg-red-600 hover:shadow-xl hover:text-white">
-                                               <MdDelete className="mt-1"/> Remove
+                                                <MdDelete className="mt-1"/> Remove
                                             </button>
                                         </div>
 
