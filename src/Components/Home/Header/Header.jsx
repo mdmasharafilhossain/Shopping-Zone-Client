@@ -229,9 +229,11 @@ const Header = () => {
                         <a className="justify-between">My Account</a>
                       </Link>
                     </li>
+                    <Link to="/AdminDashboard">
                     <li>
-                      <a>Settings</a>
+                      <a>Admin Dashboard</a>
                     </li>
+                    </Link>
                     <li>
                       <button onClick={handleLogOut}>Logout</button>
                     </li>

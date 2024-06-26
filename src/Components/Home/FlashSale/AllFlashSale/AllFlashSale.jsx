@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useContext, useState } from "react";
 import Rating from "react-rating";
-import { FaStar, FaRegStar } from 'react-icons/fa';
+import { FaStar, FaRegStar } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../AuthProviders/AuthProviders";
 
@@ -14,8 +14,8 @@ const AllFlashSale = () => {
   const [sortOrder, setSortOrder] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [typeSelect, setTypeSelect] = useState("");
-  const {user} = useContext(AuthContext);
-  
+  const { user } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const handleWhiteList = async (sale) => {
     if (!user?.email) {
@@ -24,25 +24,25 @@ const AllFlashSale = () => {
         icon: "error",
         title: "Please log in to add items to the whitelist",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
-      navigate('/login');
+      navigate("/login");
       return;
     }
     try {
-      const res = await AxiosPublic.post('/whiteList', {
+      const res = await AxiosPublic.post("/whiteList", {
         productCode: sale.code,
         name: sale.name,
         image: sale.image,
         price: sale.price,
-        discountPrice: sale.discount_price,
-        discountPercentage: sale.discountPercentage,
+        discount_price: sale.discount_price,
+        discountPercentage: sale.discountPercentage || "",
         details: sale.details,
         seller_email: sale.seller_email,
-        customer_email: user.email,
+        customer_email: user?.email,
         productSize: sale.productSize,
         rating: sale.rating,
-        quantity: sale.quantity
+        quantity: sale.quantity || "",
       });
       if (res.data.insertedId) {
         Swal.fire({
@@ -50,27 +50,25 @@ const AllFlashSale = () => {
           icon: "success",
           title: `Added to whitelist successfully`,
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
-        
-      }
-      else{
+      } else {
         Swal.fire({
           position: "top-end",
           icon: "error",
           title: `Already Added`,
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
       }
     } catch (error) {
-      console.error('Error adding to whitelist:', error);
+      console.error("Error adding to whitelist:", error);
       Swal.fire({
         position: "top-end",
         icon: "error",
         title: `Error: ${error.message}`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
     }
   };
@@ -81,7 +79,9 @@ const AllFlashSale = () => {
   } = useQuery({
     queryKey: ["Flashsales", sortOrder, selectedColor, typeSelect],
     queryFn: async () => {
-      const res = await AxiosPublic.get(`/flashSale?sort=${sortOrder}&color=${selectedColor}&type=${typeSelect}`);
+      const res = await AxiosPublic.get(
+        `/flashSale?sort=${sortOrder}&color=${selectedColor}&type=${typeSelect}`
+      );
       return res.data;
     },
   });
@@ -121,8 +121,8 @@ const AllFlashSale = () => {
 
   const colors = ["white", "pink", "Rose Gold", "Blue", "Green", "Yellow"];
   const types = ["Men", "Women", "Kids"];
-// White List 
-// White LIst 
+  // White List
+  // White LIst
 
   return (
     <div>
@@ -226,8 +226,10 @@ const AllFlashSale = () => {
                     </p>
                   </div>
                   <div className="absolute top-2 right-2">
-                     <button onClick={() => handleWhiteList(sale)}
-                     className="text-orange-500 hover:text-orange-700">
+                    <button
+                      onClick={() => handleWhiteList(sale)}
+                      className="text-orange-500 hover:text-orange-700"
+                    >
                       <AiOutlineHeart size={24} />
                     </button>
                   </div>
@@ -251,15 +253,14 @@ const AllFlashSale = () => {
                       </div>
                       {/* Rating */}
                       <div className="flex items-center gap-3 mt-5">
-                        
                         <Rating
-                            initialRating={sale?.rating}
-                            readonly
-                            emptySymbol={<FaRegStar color="orange" />}
-                            fullSymbol={<FaStar color="orange" />}
+                          initialRating={sale?.rating}
+                          readonly
+                          emptySymbol={<FaRegStar color="orange" />}
+                          fullSymbol={<FaStar color="orange" />}
                         />
                         <span className="">({sale?.rating})</span>
-                    </div>
+                      </div>
                     </div>
                   </Link>
                 </div>

@@ -7,8 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 const useWhiteList = () => {
     const AxiosPublic = useAxiosPublic();
     const { user} = useContext(AuthContext);
-    const { refetch, data: cart = [] } = useQuery({
-        queryKey: ['cart', user?.email],
+    const { refetch, data: whiteList = [],isLoading } = useQuery({
+        queryKey: ['whiteList', user?.email],
         queryFn: async() => {
             const res = await AxiosPublic.get(`/whiteList/user/${user?.email}`);
             return res.data;
@@ -16,8 +16,8 @@ const useWhiteList = () => {
         }
         
     })
-    console.log(cart.length)
-    return [cart, refetch]
+    console.log(whiteList.length)
+    return [whiteList, refetch,isLoading]
 };
 
 export default useWhiteList;

@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 const useCart = () => {
     const AxiosPublic = useAxiosPublic();
     const { user} = useContext(AuthContext);
-    const { refetch, data: cart = [] } = useQuery({
+    const { refetch, data: cart = [],isLoading } = useQuery({
         queryKey: ['cart', user?.email],
         queryFn: async() => {
             const res = await AxiosPublic.get(`/cart/user/${user?.email}`);
@@ -17,7 +17,7 @@ const useCart = () => {
         
     })
     console.log(cart.length)
-    return [cart, refetch]
+    return [cart, refetch,isLoading]
 };
 
 export default useCart;

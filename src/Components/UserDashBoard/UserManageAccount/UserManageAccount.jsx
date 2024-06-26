@@ -47,7 +47,7 @@ const UserManageAccount = () => {
                    <div className="grid grid-cols-3 text-center mt-20">
                    <h1 className="text-lg">Current Location: <br></br><span className="font-bold">{customer.address || "Not Set"}</span></h1>
                    <h1 className="text-lg">Gender: <br></br><span className="font-bold">{customer.gender || "Not Set"}</span></h1>
-                   <h1 className="text-lg">Date of birth: <br></br><span className="font-bold">{customer.birthday_date || "Not Set"}</span></h1>
+                    <h1 className="text-lg">Date of birth: <br></br><span className="font-bold">{customer.birthday_date || "Not Set"}</span></h1>
                    </div>
                  
                     </div>
