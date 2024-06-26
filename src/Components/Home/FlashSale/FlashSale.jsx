@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from 'react-icons/ai';
 import Rating from "react-rating";
 import { FaStar, FaRegStar } from 'react-icons/fa';
-import useCart from "../../Shared/Hooks/useCart/useCart";
+
 import { useContext } from 'react';
 import { AuthContext } from "../../AuthProviders/AuthProviders";
 import Swal from "sweetalert2";
