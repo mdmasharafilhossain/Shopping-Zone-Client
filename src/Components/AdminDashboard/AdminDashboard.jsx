@@ -1,7 +1,7 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { FiPackage } from 'react-icons/fi';
-
+import { FaUpload } from 'react-icons/fa';
 import { FiAlignJustify } from "react-icons/fi";
 import { FaUsers } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
@@ -124,13 +124,13 @@ const AdminDashboard = () => {
                   className='font-bold text-sm text-white'
                 >
                   <NavLink
-                    to='/AdminDashboard/create-news'
+                    to='/AdminDashboard/NewProduct'
                     className={({ isActive }) =>
                       `{ ${isActive ? " border  " : " "}}`
                     }
                   >
-                    <TiNews />
-                    Create News
+                    <FaUpload />
+                    Upload New Products
                   </NavLink>
                 </li>
                 <li
