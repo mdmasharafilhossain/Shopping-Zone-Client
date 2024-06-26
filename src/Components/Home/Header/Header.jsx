@@ -175,7 +175,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/feedback"
+                to="/seller_signUp"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
                 className={({ isActive, isPending }) =>
                   isPending
