@@ -110,7 +110,7 @@ const AllUsers = () => {
                
             </div>
              <div className=" ml-10">
-                <table className="table  border-separate w-3/4 md:w-1/2 lg:w-full">
+                 <table className="table  border-separate w-3/4 md:w-1/2 lg:w-full">
                     {/* head */}
                     <thead>
                         <tr className='bg-orange-400'>
