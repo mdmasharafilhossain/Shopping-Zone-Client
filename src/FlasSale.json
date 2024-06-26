@@ -12,7 +12,8 @@
         "brand": "No Brand",
         "warranty": "",
         "details": "This versatile blue shirt is perfect for both casual and formal occasions. Made from high-quality fabric, it ensures comfort and durability. Available in multiple sizes, it’s a great addition to any wardrobe.",
-        "type": "Men"
+        "type": "Men",
+        "category":"Men"
     },
     {
         "code": 2,
@@ -27,7 +28,8 @@
         "brand": "No Brand",
         "warranty": "",
         "details": "This elegant white shirt adds a touch of sophistication to any outfit. Ideal for formal events, it offers a sleek and polished look. Its high rating reflects customer satisfaction with its quality and style.",
-        "type": "Men"
+        "type": "Men",
+        "category":"Men"
     },
     {
         "code": 3,
@@ -42,7 +44,8 @@
         "brand": "No Brand",
         "warranty": "",
         "details": "This traditional white Punjabi is perfect for cultural celebrations and festive occasions. Its comfortable fit and stylish design make it a popular choice among customers.",
-        "type": "Men"
+        "type": "Men",
+        "category":"Men"
     },
     {
         "code": 4,
@@ -57,7 +60,8 @@
         "brand": "No Brand",
         "warranty": "",
         "details": "This stylish rose gold Punjabi is an excellent choice for special occasions and festivals. It combines traditional design with a modern color, making it a standout piece in any wardrobe.",
-        "type": "Men"
+        "type": "Men",
+        "category":"Men"
     },
     {
         "code": 5,
@@ -72,7 +76,10 @@
         "brand": "No Brand",
         "warranty": "",
         "details": "This beautiful pink Salwar Kameez is perfect for festive and casual wear. The vibrant color and elegant design make it a popular choice among women looking for comfort and style.",
-        "type": "Women"
+        "type": "Women",
+        "category":"Women"
+        
+
     },
     {
         "code": 6,
@@ -87,7 +94,8 @@
         "brand": "No Brand",
         "warranty": "",
         "details": "This gorgeous white maxi dress is perfect for both casual outings and special events. Its elegant design and comfortable fit make it a favorite choice among fashion-forward women.",
-        "type": "Women"
+        "type": "Women",
+        "category":"Women"
     },
     {
         "code": 7,
@@ -102,6 +110,7 @@
         "brand": "No Brand",
         "warranty": "",
         "details": "This stunning white wedding sharee is the perfect attire for brides on their special day. It features intricate designs and high-quality fabric, ensuring a luxurious and memorable look.",
-        "type": "Women"
+        "type": "Women",
+        "category":"Women"
     }
 ]
