@@ -1,6 +1,7 @@
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../Shared/Hooks/useAxiosPublic/useAxiosPublic';
 import useCart from '../../Shared/Hooks/useCart/useCart';
+import { Link } from 'react-router-dom';
 
 const UserCart = () => {
     const [cart, refetch,isLoading] = useCart();
@@ -98,7 +99,9 @@ const UserCart = () => {
                                     <p>Total</p>
                                     <p>{formatNumber(total)} ৳</p>
                                 </div>
-                                <button className="mt-4 w-full bg-orange-500 text-white py-2 rounded">Proceed To Checkout</button>
+                                <Link to="/MakePaymentRoute">
+                                <button className="mt-4 w-full bg-orange-500 text-white py-2 rounded">Make Payment</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
