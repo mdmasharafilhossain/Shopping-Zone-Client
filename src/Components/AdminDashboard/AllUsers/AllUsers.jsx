@@ -106,7 +106,7 @@ const AllUsers = () => {
     return (
         <div>
             <div className="flex justify-evenly my-6 mb-10">
-                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">All <span className='text-[#FF3811]'>Job Seeker List</span></h2>
+                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">All <span className='text-[#FF3811]'>Customer List</span></h2>
                
             </div>
              <div className=" ml-10">
