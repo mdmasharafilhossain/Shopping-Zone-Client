@@ -16,9 +16,9 @@ const auth = getAuth(app);
 
 const SellerLogin = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const AxiosPublic = useAxiosPublic();
+    
     const navigate = useNavigate();
-    const {SignIn,SignInWithGoogle} = useContext(AuthContext);
+    const {SignIn} = useContext(AuthContext);
     const [invalidAuth, setInvalidAuth] = React.useState("");
     const [errorMessage, setErrorMessage] = useState('');
     const emailRef = useRef(null);
