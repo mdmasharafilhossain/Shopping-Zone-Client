@@ -29,6 +29,20 @@ const SpecificCategory = () => {
     }
     
 });
+const filteredProducts = SpecificProducts.filter(product => product.category === category);
+if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner text-error text-9xl"></span>
+      </div>
+    );
+  }
+
+if(filteredProducts.length === 0){
+    return <div className="flex justify-center items-center h-64">
+    <p className="text-xl text-gray-500">No product available</p>
+  </div>
+}
   const handleWhiteList = async (sale) => {
     if (!user?.email) {
       Swal.fire({
@@ -88,14 +102,8 @@ const SpecificCategory = () => {
     
 
     // Filter products based on the category
-    const filteredProducts = SpecificProducts.filter(product => product.category === category);
-    if (isLoading) {
-        return (
-          <div className="flex justify-center items-center min-h-screen">
-            <span className="loading loading-spinner text-error text-9xl"></span>
-          </div>
-        );
-      }
+    
+   
     
       const handleTypeSort = (e) => {
         const type = e.target.value;
@@ -127,7 +135,9 @@ const SpecificCategory = () => {
 
     return (
         <div>
-            <h1>Products in Category: {category}</h1>
+            <div className="flex justify-evenly my-6 mb-10">
+                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">Category: <span className='text-[#FF3811]'>{category}</span></h2>
+            </div>
             {isLoading ? (
                       <div className="flex justify-center items-center min-h-screen">
                       <span className="loading loading-spinner text-error text-9xl"></span>
@@ -242,7 +252,7 @@ const SpecificCategory = () => {
                       <AiOutlineHeart size={24} />
                     </button>
                   </div>
-                  <Link to={`sale/${sale._id}`}>
+                  <Link to={`category/${sale._id}`}>
                     <div>
                       <img
                         className="w-40 h-40 mb-2 mx-auto object-scale-down hover:scale-110 transition-all"

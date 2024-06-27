@@ -20,6 +20,7 @@ import SellerLogin from "../Login/SellerLogin/SellerLogin";
 import MakePayment from "../MakePayment/MakePayment";
 import Stripe from "../MakePayment/Stripe/Stripe";
 import SpecificCategory from "../Home/SpecificCategory/SpecificCategory";
+import SpecificCategoryCards from "../Home/SpecificCategory/SpecificCategoryCard/SpecificCategoryCards";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,11 @@ export const router = createBrowserRouter([
         path:"/home/:category",
         element:<SpecificCategory></SpecificCategory>,
         loader: ()=>fetch('http://localhost:5000/categories')
+       },
+
+       {
+         path:"/home/:category/:id",
+         element:<SpecificCategoryCards></SpecificCategoryCards>
        },
        {
         path:"/flashSale",
