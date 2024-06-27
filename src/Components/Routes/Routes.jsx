@@ -19,6 +19,7 @@ import Seller_Signup from "../SignUp/Seller_SignUp/Seller_Signup";
 import SellerLogin from "../Login/SellerLogin/SellerLogin";
 import MakePayment from "../MakePayment/MakePayment";
 import Stripe from "../MakePayment/Stripe/Stripe";
+import SpecificCategory from "../Home/SpecificCategory/SpecificCategory";
 
 export const router = createBrowserRouter([
     {
@@ -32,7 +33,12 @@ export const router = createBrowserRouter([
        {
         path:"flashSale/sale/:id",
         element:<FlashSaleDetails></FlashSaleDetails>,
-        loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/flashSale')
+        loader: ()=>fetch('http://localhost:5000/flashSale')
+       },
+       {
+        path:"/home/:category",
+        element:<SpecificCategory></SpecificCategory>,
+        loader: ()=>fetch('http://localhost:5000/allProducts')
        },
        {
         path:"/flashSale",
@@ -117,7 +123,7 @@ export const router = createBrowserRouter([
         {
           path:"/AdminDashboard/product/:id",
           element:<AdminPRoductDetails></AdminPRoductDetails>,
-          loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/allProducts')
+          loader: ()=>fetch('http://localhost:5000/allProducts')
         },
         {
           path:"/AdminDashboard/NewProduct",
