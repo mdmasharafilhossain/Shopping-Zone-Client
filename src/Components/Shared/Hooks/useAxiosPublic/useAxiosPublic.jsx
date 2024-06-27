@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AxiosPublic = axios.create({
-    baseURL: "shopping-zone-server-five.vercel.app",
+    baseURL: "http://localhost:5000",
 })
 const useAxiosPublic = () => {
     
