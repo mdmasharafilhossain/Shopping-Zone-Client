@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { NavLink, Link, useNavigation, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/website_logo.png";
 import { FiAlignJustify } from "react-icons/fi";
 import { IoIosSearch, IoMdContact } from "react-icons/io";
@@ -17,6 +17,7 @@ const Header = () => {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
+
   const handleLogOut = () => {
     LogOut()
       .then()
@@ -33,9 +34,16 @@ const Header = () => {
       [menu]: !prevState[menu],
     }));
   };
+
   const handleSearch = (e) => {
+    setSearchText(e.target.value); // Update searchText state as user types
+
+    // Check if Enter key is pressed
     if (e.key === 'Enter') {
-      navigate(`/search?query=${searchText}`);
+      localStorage.setItem("searchText", JSON.stringify(searchText)); 
+     console.log()
+      navigate("/flashSale"); // Navigate to "/flashSale" route
+      setSearchText(""); // Clear searchText state after navigation
     }
   };
 
@@ -43,6 +51,7 @@ const Header = () => {
     <div className="bg-slate-100 shadow-xl fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto navbar">
         <div className="navbar-start">
+          {/* Menu Button */}
           <div className="dropdown">
             <div
               tabIndex={0}
@@ -69,99 +78,108 @@ const Header = () => {
                 <FiAlignJustify className="text-lg"/>
               )}
             </div>
+            {/* Dropdown Menu Items */}
             {menuOpen && (
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
+                {/* Home NavLink */}
                 <li>
-                <NavLink
-                to="/"
-                style={{ fontWeight: "bold", fontSize: "15px" }}
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? "text-orange-500 underline"
-                    : ""
-                }
-              >
-                <IoHomeOutline className="text-orange-500 text-2xl" />
-                Home
-              </NavLink>
+                  <NavLink
+                    to="/"
+                    style={{ fontWeight: "bold", fontSize: "15px" }}
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "pending"
+                        : isActive
+                        ? "text-orange-500 underline"
+                        : ""
+                    }
+                  >
+                    <IoHomeOutline className="text-orange-500 text-2xl" />
+                    Home
+                  </NavLink>
                 </li>
+                {/* Category Submenu */}
                 <li>
                   <div
                     role="button"
                     onClick={() => toggleSubMenu("parent1")}
                     className="flex justify-between items-center"
                   >
-                     <summary className="text-[15px] font-bold">
-                  <FaListAlt className="inline text-orange-500 text-2xl mr-1" />
-                  All Category
-                </summary>
+                    <summary className="text-[15px] font-bold">
+                      <FaListAlt className="inline text-orange-500 text-2xl mr-1" />
+                      All Category
+                    </summary>
                     {subMenuOpen["parent1"] ? "-" : "+"}
                   </div>
+                  {/* Submenu Items */}
                   {subMenuOpen["parent1"] && (
                     <ul className="p-2">
                       <li>
-                    <span>
-                      <FaFemale />
-                      <Link to="/home/Women">Women Collection</Link>
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <FaMale />
-                      <Link to="/home/Men">Men Collection</Link>
-                    </span>
-                  </li>
+                        <span>
+                          <FaFemale />
+                          <Link to="/home/Women">Women Collection</Link>
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <FaMale />
+                          <Link to="/home/Men">Men Collection</Link>
+                        </span>
+                      </li>
                     </ul>
                   )}
                 </li>
+                {/* Contact Us NavLink */}
                 <li>
-                <NavLink
-                to="/feedback"
-                style={{ fontWeight: "bold", fontSize: "15px" }}
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? "text-red-700 underline"
-                    : ""
-                }
-              >
-                <IoMdContact className="text-orange-500 text-2xl" />
-                Contact Us
-              </NavLink>
-              </li>
+                  <NavLink
+                    to="/feedback"
+                    style={{ fontWeight: "bold", fontSize: "15px" }}
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "pending"
+                        : isActive
+                        ? "text-red-700 underline"
+                        : ""
+                    }
+                  >
+                    <IoMdContact className="text-orange-500 text-2xl" />
+                    Contact Us
+                  </NavLink>
+                </li>
+                {/* Become Seller NavLink */}
                 <li>
-                <NavLink
-                to="/seller_signUp"
-                style={{ fontWeight: "bold", fontSize: "15px" }}
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? "text-red-700 underline"
-                    : ""
-                }
-              >
-                <FaStore className="text-orange-500 text-2xl" />
-                Become Seller
-              </NavLink>
+                  <NavLink
+                    to="/seller_signUp"
+                    style={{ fontWeight: "bold", fontSize: "15px" }}
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "pending"
+                        : isActive
+                        ? "text-red-700 underline"
+                        : ""
+                    }
+                  >
+                    <FaStore className="text-orange-500 text-2xl" />
+                    Become Seller
+                  </NavLink>
                 </li>
               </ul>
             )}
           </div>
+          {/* Website Logo */}
           <div>
             <Link to="/">
               <img className="md:w-44 lg:w-44" src={logo} alt="Website Logo" />
             </Link>
           </div>
         </div>
+        {/* Main Menu Items (Desktop) */}
         <div className="navbar-center hidden lg:flex h-2">
           <ul className="menu menu-horizontal">
+            {/* Home NavLink */}
             <li className="border-r-2 border-orange-500">
               <NavLink
                 to="/"
@@ -178,6 +196,7 @@ const Header = () => {
                 Home
               </NavLink>
             </li>
+            {/* Category Dropdown */}
             <li className="border-r-2 border-orange-500 pr-1 z-50">
               <details>
                 <summary className="text-[15px] font-bold">
@@ -200,10 +219,8 @@ const Header = () => {
                 </ul>
               </details>
             </li>
-            <li
-              className="border-r-2 border-orange-500 pr-1"
-              style={{ marginRight: "1rem" }}
-            >
+            {/* Contact Us NavLink */}
+            <li className="border-r-2 border-orange-500 pr-1" style={{ marginRight: "1rem" }}>
               <NavLink
                 to="/feedback"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
@@ -219,6 +236,7 @@ const Header = () => {
                 Contact Us
               </NavLink>
             </li>
+            {/* Become Seller NavLink */}
             <li>
               <NavLink
                 to="/seller_signUp"
@@ -237,7 +255,9 @@ const Header = () => {
             </li>
           </ul>
         </div>
+        {/* Search Bar and User Controls */}
         <div className="navbar-end space-x-7 mr-16">
+          {/* Search Bar */}
           <div className="border-l flex">
             <input
               type="text"
@@ -245,56 +265,61 @@ const Header = () => {
               className="border rounded-lg py-2 px-6 focus:border-orange-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-[450px] xl:w-96"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              onKeyDown={handleSearch}
+              onKeyDown={handleSearch} // Call handleSearch on Enter key press
             />
-            <button className="-ml-6 border px-1 rounded-r-md bg-orange-100 hover:bg-orange-400">
+            <button
+              onClick={handleSearch}
+              className="-ml-6 border px-1 rounded-r-md bg-orange-100 hover:bg-orange-400"
+            >
               <IoIosSearch className="text-2xl text-orange-600 hover:text-white" />
             </button>
           </div>
+          {/* User Authentication and Cart */}
           <div>
             {user ? (
-              <div>
-                <div className="dropdown dropdown-end">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="btn btn-ghost btn-circle avatar"
-                  >
-                    <div className="w-9 rounded-full">
-                      <img alt="User Photo" src={user?.photoURL} />
-                    </div>
-                    <h1 className="text-[10px] w-20 truncate">
-                      {user?.displayName?.length > 8
-                        ? `${user.displayName.substring(0, 8)}...`
-                        : user.displayName}
-                    </h1>
+              // User Dropdown
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-9 rounded-full">
+                    <img alt="User Photo" src={user?.photoURL} />
                   </div>
-                  <ul
-                    tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-50"
-                  >
-                    <li>
-                      <Link to="/userdashboard">
-                        <a className="justify-between">My Account</a>
-                      </Link>
-                    </li>
-                    <Link to="/AdminDashboard">
-                      <li>
-                        <a>Admin Dashboard</a>
-                      </li>
-                    </Link>
-                    <Link to="/SellerDashboard">
-                      <li>
-                        <a>Seller Dashboard</a>
-                      </li>
-                    </Link>
-                    <li>
-                      <button onClick={handleLogOut}>Logout</button>
-                    </li>
-                  </ul>
+                  <h1 className="text-[10px] w-20 truncate">
+                    {user?.displayName?.length > 8
+                      ? `${user.displayName.substring(0, 8)}...`
+                      : user.displayName}
+                  </h1>
                 </div>
+                {/* User Dropdown Menu */}
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-50"
+                >
+                  <li>
+                    <Link to="/userdashboard">
+                      <a className="justify-between">My Account</a>
+                    </Link>
+                  </li>
+                  <Link to="/AdminDashboard">
+                    <li>
+                      <a>Admin Dashboard</a>
+                    </li>
+                  </Link>
+                  <Link to="/SellerDashboard">
+                    <li>
+                      <a>Seller Dashboard</a>
+                    </li>
+                  </Link>
+                  <li>
+                    <button onClick={handleLogOut}>Logout</button>
+                  </li>
+                </ul>
               </div>
             ) : (
+              // Login/SignUp Button
               <div>
                 <Link to="/login">
                   <button className="ml-2 border border-orange-500 text-xs md:text-base lg:text-base font-medium rounded-md hover:border-orange-500 hover:bg-orange-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
@@ -304,18 +329,21 @@ const Header = () => {
               </div>
             )}
           </div>
+          {/* Cart Drawer */}
           <div className="drawer drawer-end">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
               <label htmlFor="my-drawer-4" className="drawer-button btn relative">
                 <button className="relative">
                   <FaCartPlus className="text-2xl" />
+                  {/* Display cart item count */}
                   <span className="absolute -top-2 -right-2 h-5 w-5 bg-orange-500 text-white text-xs flex items-center justify-center rounded-full">
                     {cart.length}
                   </span>
                 </button>
               </label>
             </div>
+            {/* Cart Sidebar */}
             <div className="drawer-side z-50">
               <label
                 htmlFor="my-drawer-4"
@@ -332,7 +360,6 @@ const Header = () => {
               </ul>
             </div>
           </div>
-          <div></div>
         </div>
       </div>
     </div>

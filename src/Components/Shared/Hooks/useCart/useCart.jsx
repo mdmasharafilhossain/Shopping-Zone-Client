@@ -16,7 +16,7 @@ const useCart = () => {
         }
         
     })
-    console.log(cart.length)
+   
     return [cart, refetch,isLoading]
 };
 

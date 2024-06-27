@@ -3,7 +3,7 @@ import useAxiosPublic from "../../../Shared/Hooks/useAxiosPublic/useAxiosPublic"
 import Sale_Banner from "../../../../assets/sale bannwr.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Rating from "react-rating";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -18,6 +18,7 @@ const AllFlashSale = () => {
   const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  
   const handleWhiteList = async (sale) => {
     if (!user?.email) {
       Swal.fire({
@@ -73,7 +74,11 @@ const AllFlashSale = () => {
       });
     }
   };
+
   const location = useLocation();
+  const data = JSON.parse(localStorage.getItem("searchText"));
+
+  console.log(data);
   
   const query = new URLSearchParams(location.search);
   const searchQuery = query.get("query") || "";
@@ -82,7 +87,7 @@ const AllFlashSale = () => {
     data: { result: Flashsales = [] } = {},
     isLoading,
   } = useQuery({
-    queryKey: ["Flashsales", sortOrder, selectedColor, typeSelect,searchQuery],
+    queryKey: ["Flashsales", sortOrder, selectedColor, typeSelect, searchQuery],
     queryFn: async () => {
       const res = await AxiosPublic.get(
         `/flashSale?sort=${sortOrder}&color=${selectedColor}&type=${typeSelect}&search=${searchQuery}`
@@ -91,6 +96,16 @@ const AllFlashSale = () => {
     },
   });
 
+  useEffect(() => {
+    localStorage.removeItem("searchText");
+  }, []);
+
+  const filterData = data
+    ? Flashsales.filter((datas) => datas?.name === data)
+    : Flashsales;
+
+  console.log(filterData);
+  
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -126,8 +141,6 @@ const AllFlashSale = () => {
 
   const colors = ["white", "pink", "Rose Gold", "Blue", "Green", "Yellow"];
   const types = ["Men", "Women", "Kids"];
-  // White List
-  // White LIst
 
   return (
     <div>
@@ -215,9 +228,9 @@ const AllFlashSale = () => {
           </button>
         </div>
 
-        {Flashsales.length > 0 ? (
+        {filterData.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-20">
-            {Flashsales.map((sale) => {
+            {filterData.map((sale) => {
               const DiscountPercentage = Math.round(
                 ((sale.price - sale.discount_price) / sale.price) * 100
               );

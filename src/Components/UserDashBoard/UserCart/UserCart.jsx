@@ -17,7 +17,7 @@ const UserCart = () => {
     const total = subtotal + shippingCost;
 
     const handleRemove = async (_id) => {
-        console.log("cart", _id);
+        
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
