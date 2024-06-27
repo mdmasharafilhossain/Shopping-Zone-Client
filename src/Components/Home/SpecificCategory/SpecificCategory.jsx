@@ -7,6 +7,7 @@ import Rating from "react-rating";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
 import Swal from "sweetalert2";
+import Header from "../Header/Header";
 
 const SpecificCategory = () => {
     const CardsInfo = useLoaderData();
@@ -38,11 +39,7 @@ if (isLoading) {
     );
   }
 
-if(filteredProducts.length === 0){
-    return <div className="flex justify-center items-center h-64">
-    <p className="text-xl text-gray-500">No product available</p>
-  </div>
-}
+
   const handleWhiteList = async (sale) => {
     if (!user?.email) {
       Swal.fire({
@@ -135,7 +132,8 @@ if(filteredProducts.length === 0){
 
     return (
         <div>
-            <div className="flex justify-evenly my-6 mb-10">
+            <Header/>
+            <div className="flex justify-evenly mt-40 my-6 mb-10">
                 <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">Category: <span className='text-[#FF3811]'>{category}</span></h2>
             </div>
             {isLoading ? (
