@@ -32,7 +32,7 @@ const SpecificCategory = () => {
   const handleWhiteList = async (sale) => {
     if (!user?.email) {
       Swal.fire({
-        position: "top-end",
+         position: "top-end",
         icon: "error",
         title: "Please log in to add items to the whitelist",
         showConfirmButton: false,
