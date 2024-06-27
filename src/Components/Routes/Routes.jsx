@@ -21,6 +21,7 @@ import MakePayment from "../MakePayment/MakePayment";
 import Stripe from "../MakePayment/Stripe/Stripe";
 import SpecificCategory from "../Home/SpecificCategory/SpecificCategory";
 import SpecificCategoryCards from "../Home/SpecificCategory/SpecificCategoryCard/SpecificCategoryCards";
+import MyOrder from "../UserDashBoard/MyOrder/MyOrder";
 
 export const router = createBrowserRouter([
     {
@@ -109,6 +110,10 @@ export const router = createBrowserRouter([
         {
           path:"/userdashboard/whiteList",
           element:<UserWhiteList></UserWhiteList>
+        },
+        {
+          path:"/userdashboard/order",
+          element:<MyOrder></MyOrder>
         }
 
       ]

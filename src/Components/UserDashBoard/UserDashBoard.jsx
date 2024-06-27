@@ -5,7 +5,7 @@ import { FaCheckCircle } from 'react-icons/fa';
 import { FaHome } from "react-icons/fa";
 import { MdOutlineAccountBox } from "react-icons/md";
 import { GiShoppingCart } from "react-icons/gi";
-
+import { FaBox } from 'react-icons/fa';
 
 import { AuthContext } from "../AuthProviders/AuthProviders";
 
@@ -102,17 +102,17 @@ const UserDashBoard = () => {
                     My White List
                   </NavLink>
                 </li>
-                {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
-                    to="/AdminDashboard/all-news"
+                    to="/userdashboard/order"
                     className={({ isActive }) =>
                       isActive ? "text-white border-b-2 border-white" : "text-white"
                     }
                   >
-                    <TiNews />
-                    All News
+                    <FaBox />
+                    My Orders
                   </NavLink>
-                </li> */}
+                </li>
                 {/* <li onClick={handleRouteClick} className="font-bold text-sm text-white">
                   <NavLink
                     to="/AdminDashboard/PremiumUser"
