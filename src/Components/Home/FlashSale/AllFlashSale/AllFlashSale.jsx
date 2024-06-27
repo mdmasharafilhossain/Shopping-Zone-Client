@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 import Sale_Banner from "../../../../assets/sale bannwr.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useContext, useState } from "react";
 import Rating from "react-rating";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../AuthProviders/AuthProviders";
+import Header from "../../Header/Header";
 
 const AllFlashSale = () => {
   const AxiosPublic = useAxiosPublic();
@@ -72,15 +73,19 @@ const AllFlashSale = () => {
       });
     }
   };
+  const location = useLocation();
+  
+  const query = new URLSearchParams(location.search);
+  const searchQuery = query.get("query") || "";
   const {
     refetch,
     data: { result: Flashsales = [] } = {},
     isLoading,
   } = useQuery({
-    queryKey: ["Flashsales", sortOrder, selectedColor, typeSelect],
+    queryKey: ["Flashsales", sortOrder, selectedColor, typeSelect,searchQuery],
     queryFn: async () => {
       const res = await AxiosPublic.get(
-        `/flashSale?sort=${sortOrder}&color=${selectedColor}&type=${typeSelect}`
+        `/flashSale?sort=${sortOrder}&color=${selectedColor}&type=${typeSelect}&search=${searchQuery}`
       );
       return res.data;
     },
@@ -126,7 +131,8 @@ const AllFlashSale = () => {
 
   return (
     <div>
-      <img className="w-full h-32" src={Sale_Banner} alt="Sale" />
+      <Header></Header>
+      <img className="w-full h-32 mt-16" src={Sale_Banner} alt="Sale" />
       <div className="flex gap-2 justify-end mr-24 mt-10">
         <div>
           <p className="text-lg mt-1">Sort by:</p>

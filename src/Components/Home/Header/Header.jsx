@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigation, useNavigate } from "react-router-dom";
 import logo from "../../../assets/website_logo.png";
 import { FiAlignJustify } from "react-icons/fi";
 import { IoIosSearch, IoMdContact } from "react-icons/io";
@@ -15,7 +15,8 @@ const Header = () => {
   const { user, LogOut } = useContext(AuthContext);
   const [cart] = useCart();
   const [categoryOpen, setCategoryOpen] = useState(false);
-
+  const navigate = useNavigate();
+  const [searchText, setSearchText] = useState("");
   const handleLogOut = () => {
     LogOut()
       .then()
@@ -31,6 +32,11 @@ const Header = () => {
       ...prevState,
       [menu]: !prevState[menu],
     }));
+  };
+  const handleSearch = (e) => {
+    if (e.key === 'Enter') {
+      navigate(`/search?query=${searchText}`);
+    }
   };
 
   return (
@@ -237,6 +243,9 @@ const Header = () => {
               type="text"
               placeholder="Search For Products"
               className="border rounded-lg py-2 px-6 focus:border-orange-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-[450px] xl:w-96"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              onKeyDown={handleSearch}
             />
             <button className="-ml-6 border px-1 rounded-r-md bg-orange-100 hover:bg-orange-400">
               <IoIosSearch className="text-2xl text-orange-600 hover:text-white" />
