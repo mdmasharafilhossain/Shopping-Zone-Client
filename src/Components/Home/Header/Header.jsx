@@ -1,19 +1,22 @@
 import { useContext, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigation, useNavigate } from "react-router-dom";
 import logo from "../../../assets/website_logo.png";
-
+import { FiAlignJustify } from "react-icons/fi";
 import { IoIosSearch, IoMdContact } from "react-icons/io";
 import { FaCartPlus, FaListAlt, FaStore } from "react-icons/fa";
 import { AuthContext } from "../../AuthProviders/AuthProviders";
 import { IoHomeOutline } from "react-icons/io5";
 import useCart from "../../Shared/Hooks/useCart/useCart";
+import { FaFemale, FaMale } from 'react-icons/fa';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [subMenuOpen, setSubMenuOpen] = useState({});
   const { user, LogOut } = useContext(AuthContext);
   const [cart] = useCart();
-
+  const [categoryOpen, setCategoryOpen] = useState(false);
+  const navigate = useNavigate();
+  const [searchText, setSearchText] = useState("");
   const handleLogOut = () => {
     LogOut()
       .then()
@@ -29,6 +32,11 @@ const Header = () => {
       ...prevState,
       [menu]: !prevState[menu],
     }));
+  };
+  const handleSearch = (e) => {
+    if (e.key === 'Enter') {
+      navigate(`/search?query=${searchText}`);
+    }
   };
 
   return (
@@ -58,20 +66,7 @@ const Header = () => {
                   />
                 </svg>
               ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
+                <FiAlignJustify className="text-lg"/>
               )}
             </div>
             {menuOpen && (
@@ -80,7 +75,20 @@ const Header = () => {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a>Item 1</a>
+                <NavLink
+                to="/"
+                style={{ fontWeight: "bold", fontSize: "15px" }}
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "text-orange-500 underline"
+                    : ""
+                }
+              >
+                <IoHomeOutline className="text-orange-500 text-2xl" />
+                Home
+              </NavLink>
                 </li>
                 <li>
                   <div
@@ -88,36 +96,68 @@ const Header = () => {
                     onClick={() => toggleSubMenu("parent1")}
                     className="flex justify-between items-center"
                   >
-                    <a>Parent</a>
+                     <summary className="text-[15px] font-bold">
+                  <FaListAlt className="inline text-orange-500 text-2xl mr-1" />
+                  All Category
+                </summary>
                     {subMenuOpen["parent1"] ? "-" : "+"}
                   </div>
                   {subMenuOpen["parent1"] && (
                     <ul className="p-2">
                       <li>
-                        <a>Submenu 1</a>
-                      </li>
-                      <li>
-                        <a>Submenu 2</a>
-                      </li>
+                    <span>
+                      <FaFemale />
+                      <Link to="/home/Women">Women Collection</Link>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <FaMale />
+                      <Link to="/home/Men">Men Collection</Link>
+                    </span>
+                  </li>
                     </ul>
                   )}
                 </li>
                 <li>
-                  <a>Blog</a>
-                </li>
+                <NavLink
+                to="/feedback"
+                style={{ fontWeight: "bold", fontSize: "15px" }}
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "text-red-700 underline"
+                    : ""
+                }
+              >
+                <IoMdContact className="text-orange-500 text-2xl" />
+                Contact Us
+              </NavLink>
+              </li>
                 <li>
-                  <a>Contact</a>
-                </li>
-                <li>
-                  <a>Become Seller</a>
+                <NavLink
+                to="/seller_signUp"
+                style={{ fontWeight: "bold", fontSize: "15px" }}
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "text-red-700 underline"
+                    : ""
+                }
+              >
+                <FaStore className="text-orange-500 text-2xl" />
+                Become Seller
+              </NavLink>
                 </li>
               </ul>
             )}
           </div>
           <div>
-            <div>
+            <Link to="/">
               <img className="md:w-44 lg:w-44" src={logo} alt="Website Logo" />
-            </div>
+            </Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex h-2">
@@ -144,12 +184,18 @@ const Header = () => {
                   <FaListAlt className="inline text-orange-500 text-2xl mr-1" />
                   All Category
                 </summary>
-                <ul className="p-2">
+                <ul className="p-2 w-60 border border-orange-500">
                   <li>
-                    <a>Submenu 1</a>
+                    <span>
+                      <FaFemale />
+                      <Link to="/home/Women">Women Collection</Link>
+                    </span>
                   </li>
                   <li>
-                    <a>Submenu 2</a>
+                    <span>
+                      <FaMale />
+                      <Link to="/home/Men">Men Collection</Link>
+                    </span>
                   </li>
                 </ul>
               </details>
@@ -197,6 +243,9 @@ const Header = () => {
               type="text"
               placeholder="Search For Products"
               className="border rounded-lg py-2 px-6 focus:border-orange-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-[450px] xl:w-96"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              onKeyDown={handleSearch}
             />
             <button className="-ml-6 border px-1 rounded-r-md bg-orange-100 hover:bg-orange-400">
               <IoIosSearch className="text-2xl text-orange-600 hover:text-white" />
@@ -230,14 +279,14 @@ const Header = () => {
                       </Link>
                     </li>
                     <Link to="/AdminDashboard">
-                    <li>
-                      <a>Admin Dashboard</a>
-                    </li>
+                      <li>
+                        <a>Admin Dashboard</a>
+                      </li>
                     </Link>
                     <Link to="/SellerDashboard">
-                     <li>
-                      <a>Seller Dashboard</a>
-                    </li>
+                      <li>
+                        <a>Seller Dashboard</a>
+                      </li>
                     </Link>
                     <li>
                       <button onClick={handleLogOut}>Logout</button>

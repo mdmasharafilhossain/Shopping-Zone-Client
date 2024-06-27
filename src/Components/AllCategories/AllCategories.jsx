@@ -25,7 +25,7 @@ const AllCategories = () => {
             <SectionTitle heading={"Categories"}>
                 
              </SectionTitle>
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 hover:border-orange-500 hover:shadow-xl relative">
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 hover:border-orange-500  relative">
       {
           categories.map(categorie => <AllCategoriesCard key={categories._id} categorie={categorie} refetch={refetch}></AllCategoriesCard>)
       }

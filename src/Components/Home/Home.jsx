@@ -1,6 +1,7 @@
 import AllCategories from "../AllCategories/AllCategories";
 import Banner from "./Banner/Banner";
 import FlashSale from "./FlashSale/FlashSale";
+import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
      </div>
       <FlashSale></FlashSale>
       <AllCategories></AllCategories>
+      <Footer></Footer>
     </div>
   );
 };

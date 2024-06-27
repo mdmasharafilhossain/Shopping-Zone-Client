@@ -1,27 +1,49 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
-import Sale_Banner from "../../../../assets/sale bannwr.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AiOutlineHeart } from "react-icons/ai";
+import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
+import useAxiosPublic from "../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 import { useContext, useState } from "react";
+import { AuthContext } from "../../AuthProviders/AuthProviders";
+import { useQuery } from "@tanstack/react-query";
 import Rating from "react-rating";
 import { FaStar, FaRegStar } from "react-icons/fa";
+import { AiOutlineHeart } from "react-icons/ai";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../../AuthProviders/AuthProviders";
-import Header from "../../Header/Header";
+import Header from "../Header/Header";
 
-const AllFlashSale = () => {
-  const AxiosPublic = useAxiosPublic();
-  const [sortOrder, setSortOrder] = useState("");
+const SpecificCategory = () => {
+    const CardsInfo = useLoaderData();
+    const AxiosPublic = useAxiosPublic();
+    const { user } = useContext(AuthContext);
+    const { category } = useParams();
+    console.log("category", category);
+    const navigate = useNavigate();
+    const [sortOrder, setSortOrder] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [typeSelect, setTypeSelect] = useState("");
-  const { user } = useContext(AuthContext);
 
-  const navigate = useNavigate();
+  const { 
+    data: SpecificProducts = [], isLoading, refetch } = useQuery({
+    queryKey: ['SpecificProducts',sortOrder, selectedColor, typeSelect],
+    queryFn: async () => {
+        const res = await AxiosPublic.get(`/allProducts?sort=${sortOrder}&color=${selectedColor}&type=${typeSelect}`);
+        console.log(res.data);
+        return res.data;
+    }
+    
+});
+const filteredProducts = SpecificProducts.filter(product => product.category === category);
+if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner text-error text-9xl"></span>
+      </div>
+    );
+  }
+
+
   const handleWhiteList = async (sale) => {
     if (!user?.email) {
       Swal.fire({
-        position: "top-end",
+         position: "top-end",
         icon: "error",
         title: "Please log in to add items to the whitelist",
         showConfirmButton: false,
@@ -73,67 +95,56 @@ const AllFlashSale = () => {
       });
     }
   };
-  const location = useLocation();
-  
-  const query = new URLSearchParams(location.search);
-  const searchQuery = query.get("query") || "";
-  const {
-    refetch,
-    data: { result: Flashsales = [] } = {},
-    isLoading,
-  } = useQuery({
-    queryKey: ["Flashsales", sortOrder, selectedColor, typeSelect,searchQuery],
-    queryFn: async () => {
-      const res = await AxiosPublic.get(
-        `/flashSale?sort=${sortOrder}&color=${selectedColor}&type=${typeSelect}&search=${searchQuery}`
-      );
-      return res.data;
-    },
-  });
 
-  if (isLoading) {
+    
+
+    // Filter products based on the category
+    
+   
+    
+      const handleTypeSort = (e) => {
+        const type = e.target.value;
+        setTypeSelect(type);
+        refetch();
+      };
+    
+      const handleSort = (e) => {
+        const order = e.target.value;
+        setSortOrder(order);
+        refetch();
+      };
+    
+      const handleColorSort = (e) => {
+        const color = e.target.value;
+        setSelectedColor(color);
+        refetch();
+      };
+    
+      const handleReset = () => {
+        setSortOrder("");
+        setSelectedColor("");
+        setTypeSelect("");
+        refetch();
+      };
+    
+      const colors = ["white", "pink", "Rose Gold", "Blue", "Green", "Yellow"];
+      const types = ["Men", "Women", "Kids"];
+
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <span className="loading loading-spinner text-error text-9xl"></span>
-      </div>
-    );
-  }
-
-  const handleTypeSort = (e) => {
-    const type = e.target.value;
-    setTypeSelect(type);
-    refetch();
-  };
-
-  const handleSort = (e) => {
-    const order = e.target.value;
-    setSortOrder(order);
-    refetch();
-  };
-
-  const handleColorSort = (e) => {
-    const color = e.target.value;
-    setSelectedColor(color);
-    refetch();
-  };
-
-  const handleReset = () => {
-    setSortOrder("");
-    setSelectedColor("");
-    setTypeSelect("");
-    refetch();
-  };
-
-  const colors = ["white", "pink", "Rose Gold", "Blue", "Green", "Yellow"];
-  const types = ["Men", "Women", "Kids"];
-  // White List
-  // White LIst
-
-  return (
-    <div>
-      <Header></Header>
-      <img className="w-full h-32 mt-16" src={Sale_Banner} alt="Sale" />
-      <div className="flex gap-2 justify-end mr-24 mt-10">
+        <div>
+            <Header/>
+            <div className="flex justify-evenly mt-40 my-6 mb-10">
+                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">Category: <span className='text-[#FF3811]'>{category}</span></h2>
+            </div>
+            {isLoading ? (
+                      <div className="flex justify-center items-center min-h-screen">
+                      <span className="loading loading-spinner text-error text-9xl"></span>
+                    </div>
+              
+            ) : (
+                // MAin div
+               <div>
+<div className="flex gap-2 justify-end mr-24 mt-10">
         <div>
           <p className="text-lg mt-1">Sort by:</p>
         </div>
@@ -215,9 +226,9 @@ const AllFlashSale = () => {
           </button>
         </div>
 
-        {Flashsales.length > 0 ? (
+        {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-20">
-            {Flashsales.map((sale) => {
+            {filteredProducts.map((sale) => {
               const DiscountPercentage = Math.round(
                 ((sale.price - sale.discount_price) / sale.price) * 100
               );
@@ -239,7 +250,7 @@ const AllFlashSale = () => {
                       <AiOutlineHeart size={24} />
                     </button>
                   </div>
-                  <Link to={`sale/${sale._id}`}>
+                  <Link to={`category/${sale._id}`}>
                     <div>
                       <img
                         className="w-40 h-40 mb-2 mx-auto object-scale-down hover:scale-110 transition-all"
@@ -279,8 +290,19 @@ const AllFlashSale = () => {
           </div>
         )}
       </div>
-    </div>
-  );
+
+
+
+
+
+
+
+               </div>
+
+
+            )}
+        </div>
+    );
 };
 
-export default AllFlashSale;
+export default SpecificCategory;

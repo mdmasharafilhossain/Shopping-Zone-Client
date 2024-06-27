@@ -17,7 +17,7 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
-  const [cart,refetch] = useCart();
+  const [cart] = useCart();
   const PayAblePrice = cart.reduce((total, item) => total + item.price, 0);
 
   useEffect(() => {

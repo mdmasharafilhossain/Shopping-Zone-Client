@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const AxiosSecure = axios.create({
-    baseURL: "https://shopping-zone-server-five.vercel.app",
+    baseURL: "http://localhost:5000",
 })
 const useAxiosSecure = () => {
     return AxiosSecure;
