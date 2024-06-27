@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
        {
         path:"/home/:category",
         element:<SpecificCategory></SpecificCategory>,
-        loader: ()=>fetch('http://localhost:5000/allProducts')
+        loader: ()=>fetch('http://localhost:5000/categories')
        },
        {
         path:"/flashSale",
