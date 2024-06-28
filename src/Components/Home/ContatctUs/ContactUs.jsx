@@ -155,16 +155,17 @@ const ContactUs = () => {
             </h3>
             <div className='space-y-2'>
               <p>
-                <strong>Address:</strong> 123 ABC Street, Dhaka, Bangladesh
+                <strong>Address:</strong> Doric Madani Tower, Chittagong Road, Narayanganj, Bangladesh
               </p>
               <p>
-                <strong>Phone:</strong> +880 1234 5678
+                <strong>Phone:</strong> +880 1852-583209
               </p>
               <p>
-                <strong>Email:</strong> info@example.com
+                <strong>Email:</strong> 
+                niyamatit@gmail.com
               </p>
               <p>
-                <strong>Working Hours:</strong> Mon-Fri: 9:00 AM - 5:00 PM
+                <strong>Working Hours:</strong> Sat-Thu: 10:00 AM - 6:00 PM
               </p>
             </div>
           </div>
