@@ -7,7 +7,7 @@ import { FaUsers } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { useState } from "react";
 import { FaClipboardList } from 'react-icons/fa';
-
+import { MdOutlineAccountBox } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
 
 import { FcStatistics } from "react-icons/fc";
@@ -78,13 +78,13 @@ const SellerDashboard = () => {
                   className='font-bold text-sm text-white '
                 >
                   <NavLink
-                    to='/AdminDashboard/AllUsers'
+                    to="/SellerDashboard/Profile"
                     className={({ isActive }) =>
                       `{ ${isActive ? " text-white border hover:bg-none " : " "}}`
                     }
                   >
                     {" "}
-                    <FaUsers />
+                    <MdOutlineAccountBox />
                    My Profile
                   </NavLink>
                 </li>
