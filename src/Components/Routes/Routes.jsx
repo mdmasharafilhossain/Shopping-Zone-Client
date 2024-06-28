@@ -36,6 +36,7 @@ import AllSellerList from "../AdminDashboard/AllSellerList/AllSellerList";
 import ContactUs from "../Home/ContatctUs/ContactUs";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Statistics from "../Statictics/Statistics";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -91,13 +92,13 @@ export const router = createBrowserRouter([
       //  ---------Payment--------
          {
           path:"/MakePaymentRoute",
-          element:<MakePayment></MakePayment>
+          element:<PrivateRoute><MakePayment></MakePayment></PrivateRoute>
          },
          {
           path: "/stripeGateway",
           element: (
             
-              <Stripe></Stripe>
+             <PrivateRoute> <Stripe></Stripe></PrivateRoute>
             
           ),
         }, 
@@ -112,7 +113,7 @@ export const router = createBrowserRouter([
     // User Dashboard 
     {
       path:"/userdashboard",
-      element:<UserDashBoard></UserDashBoard>,
+      element:<PrivateRoute><UserDashBoard></UserDashBoard></PrivateRoute>,
       errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
@@ -142,7 +143,7 @@ export const router = createBrowserRouter([
     // Admin Dashboard
     {
       path:"/AdminDashboard",
-      element:<AdminDashboard></AdminDashboard>,
+      element:<PrivateRoute><AdminDashboard></AdminDashboard></PrivateRoute>,
       errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
@@ -186,7 +187,7 @@ export const router = createBrowserRouter([
     // Seller DashBoard
     {
       path:"/SellerDashboard",
-      element:<SellerDashboard></SellerDashboard>,
+      element:<PrivateRoute><SellerDashboard></SellerDashboard></PrivateRoute>,
       errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
