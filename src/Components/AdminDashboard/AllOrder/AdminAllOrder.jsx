@@ -77,7 +77,7 @@ const AdminAllOrder = () => {
                     Date: {new Date(payment.date).toLocaleString()}
                   </p>
                   <p className="text-gray-800 mb-2">
-                    Total Price: ${payment.prices.toFixed(2)}
+                    Total Price: ৳{payment.prices.toFixed(2)}
                   </p>
                   <h3 className="text-lg font-medium mb-2">Items:</h3>
                   <ul className="list-disc list-inside mb-2">
