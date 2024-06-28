@@ -15,7 +15,7 @@ export const options = {
   is3D: true,
 };
 
-//for Job Seeker data
+
 
 
 
@@ -23,16 +23,16 @@ const PiChart = () => {
     
 const AxiosPublic = useAxiosPublic();
 
-const [HiringManagers,setHiringManagers] = useState('');
-const [JobSeekers,setJobSeekers]= useState('');
-const [PremiumUsers, setPremiumUsers] = useState('');
+const [Users,setUsers] = useState('');
+const [Seller,setSeller]= useState('');
+
  
 useEffect(()=>{
   const fetchData = async () => {
     try {
-        const response = await AxiosPublic.get('/hiring-talents');
+        const response = await AxiosPublic.get('/sellers');
         const data = response.data;
-        setHiringManagers(data);
+        setUsers(data);
     } catch (error) {
         console.error('Error fetching data:', error);
     }
@@ -41,13 +41,13 @@ useEffect(()=>{
 fetchData();
 
 },[])
-// for  Job Seekers 
+
 useEffect(()=>{
   const fetchData = async () => {
     try {
         const response = await AxiosPublic.get('/users');
         const data = response.data;
-        setJobSeekers(data);
+        setSeller(data);
     } catch (error) {
         console.error('Error fetching data:', error);
     }
@@ -57,28 +57,15 @@ fetchData();
 
 },[])
 // for  Premium User
-useEffect(()=>{
-  const fetchData = async () => {
-    try {
-        const response = await AxiosPublic.get('/payments');
-        const data = response.data;
-        setPremiumUsers(data);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-};
 
-fetchData();
-
-},[])
 
     
    
      const data = [
         ["Task", "Hours per Day"],
-        ["Premium Users", PremiumUsers.length],
-        ["Job Seekers", JobSeekers.length],
-        ["Hiring Managers", HiringManagers.length],
+        
+        ["Sellers", Seller.length],
+        ["Users", Users.length],
         
         
       ];
