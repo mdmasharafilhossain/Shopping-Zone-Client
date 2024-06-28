@@ -190,9 +190,9 @@ const SpecificCategoryCards = () => {
                         isSeller || isUserAdmin ?
 <div className="flex gap-10">
                         <button disabled onClick={handleAddToCart}
-                            className="w-1/4 border py-2 text-lg font-bold text-white rounded-md    ">Add To Cart</button>
+                            className="w-1/4 border py-2 text-lg font-bold text-black rounded-md    ">Add To Cart</button>
                         <button disabled onClick={handleBuyNow}
-                            className="w-1/4 border py-2 text-lg font-bold rounded-md text-white">Buy Now</button>
+                            className="w-1/4 border py-2 text-lg font-bold rounded-md text-black">Buy Now</button>
                     </div>
                         
                         :
