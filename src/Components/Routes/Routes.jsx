@@ -31,6 +31,7 @@ import SellerProductsDetails from "../SellerDashboard/SellerProductDetails/Selle
 import EditProductAdmin from "../AdminDashboard/EditProductAdmin/EditProductAdmin";
 import SellerEditProduct from "../SellerDashboard/SellerEditProduct/SellerEditProduct";
 import SellerPrfile from "../SellerDashboard/SellerProfile/SellerPrfile";
+import SellerEditProfile from "../SellerDashboard/SellerEditProfile/SellerEditProfile";
 
 export const router = createBrowserRouter([
     {
@@ -168,6 +169,10 @@ export const router = createBrowserRouter([
       path:"/SellerDashboard",
       element:<SellerDashboard></SellerDashboard>,
       children:[
+        {
+          path:"/SellerDashboard/EditProfile",
+          element:<SellerEditProfile></SellerEditProfile>
+        },
         {
              path:"/SellerDashboard/Profile",
              element:<SellerPrfile></SellerPrfile>

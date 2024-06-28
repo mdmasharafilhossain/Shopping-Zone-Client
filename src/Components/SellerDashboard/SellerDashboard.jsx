@@ -3,7 +3,8 @@ import { useContext, useEffect } from "react";
 import { FiPackage } from 'react-icons/fi';
 import { FaUpload } from 'react-icons/fa';
 import { FiAlignJustify } from "react-icons/fi";
-import { FaUsers } from "react-icons/fa";
+
+import { FiEdit} from "react-icons/fi";
 import { FaHome } from "react-icons/fa";
 import { useState } from "react";
 import { FaClipboardList } from 'react-icons/fa';
@@ -93,13 +94,13 @@ const SellerDashboard = () => {
                   className='font-bold text-sm  text-white '
                 >
                   <NavLink
-                    to="/AdminDashboard/AllHiringManagers"
+                    to="/SellerDashboard/EditProfile"
                     className={({ isActive }) =>
                       `{ ${isActive ? " text-white border " : " "}}`
                     }
                   >
                     {" "}
-                    <FaPeopleGroup />
+                    <FiEdit />
                     Edit Profile
                   </NavLink>
                 </li>

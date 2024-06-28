@@ -44,10 +44,11 @@ const SellerPrfile = () => {
                    <h1 className="text-lg">Email: <br></br><span className="font-bold">{customer.email}</span></h1>
                    <h1 className="text-lg">Mobile: <br></br><span className="font-bold">{customer.number || "Not Set"}</span></h1>
                    </div>
-                   <div className="grid grid-cols-3 text-center mt-20">
+                   <div className="grid grid-cols-4 text-center mt-20">
                    <h1 className="text-lg">Current Location: <br></br><span className="font-bold">{customer.address || "Not Set"}</span></h1>
                    <h1 className="text-lg">Bank Number: <br></br><span className="font-bold">{customer.Bank_Account_Number || "Not Set"}</span></h1>
                     <h1 className="text-lg">NID Number: <br></br><span className="font-bold">{customer.NID_Number || "Not Set"}</span></h1>
+                    <h1 className="text-lg">Seller ID: <br></br><span className="font-bold">{customer._id || "Not Set"}</span></h1>
                    </div>
                  
                     </div>
