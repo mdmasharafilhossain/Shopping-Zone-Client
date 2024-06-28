@@ -93,14 +93,14 @@ const AdminDashboard = () => {
                   className='font-bold text-sm  text-white '
                 >
                   <NavLink
-                    to="/AdminDashboard/AllHiringManagers"
+                    to="/AdminDashboard/AllSellers"
                     className={({ isActive }) =>
                       `{ ${isActive ? " text-white border " : " "}}`
                     }
                   >
                     {" "}
                     <FaPeopleGroup />
-                    All Hiring Managers
+                    All Sellers
                   </NavLink>
                 </li>
                 <li
