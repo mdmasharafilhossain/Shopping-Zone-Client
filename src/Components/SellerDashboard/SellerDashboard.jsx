@@ -104,21 +104,7 @@ const SellerDashboard = () => {
                     Edit Profile
                   </NavLink>
                 </li>
-                {/* <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to=''
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border text-white hover:none " : " "}}`
-                    }
-                  >
-                    {" "}
-                    <FiPackage />
-                    My Products
-                  </NavLink>
-                </li> */}
+              
                 <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'
@@ -161,90 +147,8 @@ const SellerDashboard = () => {
                     Customer Order
                   </NavLink>
                 </li>
-                {/* <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/all-news'
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                    <TiNews />
-                    All News
-                  </NavLink>
-                </li>
-                <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/PremiumUser'
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                    <MdPeopleAlt />
-                    Premium Users
-                  </NavLink>
-                </li>
-                <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/premiumusercourses'
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                   <FaBook />
-                   Add Courses
-                  </NavLink>
-                </li>
-                <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/allpremiumcourses '
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                   <FaBook />
-                    Premium User Courses
-                  </NavLink>
-                </li>
-                <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/alljobreport'
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                   <MdReport />
-                   Job Report
-                  </NavLink>
-                </li> */}
-                <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/Statistics'
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                    <FcStatistics />
-                    Statistics
-                  </NavLink>
-                </li>
+                
+                
                 <li
                   onClick={handleHomeRouteClick}
                   className='font-bold text-sm text-white'
