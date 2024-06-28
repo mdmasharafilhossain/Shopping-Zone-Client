@@ -35,6 +35,7 @@ import SellerEditProfile from "../SellerDashboard/SellerEditProfile/SellerEditPr
 import AllSellerList from "../AdminDashboard/AllSellerList/AllSellerList";
 import ContactUs from "../Home/ContatctUs/ContactUs";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import Statistics from "../Statictics/Statistics";
 
 export const router = createBrowserRouter([
     {
@@ -173,6 +174,10 @@ export const router = createBrowserRouter([
           path:"/AdminDashboard/editProduct/:id",
           element:<EditProductAdmin></EditProductAdmin>,
           loader: ()=>fetch('http://localhost:5000/allProducts')
+        },
+        {
+          path:"/AdminDashboard/Statistics",
+          element:<Statistics></Statistics>
         }
 
       ]
