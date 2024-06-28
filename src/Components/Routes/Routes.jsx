@@ -26,6 +26,7 @@ import AdminAllOrder from "../AdminDashboard/AllOrder/AdminAllOrder";
 import SellerDashboard from "../SellerDashboard/SellerDashboard";
 import SellerOrder from "../SellerDashboard/SellerOrder/SellerOrder";
 import Seller_Product_Upload from "../SellerDashboard/Seller_Product_Upload/Seller_Product_Upload";
+import MyProductsSeller from "../SellerDashboard/MyProductsSeller/MyProductsSeller";
 
 export const router = createBrowserRouter([
     {
@@ -165,6 +166,10 @@ export const router = createBrowserRouter([
          {
           path:"/SellerDashboard/Products",
           element:<Seller_Product_Upload></Seller_Product_Upload>
+         },
+         {
+          path:"/SellerDashboard/MyProduct",
+          element:<MyProductsSeller></MyProductsSeller>
          }
 
       ] 

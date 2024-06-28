@@ -103,12 +103,12 @@ const SellerDashboard = () => {
                     Edit Profile
                   </NavLink>
                 </li>
-                <li
+                {/* <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'
                 >
                   <NavLink
-                    to='/SellerDashboard/Products'
+                    to=''
                     className={({ isActive }) =>
                       `{ ${isActive ? " border text-white hover:none " : " "}}`
                     }
@@ -117,13 +117,13 @@ const SellerDashboard = () => {
                     <FiPackage />
                     My Products
                   </NavLink>
-                </li>
+                </li> */}
                 <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'
                 >
                   <NavLink
-                    to='/SellerDashboard/NewProduct'
+                    to='/SellerDashboard/Products'
                     className={({ isActive }) =>
                       `{ ${isActive ? " border  " : " "}}`
                     }
@@ -137,13 +137,13 @@ const SellerDashboard = () => {
                   className='font-bold text-sm text-white'
                 >
                   <NavLink
-                    to="/SellerDashboard/AllOrder"
+                    to="/SellerDashboard/MyProduct"
                     className={({ isActive }) =>
                       `{ ${isActive ? " border  " : " "}}`
                     }
                   >
                     <FaClipboardList />
-                    All Orders
+                    My Products
                   </NavLink>
                 </li>
                 {/* <li
