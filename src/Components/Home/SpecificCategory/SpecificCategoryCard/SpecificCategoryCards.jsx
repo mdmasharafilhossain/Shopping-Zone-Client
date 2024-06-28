@@ -10,6 +10,8 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import ImageZoom from "../../FlashSale/FlasSaleDetails/ImageZoom";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
+import useSeller from "../../../useSeller/useSeller";
+import useAdmin from "../../../useAdmin/useAdmin";
 
 const SpecificCategoryCards = () => {
     const CardsInfo = useLoaderData();
@@ -127,7 +129,8 @@ const SpecificCategoryCards = () => {
     const incrementQuantity = () => setQuantity(prev => prev + 1);
     const decrementQuantity = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
     const handleSizeChange = (e) => setSelectedSize(e.target.value);
-
+    const [isSeller] =useSeller();
+    const [isUserAdmin] = useAdmin();
     return (
         <div>
             <Header />
@@ -183,12 +186,25 @@ const SpecificCategoryCards = () => {
                     
 
                     {/* Buttons */}
-                    <div className="flex gap-10">
+                    {
+                        isSeller || isUserAdmin ?
+<div className="flex gap-10">
+                        <button disabled onClick={handleAddToCart}
+                            className="w-1/4 border py-2 text-lg font-bold rounded-md border-orange-600 hover:bg-orange-600 hover:shadow-xl hover:text-white">Add To Cart</button>
+                        <button disabled onClick={handleBuyNow}
+                            className="w-1/4 border py-2 text-lg font-bold rounded-md border-blue-600 hover:bg-blue-600 hover:shadow-xl hover:text-white">Buy Now</button>
+                    </div>
+                        
+                        :
+                        <div className="flex gap-10">
                         <button onClick={handleAddToCart}
                             className="w-1/4 border py-2 text-lg font-bold rounded-md border-orange-600 hover:bg-orange-600 hover:shadow-xl hover:text-white">Add To Cart</button>
                         <button onClick={handleBuyNow}
                             className="w-1/4 border py-2 text-lg font-bold rounded-md border-blue-600 hover:bg-blue-600 hover:shadow-xl hover:text-white">Buy Now</button>
                     </div>
+
+
+                    }
                 </div>
             </div>
             <AddComment InfoCard={InfoCard} /> 
