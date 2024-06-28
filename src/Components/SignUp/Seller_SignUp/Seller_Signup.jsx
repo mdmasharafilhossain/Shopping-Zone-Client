@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link,  useNavigate } from "react-router-dom";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -14,6 +14,9 @@ import useAxiosPublic from "../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 
 
 const Seller_Signup = () => {
+  useEffect(()=>{
+    document.title = "ShoppingZone | SellerSignUp"
+  },[]);
     const { createUser } = useContext(AuthContext);
     const AxiosPublic = useAxiosPublic();
   const [showPassword, setShowPassword] = useState(false);

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth/web-extension";
 import useAxiosPublic from "../Shared/Hooks/useAxiosPublic/useAxiosPublic";
@@ -15,6 +15,9 @@ const auth = getAuth(app);
 
 
 const Login = () => {
+  useEffect(()=>{
+    document.title = "ShoppingZone | Login"
+  },[]);
     const [showPassword, setShowPassword] = useState(false);
     const AxiosPublic = useAxiosPublic();
     const navigate = useNavigate();

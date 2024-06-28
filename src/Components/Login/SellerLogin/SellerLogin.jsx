@@ -1,7 +1,7 @@
 
 import { Link, useNavigate } from "react-router-dom";
 
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
@@ -15,6 +15,9 @@ import app from "../../FireBase/firebase";
 const auth = getAuth(app);
 
 const SellerLogin = () => {
+  useEffect(()=>{
+    document.title = "ShoppingZone | SellerLogin"
+  },[]);
     const [showPassword, setShowPassword] = useState(false);
     
     const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link,  useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProviders/AuthProviders";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -10,6 +10,9 @@ import Swal from "sweetalert2";
 import app from "../FireBase/firebase";
 const auth = getAuth(app);
 const SignUp = () => {
+  useEffect(()=>{
+    document.title = "ShoppingZone | SignUp"
+  },[]);
     const { createUser, SignInWithGoogle } = useContext(AuthContext);
     const AxiosPublic = useAxiosPublic();
   const [showPassword, setShowPassword] = useState(false);

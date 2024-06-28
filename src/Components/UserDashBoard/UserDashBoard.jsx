@@ -10,6 +10,9 @@ import { FaBox } from 'react-icons/fa';
 import { AuthContext } from "../AuthProviders/AuthProviders";
 
 const UserDashBoard = () => {
+  useEffect(()=>{
+    document.title = "ShoppingZone | Customer"
+  },[]);
   const { user } = useContext(AuthContext);
   const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
 

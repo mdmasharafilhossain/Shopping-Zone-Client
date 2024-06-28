@@ -16,7 +16,9 @@ import useSeller from "../useSeller/useSeller";
 import useAdmin from "../useAdmin/useAdmin";
 
 const AdminDashboard = () => {
-  
+  useEffect(()=>{
+    document.title = "ShoppingZone | Admin"
+  },[]);
   
   const [isUserAdmin] = useAdmin();
   const { user } = useContext(AuthContext);

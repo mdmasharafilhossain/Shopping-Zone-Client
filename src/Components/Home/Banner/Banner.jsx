@@ -8,6 +8,7 @@ import banner2 from "../../../assets/bannermens.png";
 import banner3 from "../../../assets/banneroffer.png";
 import banner4 from "../../../assets/img3.jpg";
 import banner5 from "../../../assets/img4.jpg";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -28,9 +29,11 @@ const Banner = () => {
               src={banner1}
               alt="Banner 1"
             />
+            <Link to="/flashSale">
             <button className=" hidden md:block lg:block btn absolute border-orange-500 hover:bg-orange-400 lg:px-10   top-3/4 text-[6px] md:text-xs lg:text-sm md:left-[200px] lg:left-[500px] transform -translate-y-1/2">
               Shop Now
             </button>
+            </Link>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -39,9 +42,11 @@ const Banner = () => {
             src={banner2}
             alt="Banner 2"
           />
+          <Link to="/flashSale">
           <button className=" hidden md:block lg:block btn absolute border-orange-500 hover:bg-orange-400 lg:px-10   top-3/4 text-[6px] md:text-xs lg:text-sm md:left-[200px] lg:left-[500px] transform -translate-y-1/2">
             Shop Now
           </button>
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
           <img
@@ -50,9 +55,9 @@ const Banner = () => {
             alt="Banner 3"
           />
 
-          <button className="hidden md:block lg:block btn absolute border-gray-400 hover:bg-gray-400 lg:px-10 top-3/4 text-[6px] md:text-xs lg:text-sm md:left-[200px] lg:left-[500px] transform -translate-y-1/2">
+          <Link to="/flashSale"><button className="hidden md:block lg:block btn absolute border-gray-400 hover:bg-gray-400 lg:px-10 top-3/4 text-[6px] md:text-xs lg:text-sm md:left-[200px] lg:left-[500px] transform -translate-y-1/2">
             Shop Now
-          </button>
+          </button></Link>
         </SwiperSlide>
         <SwiperSlide>
           <img
@@ -60,9 +65,9 @@ const Banner = () => {
             src={banner4}
             alt="Banner 3"
           />
-          <button className="hidden md:block lg:block btn absolute border-blue-500 hover:bg-blue-400 lg:px-10  top-[75%] lg:top-[90%] [6px] md:text-xs lg:text-sm md:left-[200px] lg:left-[500px] transform -translate-y-1/2">
+          <Link to="/flashSale"><button className="hidden md:block lg:block btn absolute border-blue-500 hover:bg-blue-400 lg:px-10  top-[75%] lg:top-[90%] [6px] md:text-xs lg:text-sm md:left-[200px] lg:left-[500px] transform -translate-y-1/2">
             Shop Now
-          </button>
+          </button></Link>
         </SwiperSlide>
         <SwiperSlide>
           <img
@@ -70,9 +75,9 @@ const Banner = () => {
             src={banner5}
             alt="Banner 3"
           />
-          <button className="hidden md:block lg:block btn absolute border-orange-500 hover:bg-orange-400 lg:px-10  top-[75%] lg:top-[80%] [6px] md:text-xs lg:text-sm md:left-[50px] lg:left-[300px] transform -translate-y-1/2">
+          <Link to="/flashSale"><button className="hidden md:block lg:block btn absolute border-orange-500 hover:bg-orange-400 lg:px-10  top-[75%] lg:top-[80%] [6px] md:text-xs lg:text-sm md:left-[50px] lg:left-[300px] transform -translate-y-1/2">
             Shop Now
-          </button>
+          </button></Link>
         </SwiperSlide>
       </Swiper>
     </>

@@ -16,7 +16,9 @@ import { AuthContext } from "../AuthProviders/AuthProviders";
 import useSeller from "../useSeller/useSeller";
 
 const SellerDashboard = () => {
-  
+    useEffect(()=>{
+        document.title = "ShoppingZone | Seller"
+      },[]);
     const [isSeller] =useSeller();
   const { user } = useContext(AuthContext);
   const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
