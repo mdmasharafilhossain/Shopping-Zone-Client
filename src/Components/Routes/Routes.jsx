@@ -173,7 +173,7 @@ export const router = createBrowserRouter([
           element:<MyProductsSeller></MyProductsSeller>
          },
          {
-          path:"SellerDashboard/product/:id",
+          path:"/SellerDashboard/product/seller/:id",
           element:<SellerProductsDetails></SellerProductsDetails>,
           loader: ()=>fetch('http://localhost:5000/allProducts')
          }
