@@ -100,7 +100,7 @@ const AllSellerList = () => {
   return (
     <div>
       <div>
-        <div className="flex justify-evenly my-6 mb-10">
+         <div className="flex justify-evenly my-6 mb-10">
           <h2 className="text-4xl font-bold">
             All <span className="text-[#FF3811]">Seller List</span>
           </h2>
