@@ -16,10 +16,10 @@ const MyProductsSeller = () => {
     const {user} = useContext(AuthContext);
 
     const {  data: AllProducts = [], isLoading,refetch} = useQuery({
-        queryKey: ['AllProducts'],
+        queryKey: ['AllProducts',user?.email],
 
         queryFn: async () => {
-            const res = await AxiosPublic.get('/allProducts')
+            const res = await AxiosPublic.get(`/allProducts/seller/my/${user?.email}`)
             console.log(res.data)
             return res.data;
 
@@ -67,7 +67,7 @@ const handleRemove = async (_id) => {
     return (
         <div>
             <div className="flex justify-evenly my-6 mb-10">
-                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">Manage All <span className='text-[#FF3811]'>Products</span></h2>
+                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">My <span className='text-[#FF3811]'>Products</span></h2>
             </div>
 
             <div className="grid grid-cols-5 gap-10 ml-10 mb-10">
@@ -105,7 +105,7 @@ const handleRemove = async (_id) => {
                     </div>
                     {/* Button */}
                     <div className="flex gap-2 mt-2">
-                                           <Link to={`/AdminDashboard/product/${sale._id}`}>
+                                           <Link to={`/SellerDashboard/product/${sale._id}`}>
                                            <button 
                                                 className="border flex py-2 px-3 text-sm font-bold rounded-md border-orange-600 hover:bg-orange-600 hover:shadow-xl hover:text-white">
                                                <CgDetailsMore className="mt-1"/> Details

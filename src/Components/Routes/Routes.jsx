@@ -27,6 +27,7 @@ import SellerDashboard from "../SellerDashboard/SellerDashboard";
 import SellerOrder from "../SellerDashboard/SellerOrder/SellerOrder";
 import Seller_Product_Upload from "../SellerDashboard/Seller_Product_Upload/Seller_Product_Upload";
 import MyProductsSeller from "../SellerDashboard/MyProductsSeller/MyProductsSeller";
+import SellerProductsDetails from "../SellerDashboard/SellerProductDetails/SellerProductsDetails";
 
 export const router = createBrowserRouter([
     {
@@ -170,6 +171,11 @@ export const router = createBrowserRouter([
          {
           path:"/SellerDashboard/MyProduct",
           element:<MyProductsSeller></MyProductsSeller>
+         },
+         {
+          path:"SellerDashboard/product/:id",
+          element:<SellerProductsDetails></SellerProductsDetails>,
+          loader: ()=>fetch('http://localhost:5000/allProducts')
          }
 
       ] 
