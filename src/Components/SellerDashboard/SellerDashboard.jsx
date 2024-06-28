@@ -150,7 +150,7 @@ const SellerDashboard = () => {
                 
                 
                 <li
-                  onClick={handleHomeRouteClick}
+                   onClick={handleHomeRouteClick}
                   className='font-bold text-sm text-white'
                 >
                   <NavLink
