@@ -174,7 +174,7 @@ const Header = () => {
           {/* Website Logo */}
           <div>
             <Link to="/">
-              <img className="md:w-44 lg:w-44" src={logo} alt="Website Logo" />
+              <img className="w-28 md:w-44 lg:w-44 " src={logo} alt="Website Logo" />
             </Link>
           </div>
         </div>
@@ -258,16 +258,16 @@ const Header = () => {
           </ul>
         </div>
         {/* Search Bar and User Controls */}
-        <div className="navbar-end space-x-7 mr-16">
+        <div className="navbar-end  space-x-1 md:space-x-7 lg:space-x-7 mr-4 md:mr-16 lg:mr-10">
           {/* Search Bar */}
-          <div className="border-l flex">
+          <div className="border-l flex ">
             <input
               type="text"
               placeholder="Search For Products"
               className="border rounded-lg py-2 px-6 focus:border-orange-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-[450px] xl:w-96"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              onKeyDown={handleSearch} // Call handleSearch on Enter key press
+              onKeyDown={handleSearch} 
             />
             <button
               onClick={handleSearch}
