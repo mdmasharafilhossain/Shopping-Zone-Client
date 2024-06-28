@@ -100,7 +100,8 @@ const CheckoutForm = () => {
           date: new Date(),
           transaction_ID: paymentIntent.id,
           Product_quantitys:cart.map(item=>item?.quantity),
-          Product_images:cart.map(item=>item.image)
+          Product_images:cart.map(item=>item.image),
+          status:"pending"
         };
         
         axiosSecure.post("/payments", payment).then((res) => {
