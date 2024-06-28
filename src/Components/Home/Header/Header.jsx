@@ -172,7 +172,7 @@ const Header = () => {
             )}
           </div>
           {/* Website Logo */}
-          <div>
+           <div>
             <Link to="/">
               <img className="w-28 md:w-44 lg:w-44 " src={logo} alt="Website Logo" />
             </Link>
