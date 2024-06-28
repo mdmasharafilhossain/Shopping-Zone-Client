@@ -240,6 +240,16 @@ const SignUp = () => {
                       </button>
                     </Link>
                   </div>
+                  <div className="sm:flex items-center justify-center sm:space-x-2">
+                    <p className="text-xs sm:text-base">
+                      Want to be seller?
+                    </p>
+                    <Link to="/seller_signUp" className="">
+                      <button className="text-xs sm:text-base underline text-amber-500 font-bold">
+                        SignUp
+                      </button>
+                    </Link>
+                  </div>
                 </form>
               </div>
             </div>

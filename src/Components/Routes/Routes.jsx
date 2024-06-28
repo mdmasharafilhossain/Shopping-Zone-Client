@@ -33,11 +33,18 @@ import SellerEditProduct from "../SellerDashboard/SellerEditProduct/SellerEditPr
 import SellerPrfile from "../SellerDashboard/SellerProfile/SellerPrfile";
 import SellerEditProfile from "../SellerDashboard/SellerEditProfile/SellerEditProfile";
 import AllSellerList from "../AdminDashboard/AllSellerList/AllSellerList";
+import ContactUs from "../Home/ContatctUs/ContactUs";
+import ErrorPage from "../ErrorPage/ErrorPage";
+import Statistics from "../Statictics/Statistics";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
        {
         path:"/",
@@ -53,7 +60,11 @@ export const router = createBrowserRouter([
         element:<SpecificCategory></SpecificCategory>,
         loader: ()=>fetch('http://localhost:5000/categories')
        },
-
+        
+       {
+         path:"/contact",
+         element:<ContactUs></ContactUs>
+       },
        {
          path:"/home/:category/category/:id",
          element:<SpecificCategoryCards></SpecificCategoryCards>,
@@ -83,13 +94,13 @@ export const router = createBrowserRouter([
       //  ---------Payment--------
          {
           path:"/MakePaymentRoute",
-          element:<MakePayment></MakePayment>
+          element:<PrivateRoute><MakePayment></MakePayment></PrivateRoute>
          },
          {
           path: "/stripeGateway",
           element: (
             
-              <Stripe></Stripe>
+             <PrivateRoute> <Stripe></Stripe></PrivateRoute>
             
           ),
         }, 
@@ -104,7 +115,8 @@ export const router = createBrowserRouter([
     // User Dashboard 
     {
       path:"/userdashboard",
-      element:<UserDashBoard></UserDashBoard>,
+      element:<PrivateRoute><UserDashBoard></UserDashBoard></PrivateRoute>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
           path:"/userdashboard/account",
@@ -133,7 +145,8 @@ export const router = createBrowserRouter([
     // Admin Dashboard
     {
       path:"/AdminDashboard",
-      element:<AdminDashboard></AdminDashboard>,
+      element:<AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
           path: "/AdminDashboard/AllUsers",
@@ -164,6 +177,10 @@ export const router = createBrowserRouter([
           path:"/AdminDashboard/editProduct/:id",
           element:<EditProductAdmin></EditProductAdmin>,
           loader: ()=>fetch('http://localhost:5000/allProducts')
+        },
+        {
+          path:"/AdminDashboard/Statistics",
+          element:<Statistics></Statistics>
         }
 
       ]
@@ -172,7 +189,8 @@ export const router = createBrowserRouter([
     // Seller DashBoard
     {
       path:"/SellerDashboard",
-      element:<SellerDashboard></SellerDashboard>,
+      element:<SellerRoute><SellerDashboard></SellerDashboard></SellerRoute>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
           path:"/SellerDashboard/EditProfile",

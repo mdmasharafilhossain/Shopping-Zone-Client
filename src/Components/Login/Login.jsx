@@ -181,12 +181,22 @@ const Login = () => {
                     <Link to="/signup">
                       <a
                         href="#"
-                        className="label-text-alt link link-hover text-base -ml-3 lg:ml-[88px] md:ml-[50px] text-center"
+                        className="label-text-alt link link-hover text-base -ml-3 lg:ml-[130px] md:ml-[50px] text-center"
                       >
                         Do not Have an Account? SignUp
                       </a>
                     </Link>
                   </label>
+                  <div className="sm:flex items-center justify-center sm:space-x-2">
+                    <p className="text-xs sm:text-base">
+                      You are a Seller?
+                    </p>
+                    <Link to="/seller_login" className="">
+                      <button className="text-xs sm:text-base underline text-amber-500 font-bold">
+                        Login
+                      </button>
+                    </Link>
+                  </div>
                 </form>
               </div>
             </div>
