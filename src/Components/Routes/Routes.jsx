@@ -37,6 +37,8 @@ import ContactUs from "../Home/ContatctUs/ContactUs";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Statistics from "../Statictics/Statistics";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 export const router = createBrowserRouter([
     {
@@ -143,7 +145,7 @@ export const router = createBrowserRouter([
     // Admin Dashboard
     {
       path:"/AdminDashboard",
-      element:<PrivateRoute><AdminDashboard></AdminDashboard></PrivateRoute>,
+      element:<AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>,
       errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
@@ -187,7 +189,7 @@ export const router = createBrowserRouter([
     // Seller DashBoard
     {
       path:"/SellerDashboard",
-      element:<PrivateRoute><SellerDashboard></SellerDashboard></PrivateRoute>,
+      element:<SellerRoute><SellerDashboard></SellerDashboard></SellerRoute>,
       errorElement:<ErrorPage></ErrorPage>,
       children:[
         {

@@ -9,7 +9,7 @@ const useSeller = () => {
     const {user,loading} = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     
-    const {data:isSeller} = useQuery({
+    const {data:isSeller,isPending: isSellerLoading} = useQuery({
         queryKey:[user?.email, 'isSeller'],
         enabled:!loading && !!user?.email,
         queryFn: async()=>{
@@ -21,7 +21,7 @@ const useSeller = () => {
             
         }
     })
-    return [isSeller]
+    return [isSeller,isSellerLoading]
 };
 
 export default useSeller;
