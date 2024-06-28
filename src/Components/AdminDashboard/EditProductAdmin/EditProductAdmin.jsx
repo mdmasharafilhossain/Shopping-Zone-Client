@@ -3,12 +3,10 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProviders/AuthProviders";
 import useAxiosPublic from "../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
 import { useLoaderData, useParams } from "react-router-dom";
 
 const EditProductAdmin = () => {
     const { user } = useContext(AuthContext);
-    const { register, handleSubmit } = useForm();
     const axiosPublic = useAxiosPublic();
 
     const CardsInfo = useLoaderData();
@@ -16,17 +14,31 @@ const EditProductAdmin = () => {
     const AllProducts = CardsInfo?.find((brand) => brand._id === id);
     const DiscountPercentage = Math.round(((AllProducts?.price - AllProducts?.discount_price) / AllProducts?.price) * 100);
 
-    console.log(user?.email);
+    const { register, handleSubmit, setValue } = useForm({
+        defaultValues: {
+            name: AllProducts?.name || '',
+            color: AllProducts?.color || '',
+            price: AllProducts?.price || '',
+            discount_price: AllProducts?.discount_price || '',
+            email: user?.email || '',
+            size: AllProducts?.size || '',
+            brand: AllProducts?.brand || '',
+            warranty: AllProducts?.warranty || '',
+            details: AllProducts?.details || '',
+            type: AllProducts?.type || '',
+            category: AllProducts?.category || ''
+        }
+    });
 
     const onSubmit = async (data) => {
-        console.log(data);
+        const parseFloatOrZero = (value) => (isNaN(parseFloat(value)) ? 0 : parseFloat(value));
+
         const ProductsInfo = {
             code: AllProducts.length + 1,
-            // Remove image related fields
             name: data.name,
             color: data.color,
-            price: parseFloat(data.price),
-            discount_price: parseFloat(data.discount_price) || 0,
+            price: parseFloatOrZero(data.price),
+            discount_price: parseFloatOrZero(data.discount_price),
             seller_email: user?.email,
             rating: 4.4,
             size: data.size,
@@ -36,14 +48,13 @@ const EditProductAdmin = () => {
             type: data.type,
             category: data.category
         };
-        console.log(ProductsInfo);
-        const ArticleRes = await axiosPublic.post('/allProducts', ProductsInfo);
-        console.log(ArticleRes.data);
-        if (ArticleRes.data.insertedId) {
+        console.log("Info",ProductsInfo)
+        const ArticleRes = await axiosPublic.put(`/allProducts/${id}`, ProductsInfo);
+        if (ArticleRes.data.modifiedCount) {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Product Added Successfully",
+                title: "Product Updated Successfully",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -53,7 +64,7 @@ const EditProductAdmin = () => {
     return (
         <div>
             <div className="flex justify-evenly my-6 mb-10">
-                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">Upload <span className='text-[#FF3811]'>Products</span></h2>
+                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">Edit <span className='text-[#FF3811]'>Products</span></h2>
             </div>
             
             <div className="mt-10 border-2 mb-10 rounded-md border-orange-500 ml-10">
