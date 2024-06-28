@@ -6,7 +6,7 @@ import { AuthContext } from "../../AuthProviders/AuthProviders";
 const MyOrder = () => {
     const Axiossecure = useAxiosSecure();
     const { user } = useContext(AuthContext);
-    const { refetch, data: payments = [] } = useQuery({
+    const { data: payments = [],isLoading } = useQuery({
         queryKey: ['payments', user?.email],
         queryFn: async () => {
             const res = await Axiossecure.get(`/payments/user/${user?.email}`);
@@ -14,7 +14,14 @@ const MyOrder = () => {
         },
         enabled: !!user?.email, 
     });
-
+    if (isLoading) {
+        return (
+          <div className="flex justify-center items-center min-h-screen">
+            <span className="loading loading-spinner text-error text-9xl"></span>
+          </div>
+        );
+      }
+    
     return (
         <div className="container mx-auto p-4">
             <h2 className="text-center font-bold mt-6 text-2xl md:text-4xl">
