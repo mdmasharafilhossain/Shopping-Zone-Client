@@ -53,7 +53,11 @@ export const router = createBrowserRouter([
         element:<SpecificCategory></SpecificCategory>,
         loader: ()=>fetch('http://localhost:5000/categories')
        },
-
+        
+       {
+         path:"/contact",
+         
+       },
        {
          path:"/home/:category/category/:id",
          element:<SpecificCategoryCards></SpecificCategoryCards>,
