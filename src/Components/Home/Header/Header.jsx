@@ -348,6 +348,11 @@ const Header = () => {
             )}
           </div>
           {/* Cart Drawer */}
+          {
+            isSeller || isUserAdmin ? 
+            ""
+            :
+<div>
           <Link to="/userdashboard/myCart">
             <button
               className="relative">
@@ -358,6 +363,8 @@ const Header = () => {
               </span>
             </button>
           </Link>
+          </div>
+          }
         </div>
       </div>
     </div>
