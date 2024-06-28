@@ -139,7 +139,7 @@ const Header = () => {
                 {/* Contact Us NavLink */}
                 <li>
                   <NavLink
-                    to="/feedback"
+                    to="/contact"
                     style={{ fontWeight: "bold", fontSize: "15px" }}
                     className={({ isActive, isPending }) =>
                       isPending
@@ -226,7 +226,7 @@ const Header = () => {
             {/* Contact Us NavLink */}
             <li className="border-r-2 border-orange-500 pr-1" style={{ marginRight: "1rem" }}>
               <NavLink
-                to="/feedback"
+                to="/contact"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
                 className={({ isActive, isPending }) =>
                   isPending

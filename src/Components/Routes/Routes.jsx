@@ -33,6 +33,7 @@ import SellerEditProduct from "../SellerDashboard/SellerEditProduct/SellerEditPr
 import SellerPrfile from "../SellerDashboard/SellerProfile/SellerPrfile";
 import SellerEditProfile from "../SellerDashboard/SellerEditProfile/SellerEditProfile";
 import AllSellerList from "../AdminDashboard/AllSellerList/AllSellerList";
+import ContactUs from "../Home/ContatctUs/ContactUs";
 
 export const router = createBrowserRouter([
     {
@@ -56,7 +57,7 @@ export const router = createBrowserRouter([
         
        {
          path:"/contact",
-         
+         element:<ContactUs></ContactUs>
        },
        {
          path:"/home/:category/category/:id",
