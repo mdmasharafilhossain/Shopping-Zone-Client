@@ -19,7 +19,7 @@ const Header = () => {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
-  const [isSeller] =useSeller();
+  const [isSeller] = useSeller();
   const [isUserAdmin] = useAdmin();
 
   const handleLogOut = () => {
@@ -40,15 +40,17 @@ const Header = () => {
   };
 
   const handleSearch = (e) => {
-    setSearchText(e.target.value);
-
-    
     if (e.key === 'Enter') {
-      localStorage.setItem("searchText", JSON.stringify(searchText)); 
-     console.log()
-      navigate("/flashSale"); 
-      setSearchText(""); 
+      localStorage.setItem("searchText", JSON.stringify(searchText));
+      navigate("/flashSale");
+      setSearchText("");
     }
+  };
+
+  const handleSearchButtonClick = () => {
+    localStorage.setItem("searchText", JSON.stringify(searchText));
+    navigate("/flashSale");
+    setSearchText("");
   };
 
   return (
@@ -79,7 +81,7 @@ const Header = () => {
                   />
                 </svg>
               ) : (
-                <FiAlignJustify className="text-lg"/>
+                <FiAlignJustify className="text-lg" />
               )}
             </div>
             {/* Dropdown Menu Items */}
@@ -97,8 +99,8 @@ const Header = () => {
                       isPending
                         ? "pending"
                         : isActive
-                        ? "text-orange-500 underline"
-                        : ""
+                          ? "text-orange-500 underline"
+                          : ""
                     }
                   >
                     <IoHomeOutline className="text-orange-500 text-2xl" />
@@ -145,8 +147,8 @@ const Header = () => {
                       isPending
                         ? "pending"
                         : isActive
-                        ? "text-orange-700 underline"
-                        : ""
+                          ? "text-orange-700 underline"
+                          : ""
                     }
                   >
                     <IoMdContact className="text-orange-500 text-2xl" />
@@ -162,8 +164,8 @@ const Header = () => {
                       isPending
                         ? "pending"
                         : isActive
-                        ? "text-red-700 underline"
-                        : ""
+                          ? "text-red-700 underline"
+                          : ""
                     }
                   >
                     <FaStore className="text-orange-500 text-2xl" />
@@ -174,7 +176,7 @@ const Header = () => {
             )}
           </div>
           {/* Website Logo */}
-           <div>
+          <div>
             <Link to="/">
               <img className="w-28 md:w-44 lg:w-44 " src={logo} alt="Website Logo" />
             </Link>
@@ -192,8 +194,8 @@ const Header = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-orange-500 underline"
-                    : ""
+                      ? "text-orange-500 underline"
+                      : ""
                 }
               >
                 <IoHomeOutline className="text-orange-500 text-2xl" />
@@ -232,8 +234,8 @@ const Header = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-orange-700 underline"
-                    : ""
+                      ? "text-orange-700 underline"
+                      : ""
                 }
               >
                 <IoMdContact className="text-orange-500 text-2xl" />
@@ -249,8 +251,8 @@ const Header = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-red-700 underline"
-                    : ""
+                      ? "text-red-700 underline"
+                      : ""
                 }
               >
                 <FaStore className="text-orange-500 text-2xl" />
@@ -269,10 +271,10 @@ const Header = () => {
               className="border rounded-lg py-2 px-6 focus:border-orange-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-[450px] xl:w-96"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              onKeyDown={handleSearch} 
+              onKeyDown={handleSearch}
             />
             <button
-              onClick={handleSearch}
+              onClick={handleSearchButtonClick}
               className="-ml-6 border px-1 rounded-r-md bg-orange-100 hover:bg-orange-400"
             >
               <IoIosSearch className="text-2xl text-orange-600 hover:text-white" />
@@ -303,31 +305,31 @@ const Header = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-50"
                 >
                   {
-                    isSeller || isUserAdmin ? "":
-                    <li>
-                    <Link to="/userdashboard/account">
-                      <a className="justify-between">My Account</a>
-                    </Link>
-                  </li>
+                    isSeller || isUserAdmin ? "" :
+                      <li>
+                        <Link to="/userdashboard/account">
+                          <a className="justify-between">My Account</a>
+                        </Link>
+                      </li>
                   }
                   {
                     isUserAdmin == true ?
-                    <Link to="/AdminDashboard">
-                    <li>
-                      <a>Admin Dashboard</a>
-                    </li>
-                  </Link>:
-                  ""
+                      <Link to="/AdminDashboard">
+                        <li>
+                          <a>Admin Dashboard</a>
+                        </li>
+                      </Link> :
+                      ""
                   }
-                  
+
                   {
                     isSeller === true ?
-                    <Link to="/SellerDashboard">
-                    <li>
-                      <a>Seller Dashboard</a>
-                    </li>
-                  </Link> : 
-                  ""
+                      <Link to="/SellerDashboard">
+                        <li>
+                          <a>Seller Dashboard</a>
+                        </li>
+                      </Link> :
+                      ""
                   }
                   <li>
                     <button onClick={handleLogOut}>Logout</button>
@@ -347,37 +349,15 @@ const Header = () => {
           </div>
           {/* Cart Drawer */}
           <Link to="/userdashboard/myCart">
-          <button 
-           className="relative">
-                  <FaCartPlus className="text-2xl" />
-                  {/* Display cart item count */}
-                  <span className="absolute -top-2 -right-2 h-5 w-5 bg-orange-500 text-white text-xs flex items-center justify-center rounded-full">
-                    {cart.length}
-                  </span>
-                </button>
+            <button
+              className="relative">
+              <FaCartPlus className="text-2xl" />
+              {/* Display cart item count */}
+              <span className="absolute -top-2 -right-2 h-5 w-5 bg-orange-500 text-white text-xs flex items-center justify-center rounded-full">
+                {cart.length}
+              </span>
+            </button>
           </Link>
-            {/* <div className="drawer-content">
-              <label htmlFor="my-drawer-4" className="drawer-button btn relative">
-                
-              </label>
-            </div> */}
-            {/* Cart Sidebar */}
-            {/* <div className="drawer-side z-50">
-              <label
-                htmlFor="my-drawer-4"
-                aria-label="close sidebar"
-                className="drawer-overlay"
-              ></label>
-              <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                <li>
-                  <a>Sidebar Item 1</a>
-                </li>
-                <li>
-                  <a>Sidebar Item 2</a>
-                </li>
-              </ul>
-            </div> */}
-          
         </div>
       </div>
     </div>
