@@ -28,6 +28,7 @@ import SellerOrder from "../SellerDashboard/SellerOrder/SellerOrder";
 import Seller_Product_Upload from "../SellerDashboard/Seller_Product_Upload/Seller_Product_Upload";
 import MyProductsSeller from "../SellerDashboard/MyProductsSeller/MyProductsSeller";
 import SellerProductsDetails from "../SellerDashboard/SellerProductDetails/SellerProductsDetails";
+import EditProductAdmin from "../AdminDashboard/EditProductAdmin/EditProductAdmin";
 
 export const router = createBrowserRouter([
     {
@@ -150,6 +151,10 @@ export const router = createBrowserRouter([
         {
           path:"/AdminDashboard/All-Order",
           element:<AdminAllOrder></AdminAllOrder>
+        },
+        {
+          path:"/AdminDashboard/editProduct/:id",
+          element:<EditProductAdmin></EditProductAdmin>
         }
 
       ]

@@ -146,6 +146,20 @@ const SellerDashboard = () => {
                     My Products
                   </NavLink>
                 </li>
+                <li
+                  onClick={handleRouteClick}
+                  className='font-bold text-sm text-white'
+                >
+                  <NavLink
+                    to='/SellerDashboard/AllOrder'
+                    className={({ isActive }) =>
+                      `{ ${isActive ? " border  " : " "}}`
+                    }
+                  >
+                    <FaClipboardList />
+                    Customer Order
+                  </NavLink>
+                </li>
                 {/* <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'
