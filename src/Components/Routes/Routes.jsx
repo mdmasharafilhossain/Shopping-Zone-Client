@@ -22,6 +22,7 @@ import Stripe from "../MakePayment/Stripe/Stripe";
 import SpecificCategory from "../Home/SpecificCategory/SpecificCategory";
 import SpecificCategoryCards from "../Home/SpecificCategory/SpecificCategoryCard/SpecificCategoryCards";
 import MyOrder from "../UserDashBoard/MyOrder/MyOrder";
+import AdminAllOrder from "../AdminDashboard/AllOrder/AdminAllOrder";
 
 export const router = createBrowserRouter([
     {
@@ -140,6 +141,10 @@ export const router = createBrowserRouter([
         {
           path:"/AdminDashboard/NewProduct",
           element:<AdminUploadProducts></AdminUploadProducts>
+        },
+        {
+          path:"/AdminDashboard/All-Order",
+          element:<AdminAllOrder></AdminAllOrder>
         }
 
       ]

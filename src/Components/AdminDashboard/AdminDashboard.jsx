@@ -6,11 +6,10 @@ import { FiAlignJustify } from "react-icons/fi";
 import { FaUsers } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { useState } from "react";
-// import { TiNews } from "react-icons/ti";
+import { FaClipboardList } from 'react-icons/fa';
+
 import { FaPeopleGroup } from "react-icons/fa6";
-// import { MdPeopleAlt } from "react-icons/md";
-// import { MdReport } from "react-icons/md";
-// import { FaBook } from "react-icons/fa";
+
 import { FcStatistics } from "react-icons/fc";
 import { AuthContext } from "../AuthProviders/AuthProviders";
 
@@ -131,6 +130,20 @@ const AdminDashboard = () => {
                   >
                     <FaUpload />
                     Upload New Products
+                  </NavLink>
+                </li>
+                <li
+                  onClick={handleRouteClick}
+                  className='font-bold text-sm text-white'
+                >
+                  <NavLink
+                    to='/AdminDashboard/All-Order'
+                    className={({ isActive }) =>
+                      `{ ${isActive ? " border  " : " "}}`
+                    }
+                  >
+                    <FaClipboardList />
+                    All Orders
                   </NavLink>
                 </li>
                 {/* <li
