@@ -34,11 +34,13 @@ import SellerPrfile from "../SellerDashboard/SellerProfile/SellerPrfile";
 import SellerEditProfile from "../SellerDashboard/SellerEditProfile/SellerEditProfile";
 import AllSellerList from "../AdminDashboard/AllSellerList/AllSellerList";
 import ContactUs from "../Home/ContatctUs/ContactUs";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
        {
         path:"/",
@@ -110,6 +112,7 @@ export const router = createBrowserRouter([
     {
       path:"/userdashboard",
       element:<UserDashBoard></UserDashBoard>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
           path:"/userdashboard/account",
@@ -139,6 +142,7 @@ export const router = createBrowserRouter([
     {
       path:"/AdminDashboard",
       element:<AdminDashboard></AdminDashboard>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
           path: "/AdminDashboard/AllUsers",
@@ -178,6 +182,7 @@ export const router = createBrowserRouter([
     {
       path:"/SellerDashboard",
       element:<SellerDashboard></SellerDashboard>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
           path:"/SellerDashboard/EditProfile",
