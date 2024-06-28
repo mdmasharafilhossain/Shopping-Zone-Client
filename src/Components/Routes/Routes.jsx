@@ -23,6 +23,9 @@ import SpecificCategory from "../Home/SpecificCategory/SpecificCategory";
 import SpecificCategoryCards from "../Home/SpecificCategory/SpecificCategoryCard/SpecificCategoryCards";
 import MyOrder from "../UserDashBoard/MyOrder/MyOrder";
 import AdminAllOrder from "../AdminDashboard/AllOrder/AdminAllOrder";
+import SellerDashboard from "../SellerDashboard/SellerDashboard";
+import SellerOrder from "../SellerDashboard/SellerOrder/SellerOrder";
+import Seller_Product_Upload from "../SellerDashboard/Seller_Product_Upload/Seller_Product_Upload";
 
 export const router = createBrowserRouter([
     {
@@ -148,5 +151,22 @@ export const router = createBrowserRouter([
         }
 
       ]
+    },
+
+    // Seller DashBoard
+    {
+      path:"/SellerDashboard",
+      element:<SellerDashboard></SellerDashboard>,
+      children:[
+         {
+          path:"/SellerDashboard/AllOrder",
+          element:<SellerOrder></SellerOrder>
+         },
+         {
+          path:"/SellerDashboard/Products",
+          element:<Seller_Product_Upload></Seller_Product_Upload>
+         }
+
+      ] 
     }
   ]);
