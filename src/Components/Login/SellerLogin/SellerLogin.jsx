@@ -74,7 +74,7 @@ const SellerLogin = () => {
         <div className="w-full mx-auto">
           <img
             className=""
-            src="https://i.ibb.co/VCWMv70/10173919-8619.jpg"
+            src="https://i.ibb.co/hcPZdV7/stock-vector-face-scan-concept-man-standing-near-smartphone-authorization-and-authentication-login-a.jpg"
             alt=""
           />
         </div>
