@@ -3,11 +3,12 @@ import { useContext, useEffect } from "react";
 import { FiPackage } from 'react-icons/fi';
 import { FaUpload } from 'react-icons/fa';
 import { FiAlignJustify } from "react-icons/fi";
-import { FaUsers } from "react-icons/fa";
+
+import { FiEdit} from "react-icons/fi";
 import { FaHome } from "react-icons/fa";
 import { useState } from "react";
 import { FaClipboardList } from 'react-icons/fa';
-
+import { MdOutlineAccountBox } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
 
 import { FcStatistics } from "react-icons/fc";
@@ -78,13 +79,13 @@ const SellerDashboard = () => {
                   className='font-bold text-sm text-white '
                 >
                   <NavLink
-                    to='/AdminDashboard/AllUsers'
+                    to="/SellerDashboard/Profile"
                     className={({ isActive }) =>
                       `{ ${isActive ? " text-white border hover:bg-none " : " "}}`
                     }
                   >
                     {" "}
-                    <FaUsers />
+                    <MdOutlineAccountBox />
                    My Profile
                   </NavLink>
                 </li>
@@ -93,31 +94,17 @@ const SellerDashboard = () => {
                   className='font-bold text-sm  text-white '
                 >
                   <NavLink
-                    to="/AdminDashboard/AllHiringManagers"
+                    to="/SellerDashboard/EditProfile"
                     className={({ isActive }) =>
                       `{ ${isActive ? " text-white border " : " "}}`
                     }
                   >
                     {" "}
-                    <FaPeopleGroup />
+                    <FiEdit />
                     Edit Profile
                   </NavLink>
                 </li>
-                {/* <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to=''
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border text-white hover:none " : " "}}`
-                    }
-                  >
-                    {" "}
-                    <FiPackage />
-                    My Products
-                  </NavLink>
-                </li> */}
+              
                 <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'
@@ -160,92 +147,10 @@ const SellerDashboard = () => {
                     Customer Order
                   </NavLink>
                 </li>
-                {/* <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/all-news'
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                    <TiNews />
-                    All News
-                  </NavLink>
-                </li>
+                
+                
                 <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/PremiumUser'
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                    <MdPeopleAlt />
-                    Premium Users
-                  </NavLink>
-                </li>
-                <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/premiumusercourses'
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                   <FaBook />
-                   Add Courses
-                  </NavLink>
-                </li>
-                <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/allpremiumcourses '
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                   <FaBook />
-                    Premium User Courses
-                  </NavLink>
-                </li>
-                <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/alljobreport'
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                   <MdReport />
-                   Job Report
-                  </NavLink>
-                </li> */}
-                <li
-                  onClick={handleRouteClick}
-                  className='font-bold text-sm text-white'
-                >
-                  <NavLink
-                    to='/AdminDashboard/Statistics'
-                    className={({ isActive }) =>
-                      `{ ${isActive ? " border  " : " "}}`
-                    }
-                  >
-                    <FcStatistics />
-                    Statistics
-                  </NavLink>
-                </li>
-                <li
-                  onClick={handleHomeRouteClick}
+                   onClick={handleHomeRouteClick}
                   className='font-bold text-sm text-white'
                 >
                   <NavLink
