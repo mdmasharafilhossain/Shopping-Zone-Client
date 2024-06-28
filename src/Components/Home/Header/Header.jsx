@@ -9,6 +9,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import useCart from "../../Shared/Hooks/useCart/useCart";
 import { FaFemale, FaMale } from 'react-icons/fa';
 import useSeller from "../../useSeller/useSeller";
+import useAdmin from "../../useAdmin/useAdmin";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,6 +20,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [isSeller] =useSeller();
+  const [isUserAdmin] = useAdmin();
 
   const handleLogOut = () => {
     LogOut()
@@ -305,11 +307,15 @@ const Header = () => {
                       <a className="justify-between">My Account</a>
                     </Link>
                   </li>
-                  <Link to="/AdminDashboard">
+                  {
+                    isUserAdmin == true ?
+                    <Link to="/AdminDashboard">
                     <li>
                       <a>Admin Dashboard</a>
                     </li>
-                  </Link>
+                  </Link>:
+                  ""
+                  }
                   
                   {
                     isSeller === true ?

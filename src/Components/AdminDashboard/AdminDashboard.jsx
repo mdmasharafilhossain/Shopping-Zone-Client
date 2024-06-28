@@ -12,11 +12,13 @@ import { FaPeopleGroup } from "react-icons/fa6";
 
 import { FcStatistics } from "react-icons/fc";
 import { AuthContext } from "../AuthProviders/AuthProviders";
+import useSeller from "../useSeller/useSeller";
+import useAdmin from "../useAdmin/useAdmin";
 
 const AdminDashboard = () => {
   
-  const [isUserAdmin] = useState(true);
-  const [isHiringManagerAdmin] =  useState(true);
+  
+  const [isUserAdmin] = useAdmin();
   const { user } = useContext(AuthContext);
   const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
   
@@ -37,7 +39,7 @@ const AdminDashboard = () => {
   return (
     <div className='flex '>
       {
-        isUserAdmin || isHiringManagerAdmin ?  
+        isUserAdmin  ?  
         
         <>
         <div className="max-h-[400px] sticky z-50 top-0">
