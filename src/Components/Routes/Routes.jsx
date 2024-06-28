@@ -186,7 +186,8 @@ export const router = createBrowserRouter([
          },
          {
           path:"/SellerDashboard/editProduct/:id",
-          element:<SellerEditProduct></SellerEditProduct>
+          element:<SellerEditProduct></SellerEditProduct>,
+          loader: ()=>fetch('http://localhost:5000/allProducts')
         }
 
       ] 
