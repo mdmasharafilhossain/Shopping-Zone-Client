@@ -11,7 +11,7 @@ const Home = () => {
      <div className="mt-16">
      <Banner></Banner>
      </div>
-      {/* <FlashSale></FlashSale> */}
+      <FlashSale></FlashSale>
       {/* <AllCategories></AllCategories> */}
       {/* <Footer></Footer> */}
     </div>
