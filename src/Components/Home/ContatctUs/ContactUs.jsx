@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import contactImg from "../../assets/contactImg.jpg";
+import contactImg from "../../../assets/contactImg.jpg";
 import { useRef, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
