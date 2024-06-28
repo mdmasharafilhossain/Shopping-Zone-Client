@@ -29,6 +29,7 @@ import Seller_Product_Upload from "../SellerDashboard/Seller_Product_Upload/Sell
 import MyProductsSeller from "../SellerDashboard/MyProductsSeller/MyProductsSeller";
 import SellerProductsDetails from "../SellerDashboard/SellerProductDetails/SellerProductsDetails";
 import EditProductAdmin from "../AdminDashboard/EditProductAdmin/EditProductAdmin";
+import SellerEditProduct from "../SellerDashboard/SellerEditProduct/SellerEditProduct";
 
 export const router = createBrowserRouter([
     {
@@ -154,7 +155,8 @@ export const router = createBrowserRouter([
         },
         {
           path:"/AdminDashboard/editProduct/:id",
-          element:<EditProductAdmin></EditProductAdmin>
+          element:<EditProductAdmin></EditProductAdmin>,
+          loader: ()=>fetch('http://localhost:5000/allProducts')
         }
 
       ]
@@ -181,7 +183,11 @@ export const router = createBrowserRouter([
           path:"/SellerDashboard/product/seller/:id",
           element:<SellerProductsDetails></SellerProductsDetails>,
           loader: ()=>fetch('http://localhost:5000/allProducts')
-         }
+         },
+         {
+          path:"/SellerDashboard/editProduct/:id",
+          element:<SellerEditProduct></SellerEditProduct>
+        }
 
       ] 
     }

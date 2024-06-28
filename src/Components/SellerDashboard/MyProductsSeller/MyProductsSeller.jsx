@@ -4,9 +4,8 @@ import { AuthContext } from "../../AuthProviders/AuthProviders";
 import { useQuery } from "@tanstack/react-query";
 import Rating from "react-rating";
 import { FaStar, FaRegStar } from "react-icons/fa";
-
 import { CgDetailsMore } from "react-icons/cg";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
@@ -20,7 +19,6 @@ const MyProductsSeller = () => {
     refetch,
   } = useQuery({
     queryKey: ["AllProducts", user?.email],
-
     queryFn: async () => {
       const res = await AxiosPublic.get(
         `/allProducts/seller/my/${user?.email}`
@@ -31,7 +29,7 @@ const MyProductsSeller = () => {
   });
   console.log(user?.email);
 
-  //   Remove functionality
+  // Remove functionality
   const handleRemove = async (_id) => {
     console.log("cart", _id);
     Swal.fire({
@@ -67,6 +65,7 @@ const MyProductsSeller = () => {
       </div>
     );
   }
+
   return (
     <div>
       <div className="flex justify-evenly my-6 mb-10">
@@ -89,11 +88,16 @@ const MyProductsSeller = () => {
                       -{DiscountPercentage}%
                     </p>
                   </div>
-
-                  {/* Cart Image, Text Div */}
+                  <div className="absolute top-2 right-2">
+                    <Link to={`/SellerDashboard/editProduct/${sale._id}`}>
+                      <button className="text-gray-500 hover:text-gray-800">
+                        <MdEdit size={20} />
+                      </button>
+                    </Link>
+                  </div>
                   <div>
                     <img
-                      className="w-40 h-40 mb-2 mx-auto object-scale-down  hover:scale-110 transition-all"
+                      className="w-40 h-40 mb-2 mx-auto object-scale-down hover:scale-110 transition-all"
                       src={sale.image}
                       alt={sale.name}
                     />
@@ -108,7 +112,6 @@ const MyProductsSeller = () => {
                         ট {sale.price}
                       </p>
                     </div>
-                    {/* Rating */}
                     <div className="flex items-center gap-3 mt-5">
                       <Rating
                         initialRating={sale?.rating}
@@ -118,7 +121,6 @@ const MyProductsSeller = () => {
                       />
                       <span className="">({sale?.rating})</span>
                     </div>
-                    {/* Button */}
                     <div className="flex gap-2 mt-2">
                       <Link to={`/SellerDashboard/product/seller/${sale._id}`}>
                         <button className="border flex py-2 px-3 text-sm font-bold rounded-md border-orange-600 hover:bg-orange-600 hover:shadow-xl hover:text-white">
