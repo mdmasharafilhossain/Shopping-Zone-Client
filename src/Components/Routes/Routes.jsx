@@ -45,18 +45,18 @@ export const router = createBrowserRouter([
        {
         path:"flashSale/sale/:id",
         element:<FlashSaleDetails></FlashSaleDetails>,
-        loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/flashSale')
+        loader: ()=>fetch('http://localhost:5000/flashSale')
        },
        {
         path:"/home/:category",
         element:<SpecificCategory></SpecificCategory>,
-        loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/categories')
+        loader: ()=>fetch('http://localhost:5000/categories')
        },
 
        {
          path:"/home/:category/category/:id",
          element:<SpecificCategoryCards></SpecificCategoryCards>,
-         loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/allProducts')
+         loader: ()=>fetch('http://localhost:5000/allProducts')
        },
        {
         path:"/flashSale",
@@ -145,7 +145,7 @@ export const router = createBrowserRouter([
         {
           path:"/AdminDashboard/product/:id",
           element:<AdminPRoductDetails></AdminPRoductDetails>,
-          loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/allProducts')
+          loader: ()=>fetch('http://localhost:5000/allProducts')
         },
         {
           path:"/AdminDashboard/NewProduct",
@@ -158,7 +158,7 @@ export const router = createBrowserRouter([
         {
           path:"/AdminDashboard/editProduct/:id",
           element:<EditProductAdmin></EditProductAdmin>,
-          loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/allProducts')
+          loader: ()=>fetch('http://localhost:5000/allProducts')
         }
 
       ]
@@ -192,12 +192,14 @@ export const router = createBrowserRouter([
          {
           path:"/SellerDashboard/product/seller/:id",
           element:<SellerProductsDetails></SellerProductsDetails>,
-          loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/allProducts')
+          loader: ()=>fetch('http://localhost:5000/allProducts')
+          // loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/allProducts')
          },
          {
           path:"/SellerDashboard/editProduct/:id",
           element:<SellerEditProduct></SellerEditProduct>,
-          loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/allProducts')
+          loader: ()=>fetch('http://localhost:5000/allProducts')
+          // loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/allProducts')
         }
 
       ] 
