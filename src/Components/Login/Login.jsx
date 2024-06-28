@@ -187,6 +187,16 @@ const Login = () => {
                       </a>
                     </Link>
                   </label>
+                  <label className="label">
+                    <Link to="/seller_login">
+                      <a
+                        href="#"
+                        className="label-text-alt link link-hover text-base -ml-3 lg:ml-[72px] md:ml-[50px] text-center text-orange-500"
+                      >
+                        If You Are a Seller Please Login here..Login
+                      </a>
+                    </Link>
+                  </label>
                 </form>
               </div>
             </div>
