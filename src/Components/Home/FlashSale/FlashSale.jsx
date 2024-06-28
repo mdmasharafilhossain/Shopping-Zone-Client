@@ -16,6 +16,8 @@ import { useMediaQuery } from "react-responsive";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProviders/AuthProviders";
 import Swal from "sweetalert2";
+import useSeller from "../../useSeller/useSeller";
+import useAdmin from "../../useAdmin/useAdmin";
 
 const FlashSale = () => {
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -119,6 +121,9 @@ const FlashSale = () => {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
 
   const slidesPerView = isMobile ? 1 : isTablet ? 2 : 6;
+  const [isSeller] =useSeller();
+  const [isUserAdmin] = useAdmin();
+
   return (
     <div className="ml-10 mr-5">
       <div className="flex justify-between items-center">
@@ -161,7 +166,19 @@ const FlashSale = () => {
                         -{DiscountPercentage}%
                       </p>
                     </div>
-                    <div className="absolute top-2 right-2">
+                    {
+                      isUserAdmin || isSeller ?
+
+                      <div className="absolute top-2 right-2">
+                      <button disabled
+                        onClick={() => handleWhiteList(sale)}
+                        className="text-white"
+                      >
+                        <AiOutlineHeart size={24} />
+                      </button>
+                    </div>
+                      :
+                      <div className="absolute top-2 right-2">
                       <button
                         onClick={() => handleWhiteList(sale)}
                         className="text-orange-500 hover:text-orange-700"
@@ -169,6 +186,7 @@ const FlashSale = () => {
                         <AiOutlineHeart size={24} />
                       </button>
                     </div>
+                    }
                     {/* Cart Image, Text Div */}
                     <Link to={`flashSale/sale/${sale._id}`}>
                       <div>

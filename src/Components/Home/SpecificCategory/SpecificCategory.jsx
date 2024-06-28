@@ -9,8 +9,13 @@ import { AiOutlineHeart } from "react-icons/ai";
 import Swal from "sweetalert2";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import useSeller from "../../useSeller/useSeller";
+import useAdmin from "../../useAdmin/useAdmin";
 
 const SpecificCategory = () => {
+  const [isSeller] =useSeller();
+  const [isUserAdmin] = useAdmin();
+
     const CardsInfo = useLoaderData();
     const AxiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext);
@@ -130,7 +135,7 @@ if (isLoading) {
     
       const colors = ["white", "pink", "Rose Gold", "Blue", "Green", "Yellow"];
       const types = ["Men", "Women", "Kids"];
-
+      
     return (
         <div>
             <Header/>
@@ -243,7 +248,18 @@ if (isLoading) {
                       -{DiscountPercentage}%
                     </p>
                   </div>
-                  <div className="absolute top-2 right-2">
+                  {
+                    isSeller || isUserAdmin ?
+<div disabled className="absolute top-2 right-2">
+                    <button
+                      onClick={() => handleWhiteList(sale)}
+                      className="text-white"
+                    >
+                      <AiOutlineHeart size={24} />
+                    </button>
+                  </div>
+                    :
+<div className="absolute top-2 right-2">
                     <button
                       onClick={() => handleWhiteList(sale)}
                       className="text-orange-500 hover:text-orange-700"
@@ -251,6 +267,8 @@ if (isLoading) {
                       <AiOutlineHeart size={24} />
                     </button>
                   </div>
+
+                  }
                   <Link to={`category/${sale._id}`}>
                     <div>
                       <img
