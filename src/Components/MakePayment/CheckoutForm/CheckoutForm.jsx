@@ -92,12 +92,16 @@ const CheckoutForm = () => {
         const payment = {
           User_email: user?.email,
           User_name: user.displayName,
-          price: PayAblePrice,
-          code:cart.map(item => item?.productCode),
-          name:cart.map(item =>item?.name),
+          prices: PayAblePrice,
+          codes:cart.map(item => item?.productCode),
+          names:cart.map(item =>item?.name),
+          cartIds: cart.map(item => item._id),
           seller_email:cart.map(item=>item?.seller_email),
           date: new Date(),
           transaction_ID: paymentIntent.id,
+          Product_quantitys:cart.map(item=>item?.quantity),
+          Product_images:cart.map(item=>item.image),
+          status:"pending"
         };
         
         axiosSecure.post("/payments", payment).then((res) => {

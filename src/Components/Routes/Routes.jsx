@@ -21,6 +21,15 @@ import MakePayment from "../MakePayment/MakePayment";
 import Stripe from "../MakePayment/Stripe/Stripe";
 import SpecificCategory from "../Home/SpecificCategory/SpecificCategory";
 import SpecificCategoryCards from "../Home/SpecificCategory/SpecificCategoryCard/SpecificCategoryCards";
+import MyOrder from "../UserDashBoard/MyOrder/MyOrder";
+import AdminAllOrder from "../AdminDashboard/AllOrder/AdminAllOrder";
+import SellerDashboard from "../SellerDashboard/SellerDashboard";
+import SellerOrder from "../SellerDashboard/SellerOrder/SellerOrder";
+import Seller_Product_Upload from "../SellerDashboard/Seller_Product_Upload/Seller_Product_Upload";
+import MyProductsSeller from "../SellerDashboard/MyProductsSeller/MyProductsSeller";
+import SellerProductsDetails from "../SellerDashboard/SellerProductDetails/SellerProductsDetails";
+import EditProductAdmin from "../AdminDashboard/EditProductAdmin/EditProductAdmin";
+import SellerEditProduct from "../SellerDashboard/SellerEditProduct/SellerEditProduct";
 
 export const router = createBrowserRouter([
     {
@@ -109,6 +118,10 @@ export const router = createBrowserRouter([
         {
           path:"/userdashboard/whiteList",
           element:<UserWhiteList></UserWhiteList>
+        },
+        {
+          path:"/userdashboard/order",
+          element:<MyOrder></MyOrder>
         }
 
       ]
@@ -135,8 +148,48 @@ export const router = createBrowserRouter([
         {
           path:"/AdminDashboard/NewProduct",
           element:<AdminUploadProducts></AdminUploadProducts>
+        },
+        {
+          path:"/AdminDashboard/All-Order",
+          element:<AdminAllOrder></AdminAllOrder>
+        },
+        {
+          path:"/AdminDashboard/editProduct/:id",
+          element:<EditProductAdmin></EditProductAdmin>,
+          loader: ()=>fetch('http://localhost:5000/allProducts')
         }
 
       ]
+    },
+
+    // Seller DashBoard
+    {
+      path:"/SellerDashboard",
+      element:<SellerDashboard></SellerDashboard>,
+      children:[
+         {
+          path:"/SellerDashboard/AllOrder",
+          element:<SellerOrder></SellerOrder>
+         },
+         {
+          path:"/SellerDashboard/Products",
+          element:<Seller_Product_Upload></Seller_Product_Upload>
+         },
+         {
+          path:"/SellerDashboard/MyProduct",
+          element:<MyProductsSeller></MyProductsSeller>
+         },
+         {
+          path:"/SellerDashboard/product/seller/:id",
+          element:<SellerProductsDetails></SellerProductsDetails>,
+          loader: ()=>fetch('http://localhost:5000/allProducts')
+         },
+         {
+          path:"/SellerDashboard/editProduct/:id",
+          element:<SellerEditProduct></SellerEditProduct>,
+          loader: ()=>fetch('http://localhost:5000/allProducts')
+        }
+
+      ] 
     }
   ]);

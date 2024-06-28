@@ -13,7 +13,7 @@ import { FaPeopleGroup } from "react-icons/fa6";
 import { FcStatistics } from "react-icons/fc";
 import { AuthContext } from "../AuthProviders/AuthProviders";
 
-const AdminDashboard = () => {
+const SellerDashboard = () => {
   
   const [isUserAdmin] = useState(true);
   const [isHiringManagerAdmin] =  useState(true);
@@ -85,7 +85,7 @@ const AdminDashboard = () => {
                   >
                     {" "}
                     <FaUsers />
-                    All Customers
+                   My Profile
                   </NavLink>
                 </li>
                 <li
@@ -100,30 +100,30 @@ const AdminDashboard = () => {
                   >
                     {" "}
                     <FaPeopleGroup />
-                    All Hiring Managers
+                    Edit Profile
                   </NavLink>
                 </li>
-                <li
+                {/* <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'
                 >
                   <NavLink
-                    to='/AdminDashboard/AllProducts'
+                    to=''
                     className={({ isActive }) =>
                       `{ ${isActive ? " border text-white hover:none " : " "}}`
                     }
                   >
                     {" "}
                     <FiPackage />
-                    All Products
+                    My Products
                   </NavLink>
-                </li>
+                </li> */}
                 <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'
                 >
                   <NavLink
-                    to='/AdminDashboard/NewProduct'
+                    to='/SellerDashboard/Products'
                     className={({ isActive }) =>
                       `{ ${isActive ? " border  " : " "}}`
                     }
@@ -132,19 +132,32 @@ const AdminDashboard = () => {
                     Upload New Products
                   </NavLink>
                 </li>
-                
                 <li
                   onClick={handleRouteClick}
                   className='font-bold text-sm text-white'
                 >
                   <NavLink
-                    to='/AdminDashboard/All-Order'
+                    to="/SellerDashboard/MyProduct"
                     className={({ isActive }) =>
                       `{ ${isActive ? " border  " : " "}}`
                     }
                   >
                     <FaClipboardList />
-                    All Orders
+                    My Products
+                  </NavLink>
+                </li>
+                <li
+                  onClick={handleRouteClick}
+                  className='font-bold text-sm text-white'
+                >
+                  <NavLink
+                    to='/SellerDashboard/AllOrder'
+                    className={({ isActive }) =>
+                      `{ ${isActive ? " border  " : " "}}`
+                    }
+                  >
+                    <FaClipboardList />
+                    Customer Order
                   </NavLink>
                 </li>
                 {/* <li
@@ -254,7 +267,7 @@ const AdminDashboard = () => {
       {showWelcomeMessage && (
         <div>
           <h1 className='text-5xl font-bold mt-60 ml-32'>
-            Welcome Admin{" "}
+            Welcome Seller{" "}
             <span className='text-orange-600'>{user?.displayName}</span>!!!
           </h1>
         </div>
@@ -265,7 +278,7 @@ const AdminDashboard = () => {
 :   
 <>
 <div >
-                    <h2 className="text-5xl font-bold  text-red-700">DashBoard Only For Admin!!!</h2> 
+                    <h2 className="text-5xl font-bold  text-red-700">DashBoard Only For Seller!!!</h2> 
 
                     <Link to="/"><button className="btn  bg-orange-600 text-white text-lg">Go To Home</button></Link>
                     
@@ -283,4 +296,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default SellerDashboard;
