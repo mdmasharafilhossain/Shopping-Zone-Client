@@ -145,7 +145,7 @@ const Header = () => {
                       isPending
                         ? "pending"
                         : isActive
-                        ? "text-red-700 underline"
+                        ? "text-orange-700 underline"
                         : ""
                     }
                   >
@@ -232,7 +232,7 @@ const Header = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-red-700 underline"
+                    ? "text-orange-700 underline"
                     : ""
                 }
               >

@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
    
 
 const ContactUs = () => {
@@ -169,6 +170,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
 
     // template_kozrcng
