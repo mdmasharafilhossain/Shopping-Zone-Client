@@ -14,7 +14,7 @@ const useSeller = () => {
         enabled:!loading && !!user?.email,
         queryFn: async()=>{
             if(user?.email){
-                const res = await axiosSecure.get(`/users/checkAdmin/${user?.email}`);
+                const res = await axiosSecure.get(`/sellers/checkAdmin/${user?.email}`);
             
             return res.data?.admin;
             }

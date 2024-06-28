@@ -59,6 +59,15 @@ const UserDashBoard = () => {
 
               <ul className="menu p-4 py-auto">
                 <li onClick={handleRouteClick} className="font-bold text-sm text-white">
+                  {/* <NavLink
+                    to="/userdashboard/home"
+                    className={({ isActive }) =>
+                      isActive ? "text-white border-b-2 border-white" : "text-white"
+                    }
+                  >
+                    <MdOutlineAccountBox />
+                    Home
+                  </NavLink> */}
                   <NavLink
                     to="/userdashboard/account"
                     className={({ isActive }) =>
@@ -184,14 +193,14 @@ const UserDashBoard = () => {
           </div>
         </div>
       </div>
-      {showWelcomeMessage && (
+      {/* {showWelcomeMessage && (
         <div>
           <h1 className="text-5xl font-bold mt-60 ml-32">
             Welcome{" "}
             <span className="text-orange-600">{user?.displayName}</span>!!!
           </h1>
         </div>
-      )}
+      )} */}
       <div className="w-full md:w-full lg:w-full pr-10">
         <Outlet></Outlet>
       </div>

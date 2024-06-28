@@ -8,6 +8,7 @@ import { AuthContext } from "../../AuthProviders/AuthProviders";
 import { IoHomeOutline } from "react-icons/io5";
 import useCart from "../../Shared/Hooks/useCart/useCart";
 import { FaFemale, FaMale } from 'react-icons/fa';
+import useSeller from "../../useSeller/useSeller";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,6 +18,7 @@ const Header = () => {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
+  const [isSeller] =useSeller();
 
   const handleLogOut = () => {
     LogOut()
@@ -36,14 +38,14 @@ const Header = () => {
   };
 
   const handleSearch = (e) => {
-    setSearchText(e.target.value); // Update searchText state as user types
+    setSearchText(e.target.value);
 
-    // Check if Enter key is pressed
+    
     if (e.key === 'Enter') {
       localStorage.setItem("searchText", JSON.stringify(searchText)); 
      console.log()
-      navigate("/flashSale"); // Navigate to "/flashSale" route
-      setSearchText(""); // Clear searchText state after navigation
+      navigate("/flashSale"); 
+      setSearchText(""); 
     }
   };
 
@@ -284,7 +286,7 @@ const Header = () => {
                   role="button"
                   className="btn btn-ghost btn-circle avatar"
                 >
-                  <div className="w-9 rounded-full">
+                  <div className="w-7 md:w-9 lg:w-9 rounded-full">
                     <img alt="User Photo" src={user?.photoURL} />
                   </div>
                   <h1 className="text-[10px] w-20 truncate">
@@ -299,7 +301,7 @@ const Header = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-50"
                 >
                   <li>
-                    <Link to="/userdashboard">
+                    <Link to="/userdashboard/account">
                       <a className="justify-between">My Account</a>
                     </Link>
                   </li>
@@ -308,11 +310,16 @@ const Header = () => {
                       <a>Admin Dashboard</a>
                     </li>
                   </Link>
-                  <Link to="/SellerDashboard">
+                  
+                  {
+                    isSeller === true ?
+                    <Link to="/SellerDashboard">
                     <li>
                       <a>Seller Dashboard</a>
                     </li>
-                  </Link>
+                  </Link> : 
+                  ""
+                  }
                   <li>
                     <button onClick={handleLogOut}>Logout</button>
                   </li>
@@ -330,21 +337,23 @@ const Header = () => {
             )}
           </div>
           {/* Cart Drawer */}
-          <div className="drawer drawer-end">
-            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-              <label htmlFor="my-drawer-4" className="drawer-button btn relative">
-                <button className="relative">
+          <Link to="/userdashboard/myCart">
+          <button 
+           className="relative">
                   <FaCartPlus className="text-2xl" />
                   {/* Display cart item count */}
                   <span className="absolute -top-2 -right-2 h-5 w-5 bg-orange-500 text-white text-xs flex items-center justify-center rounded-full">
                     {cart.length}
                   </span>
                 </button>
+          </Link>
+            {/* <div className="drawer-content">
+              <label htmlFor="my-drawer-4" className="drawer-button btn relative">
+                
               </label>
-            </div>
+            </div> */}
             {/* Cart Sidebar */}
-            <div className="drawer-side z-50">
+            {/* <div className="drawer-side z-50">
               <label
                 htmlFor="my-drawer-4"
                 aria-label="close sidebar"
@@ -358,8 +367,8 @@ const Header = () => {
                   <a>Sidebar Item 2</a>
                 </li>
               </ul>
-            </div>
-          </div>
+            </div> */}
+          
         </div>
       </div>
     </div>
