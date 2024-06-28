@@ -9,6 +9,7 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../AuthProviders/AuthProviders";
 import Header from "../../Header/Header";
+import Footer from "../../Footer/Footer";
 
 const AllFlashSale = () => {
   const AxiosPublic = useAxiosPublic();
@@ -292,6 +293,7 @@ const AllFlashSale = () => {
           </div>
         )}
       </div>
+      <Footer></Footer>
     </div>
   );
 };

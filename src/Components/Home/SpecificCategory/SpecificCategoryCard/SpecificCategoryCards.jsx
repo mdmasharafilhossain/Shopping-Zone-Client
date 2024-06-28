@@ -9,6 +9,7 @@ import Rating from "react-rating";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import ImageZoom from "../../FlashSale/FlasSaleDetails/ImageZoom";
 import Header from "../../Header/Header";
+import Footer from "../../Footer/Footer";
 
 const SpecificCategoryCards = () => {
     const CardsInfo = useLoaderData();
@@ -191,6 +192,7 @@ const SpecificCategoryCards = () => {
                 </div>
             </div>
             <AddComment InfoCard={InfoCard} /> 
+              
         </div>
     );
 };

@@ -8,6 +8,7 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
 import Swal from "sweetalert2";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 const SpecificCategory = () => {
     const CardsInfo = useLoaderData();
@@ -301,6 +302,7 @@ if (isLoading) {
 
 
             )}
+            <Footer></Footer>
         </div>
     );
 };

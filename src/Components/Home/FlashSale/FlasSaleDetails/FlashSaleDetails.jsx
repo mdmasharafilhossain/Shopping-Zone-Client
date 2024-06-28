@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import Rating from 'react-rating';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 import useCart from "../../../Shared/Hooks/useCart/useCart";
+import Footer from "../../Footer/Footer";
 
 const FlashSaleDetails = () => {
     const CardsInfo = useLoaderData();
@@ -192,6 +193,7 @@ const FlashSaleDetails = () => {
                 </div>
             </div>
             <AddComment InfoCard={InfoCard} />
+            <Footer></Footer>
         </div>
     );
 };

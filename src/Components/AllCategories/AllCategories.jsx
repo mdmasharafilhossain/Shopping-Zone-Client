@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../Shared/SectionTitle/SectionTitle";
 import useAxiosPublic from "../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 import AllCategoriesCard from "./AllCategoriesCard/AllCategoriesCard";
+import Footer from "../Home/Footer/Footer";
 
 const AllCategories = () => {
     const AxiosPublic = useAxiosPublic();
@@ -30,6 +31,7 @@ const AllCategories = () => {
           categories.map(categorie => <AllCategoriesCard key={categories._id} categorie={categorie} refetch={refetch}></AllCategoriesCard>)
       }
       </div>
+    
         </div>
     );
 };
