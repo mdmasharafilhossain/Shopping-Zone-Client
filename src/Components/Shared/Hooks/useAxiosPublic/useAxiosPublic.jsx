@@ -8,4 +8,4 @@ const useAxiosPublic = () => {
     return AxiosPublic;
 };
 
- export default useAxiosPublic;
+  export default useAxiosPublic;
