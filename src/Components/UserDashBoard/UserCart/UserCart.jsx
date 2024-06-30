@@ -121,7 +121,7 @@ const UserCart = () => {
                     )}{" "}
                     ৳
                   </p>
-                  {item.discountPercentage && (
+                   {item.discountPercentage && (
                     <div className="ml-2 bg-orange-500 text-white text-sm p-1 rounded">
                       -{item.discountPercentage + item?.Offer_Percentage}%
                     </div>
