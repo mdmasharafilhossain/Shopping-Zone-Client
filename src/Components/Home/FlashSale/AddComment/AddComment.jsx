@@ -1,27 +1,44 @@
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import useAxiosPublic from "../../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
-
-// hosting on imgBB 
-
-const Imgae_hosting_key = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`;
+import Swal from "sweetalert2";
+import { AuthContext } from "../../../AuthProviders/AuthProviders";
+import { useQuery } from "@tanstack/react-query";
+import Rating from "react-rating";
+import { FaStar, FaRegStar } from "react-icons/fa";
+const Imgae_hosting_key = `https://api.imgbb.com/1/upload?key=${
+  import.meta.env.VITE_IMAGE_HOSTING_KEY
+}`;
 
 const AddComment = ({ InfoCard }) => {
   const AxiosPublic = useAxiosPublic();
   const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState("");
-
   const { name, code } = InfoCard || {};
+  const { user } = useContext(AuthContext);
+
+  const fetchComments = async () => {
+    const res = await AxiosPublic.get(`/comment`);
+    const filteredComments = res.data.filter(
+      (comment) => comment.code === code
+    );
+    setReviews(filteredComments);
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, [code]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
 
     const name = form.name.value;
-
+    const user_name = user?.displayName || user?.name;
     const customer_rating = rating;
-    const review = form.rating.value;
+    const review = form.review.value;
     const imageFile = form.image.files[0];
     const formData = new FormData();
+
     formData.append("image", imageFile);
     const res = await AxiosPublic.post(Imgae_hosting_key, formData, {
       headers: {
@@ -29,12 +46,27 @@ const AddComment = ({ InfoCard }) => {
       },
     });
     const photo = res.data.data.display_url;
-    const UpdateProducts = { name, photo, customer_rating, review, code };
-    console.log(UpdateProducts);
+    const UpdateProducts = {
+      name,
+      photo,
+      customer_rating,
+      review,
+      code,
+      user_name,
+    };
+    await AxiosPublic.post("/comment", UpdateProducts);
+    Swal.fire({
+      title: "Done",
+      text: "Comment added ",
+      icon: "success",
+      confirmButtonText: "Ok",
+    });
+    fetchComments(); // Fetch comments again to update the list
     e.target.reset();
   };
+
   return (
-    <div className=" mt-10 mx-10 ">
+    <div className="mt-10 mx-10">
       <div>
         <div className="border flex justify-between p-2">
           <h1 className="text-xl font-bold">Reviews</h1>
@@ -49,30 +81,28 @@ const AddComment = ({ InfoCard }) => {
           <dialog id="my_modal_1" className="modal">
             <div className="modal-box">
               <form onSubmit={handleSubmit}>
-                <div className=" space-y-4">
-                  <h1 className="text-2xl text-orange-500 mb-5 ">
+                <div className="space-y-4">
+                  <h1 className="text-2xl text-orange-500 mb-5">
                     Write a Review
                   </h1>
-                  {/* Name and Rating div */}
                   <div className="flex flex-col md:flex-row lg:flex-row gap-5">
                     <div className="form-control w-3/4 md:w-1/2">
                       <label className="label">
                         <span className="label-text">Product Name</span>
                       </label>
-                      <label className="input-group ">
+                      <label className="input-group">
                         <input
                           type="text"
                           readOnly
                           defaultValue={name}
                           placeholder="Name"
                           name="name"
-                          className="input input-bordered w-full  outline-none"
+                          className="input input-bordered w-full outline-none"
                         />
                       </label>
                     </div>
-                    {/* Rating div */}
                     <div className="form-control w-3/4 md:w-1/2 mt-3">
-                      <label className="label ">
+                      <label className="label">
                         <span className="label-text mr-40">Rating*</span>
                       </label>
                       <div className="flex space-x-4">
@@ -121,7 +151,6 @@ const AddComment = ({ InfoCard }) => {
                       </div>
                     </div>
                   </div>
-                  {/* Text Area  */}
                   <div>
                     <label className="form-control">
                       <div className="label">
@@ -129,13 +158,12 @@ const AddComment = ({ InfoCard }) => {
                       </div>
                       <textarea
                         className="textarea textarea-bordered h-24"
-                        name="rating"
+                        name="review"
                         placeholder="Write Your Review"
                       ></textarea>
                       <div className="label"></div>
                     </label>
                   </div>
-                  {/* File input */}
                   <div>
                     <input
                       type="file"
@@ -144,11 +172,12 @@ const AddComment = ({ InfoCard }) => {
                     />
                   </div>
                 </div>
-                <button className="btn mt-5 ml-48">Submit</button>
+                <button className="btn border border-orange-500 hover:bg-orange-500 mt-5 ml-[70px] hover:text-white px-32">
+                  Submit
+                </button>
               </form>
               <div className="modal-action">
                 <form method="dialog">
-                  {/* if there is a button in form, it will close the modal */}
                   <button className="btn">Close</button>
                 </form>
               </div>
@@ -163,7 +192,23 @@ const AddComment = ({ InfoCard }) => {
           <ul>
             {reviews.map((review, index) => (
               <li key={index} className="border-b py-2">
-                {review}
+                <div className=" items-center">
+                  <div>
+                    <Rating
+                      initialRating={review?.customer_rating}
+                      readonly
+                      emptySymbol={<FaRegStar color="orange" />}
+                      fullSymbol={<FaStar color="orange" />}
+                    />
+                    <p className="font-bold">{review.user_name}</p>
+                    <p>{review.review}</p>
+                    <img
+                      src={review.photo}
+                      alt="Review"
+                      className="w-40 h-32"
+                    />
+                  </div>
+                </div>
               </li>
             ))}
           </ul>

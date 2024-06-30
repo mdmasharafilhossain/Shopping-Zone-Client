@@ -53,7 +53,9 @@ const SpecificCategoryCards = () => {
                 customer_email: user?.email,
                 productSize: selectedSize,
                 rating: InfoCard.rating,
-                quantity: quantity
+                quantity: quantity,
+                 Offer_coupon:InfoCard?.Offer_coupon || '',
+                Offer_Percentage:InfoCard?.Offer_Percentage || ''
             });
             console.log('Added to cart:', res.data);
             if (res.data.insertedId) {

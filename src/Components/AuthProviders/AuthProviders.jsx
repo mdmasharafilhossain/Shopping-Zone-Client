@@ -1,62 +1,85 @@
 import { createContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-
-import app from "../FireBase/firebase"
-
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+} from "firebase/auth";
+import app from "../FireBase/firebase";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
-const AuthProviders = ({children}) => {
-    const googleProvider = new GoogleAuthProvider();
-    const [user,setUser] = useState(null);
-    const [loading,setLoading] =  useState(true);
-    
-    const createUser = (email,password) =>{
-        setLoading(true);
-      return  createUserWithEmailAndPassword(auth,email,password)
-    }
+const AuthProviders = ({ children }) => {
+  const googleProvider = new GoogleAuthProvider();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    const SignIn = (email,password) =>{
-        setLoading(true);
-        return signInWithEmailAndPassword(auth,email,password)
-    }
-    const SignInWithGoogle = () =>{
-        setLoading(true);
-        return signInWithPopup(auth,googleProvider);
-    }
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-    const LogOut = () =>{
-        setLoading(true);
-        return signOut(auth);
-    }
+  const SignIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth, currentUser =>{
-            console.log("user changed",currentUser);
-            setUser(currentUser);
-            
-            setLoading(false);
-        });
-        return () =>{
-            return unSubscribe(true);
-        }
-    },[]);
+  const SignInWithGoogle = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
 
+  const LogOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
-    const AuthInfo ={
-        user,
-        createUser,
-        LogOut,
-        SignIn,
-        loading,
-        SignInWithGoogle,
-    }
-
-    return (
-        <AuthContext.Provider value={AuthInfo}>
-            {children}
-        </AuthContext.Provider>
+  const setUpRecaptcha = (phoneNumber) => {
+    const recaptcha = new RecaptchaVerifier(auth,
+      "recaptcha-container",
+      {
+        size: "invisible",
+        callback: (response) => {
+          // reCAPTCHA solved, allow signInWithPhoneNumber.
+          console.log("Recaptcha verified");
+        },
+      },
+      auth
     );
+    return signInWithPhoneNumber(auth, phoneNumber, recaptcha);
+  };
+
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log("user changed", currentUser);
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => {
+      return unSubscribe();
+    };
+  }, []);
+
+  const AuthInfo = {
+    user,
+    createUser,
+    LogOut,
+    SignIn,
+    loading,
+    SignInWithGoogle,
+    setUpRecaptcha,
+  };
+
+  return (
+    <AuthContext.Provider value={AuthInfo}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthProviders;

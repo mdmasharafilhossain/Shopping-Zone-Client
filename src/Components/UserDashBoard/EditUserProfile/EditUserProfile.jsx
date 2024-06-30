@@ -13,7 +13,7 @@ const EditUserProfile = () => {
      queryKey: ['EditUsers'],
 
     queryFn: async () => {
-        const res = await AxiosPublic.get(`/users/profile/${user.email}`);
+        const res = await AxiosPublic.get(`/users/profile/${user?.email}`);
         console.log(res.data)
         return res.data;
 
@@ -71,7 +71,7 @@ const EditUserProfile = () => {
                     <label className='text-sm md:text-lg'>Your Name*</label>
                     <input
                       type='text'
-                      defaultValue={user?.name}
+                      defaultValue={user?.name || "Not Set"}
                       placeholder='Title'
                       className='text-lg w-full outline-none border px-2 py-1'
                       {...register("name", { required: true })}
@@ -83,8 +83,8 @@ const EditUserProfile = () => {
                     <input
                       type='text'
                       placeholder='Subtitle'
-                      defaultValue={user?.email}
-                      readOnly
+                      defaultValue={user?.email || "Not Set"}
+                      
                       className='text-lg outline-none border px-2 py-1'
                       {...register("email", { required: true })}
                     />

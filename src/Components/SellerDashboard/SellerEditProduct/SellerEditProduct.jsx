@@ -27,7 +27,9 @@ const SellerEditProduct = () => {
             warranty: AllProducts?.warranty || '',
             details: AllProducts?.details || '',
             type: AllProducts?.type || '',
-            category: AllProducts?.category || ''
+            category: AllProducts?.category || '',
+            Offer_coupon: AllProducts?.Offer_coupon || '',
+            Offer_Percentage:AllProducts?.Offer_Percentage || '',
         }
     });
 
@@ -47,10 +49,13 @@ const SellerEditProduct = () => {
             warranty: data.warranty || "",
             details: data.details,
             type: data.type,
-            category: data.category
+            category: data.category,
+            Offer_coupon: data.Offer_coupon,
+            Offer_Percentage: parseFloatOrZero(data?.Offer_Percentage) 
         };
-        console.log("Info",ProductsInfo)
-        const ArticleRes = await axiosPublic.put(`/allProducts/editseller/${id}`, ProductsInfo);
+
+        console.log("Info", ProductsInfo);
+        const ArticleRes = await axiosPublic.patch(`/allProducts/editseller/${id}`, ProductsInfo);
         if (ArticleRes.data.modifiedCount) {
             Swal.fire({
                 position: "top-end",
@@ -175,6 +180,7 @@ const SellerEditProduct = () => {
                                 />
                             </label>
                         </div>
+                        {/* Details */}
                         <label className="form-control w-full ">
                             <div className="label">
                                 <span className="label-text">Details Of Your Product*</span>
@@ -187,6 +193,7 @@ const SellerEditProduct = () => {
                                 className="input input-bordered w-full h-[100px]" 
                             />
                         </label>
+                        {/* Type and Category */}
                         <div className="flex gap-5">
                             <select {...register("type")}
                                 className="select select-bordered w-full ">
@@ -207,6 +214,32 @@ const SellerEditProduct = () => {
                                 <option value="Mobile">Mobile</option>
                                 <option value="Fan">Fan</option>
                             </select>
+                        </div>
+                        {/* Offer Coupon */}
+                        <div className="flex gap-5">
+                        <label className="form-control w-full ">
+                            <div className="label">
+                                <span className="label-text">Offer Coupon</span>
+                            </div>
+                            <input 
+                                {...register("Offer_coupon")}
+                                type="text" 
+                                placeholder="Enter Offer Coupon"  
+                                className="input input-bordered w-full" 
+                            />
+                        </label>
+                        <label className="form-control w-full ">
+                            <div className="label">
+                                <span className="label-text">Offer Percentage</span>
+                            </div>
+                            <input 
+                                {...register("Offer_Percentage")}
+                                type="text" 
+                                placeholder="Enter Offer Coupon"  
+                                className="input input-bordered w-full" 
+                            />
+                        </label>
+
                         </div>
                         <input className="btn w-full bg-orange-600 text-white" type="submit" />
                     </form>

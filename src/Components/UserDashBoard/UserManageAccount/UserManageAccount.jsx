@@ -12,7 +12,7 @@ const UserManageAccount = () => {
         queryKey: ['ManageUsers'],
 
         queryFn: async () => {
-            const res = await AxiosPublic.get(`/users/profile/${user.email}`);
+            const res = await AxiosPublic.get(`/users/profile/${user?.email}`);
             console.log(res.data)
             return res.data;
 
