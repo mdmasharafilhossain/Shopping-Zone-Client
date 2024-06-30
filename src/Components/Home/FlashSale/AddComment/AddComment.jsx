@@ -5,11 +5,13 @@ import { AuthContext } from "../../../AuthProviders/AuthProviders";
 import { useQuery } from "@tanstack/react-query";
 import Rating from "react-rating";
 import { FaStar, FaRegStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const Imgae_hosting_key = `https://api.imgbb.com/1/upload?key=${
   import.meta.env.VITE_IMAGE_HOSTING_KEY
 }`;
 
 const AddComment = ({ InfoCard }) => {
+  const navigate = useNavigate();
   const AxiosPublic = useAxiosPublic();
   const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState("");
@@ -30,6 +32,7 @@ const AddComment = ({ InfoCard }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     const form = e.target;
 
     const name = form.name.value;
@@ -72,12 +75,16 @@ const AddComment = ({ InfoCard }) => {
         <div className="border flex justify-between p-2">
           <h1 className="text-xl font-bold">Reviews</h1>
           <div>
-            <button
+           { user ? 
+              <button
               className="text-xs p-2 border rounded-md hover:bg-orange-500 hover:text-white"
               onClick={() => document.getElementById("my_modal_1").showModal()}
             >
               Write a review
-            </button>
+            </button>: 
+            ""
+          
+          }
           </div>
           <dialog id="my_modal_1" className="modal">
             <div className="modal-box">
