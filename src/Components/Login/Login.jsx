@@ -238,7 +238,7 @@ const Login = () => {
         <h2 className="text-center text-2xl font-bold mb-10">Phone Login</h2>
         <form onSubmit={handlePhoneLogin} className="flex flex-col gap-5">
           <div id="recaptcha-container"></div>
-          <div className="flex flex-col">
+          <div className="flex flex-col w-1/2 mx-auto">
             <label htmlFor="phone" className="mb-2">Phone Number</label>
             <div className="flex">
               <select
@@ -261,13 +261,13 @@ const Login = () => {
                 id="phone"
                 name="phone"
                 placeholder="Phone number"
-                className="input input-bordered rounded-l-none"
+                className="input input-bordered rounded-l-none flex-1"
                 required
                 ref={phoneRef}
               />
             </div>
           </div>
-          <button className="btn bg-[#FF3811] text-white w-1/2">Send OTP</button>
+          <button className="btn bg-[#FF3811] text-white w-1/2 mx-auto">Send OTP</button>
         </form>
         {verificationResult && (
           <form onSubmit={verifyOtp} className="flex flex-col gap-5 mt-10">
