@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
        {
         path:"flashSale/sale/:id",
         element:<FlashSaleDetails></FlashSaleDetails>,
-        loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/flashSale')
+        loader: ()=>fetch('http://localhost:5000/flashSale')
        },
        {
         path:"/home/:category",
@@ -68,7 +68,7 @@ export const router = createBrowserRouter([
        {
          path:"/home/:category/category/:id",
          element:<SpecificCategoryCards></SpecificCategoryCards>,
-         loader: ()=>fetch('https://shopping-zone-server-five.vercel.app/allProducts')
+         loader: ()=>fetch('http://localhost:5000/allProducts')
        },
        {
         path:"/flashSale",
