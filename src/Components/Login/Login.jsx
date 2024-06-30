@@ -96,17 +96,33 @@ const Login = () => {
       });
   };
 
-  const handlePhoneLogin = (e) => {
+  const checkPhoneNumberInDatabase = async (phoneNumber) => {
+    try {
+      const response = await AxiosPublic.get('/users/phone', { params: { phone: phoneNumber } });
+      return response.data.exists;
+    } catch (error) {
+      console.error("Error checking phone number", error);
+      return false;
+    }
+  };
+
+  const handlePhoneLogin = async (e) => {
     e.preventDefault();
     const phoneNumber = countryCode + phoneRef.current.value;
-    setUpRecaptcha(phoneNumber)
-      .then((result) => {
-        setVerificationResult(result);
-        console.log("Code sent");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+
+    const phoneExists = await checkPhoneNumberInDatabase(phoneNumber);
+    if (phoneExists) {
+      navigate("/");
+    } else {
+      setUpRecaptcha(phoneNumber)
+        .then((result) => {
+          setVerificationResult(result);
+          console.log("Code sent");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   };
 
   const verifyOtp = (e) => {
@@ -119,6 +135,9 @@ const Login = () => {
           name: result.user?.displayName,
           phone: result.user?.phoneNumber,
         };
+  
+        console.log("Phone Number", PeopleInfo);
+  
         AxiosPublic.post('/users', PeopleInfo)
           .then((res) => {
             if (res.data.insertedId) {
@@ -128,15 +147,24 @@ const Login = () => {
                 icon: 'success',
                 confirmButtonText: 'Ok',
               });
-              navigate("/");
+              
             }
+            
+            else {
+              console.error("Failed to save phone number data", res.data);
+            }
+            navigate("/");
+          })
+          .catch((error) => {
+            console.error("Error saving phone number data", error);
           });
       })
       .catch((error) => {
-        console.error(error);
+        console.error("OTP verification failed", error);
         setErrorMessage(error.message);
       });
   };
+  
 
   return (
     <div>
@@ -271,7 +299,7 @@ const Login = () => {
         </form>
         {verificationResult && (
           <form onSubmit={verifyOtp} className="flex flex-col gap-5 mt-10">
-            <div className="flex flex-col">
+            <div className="flex flex-col w-1/2 mx-auto">
               <input
                 type="text"
                 id="otp"
@@ -282,7 +310,7 @@ const Login = () => {
                 ref={otpRef}
               />
             </div>
-            <button className="btn bg-[#FF3811] text-white">Verify OTP</button>
+            <button className="btn bg-[#FF3811] text-white w-1/2 mx-auto">Verify OTP</button>
           </form>
         )}
       </div>
