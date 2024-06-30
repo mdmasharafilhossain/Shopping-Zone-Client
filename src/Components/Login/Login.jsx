@@ -9,12 +9,14 @@ import Swal from "sweetalert2";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from "../FireBase/firebase";
 import toast from "react-hot-toast";
+
 const auth = getAuth(app);
 
 const Login = () => {
   useEffect(() => {
     document.title = "ShoppingZone | Login";
   }, []);
+  
   const [showPassword, setShowPassword] = useState(false);
   const AxiosPublic = useAxiosPublic();
   const navigate = useNavigate();
@@ -113,13 +115,22 @@ const Login = () => {
     verificationResult
       .confirm(otp)
       .then((result) => {
-        Swal.fire({
-          title: 'Logged In',
-          text: 'Logged In Successfully',
-          icon: 'success',
-          confirmButtonText: 'Ok',
-        });
-        navigate("/");
+        const PeopleInfo = {
+          name: result.user?.displayName,
+          phone: result.user?.phoneNumber,
+        };
+        AxiosPublic.post('/users', PeopleInfo)
+          .then((res) => {
+            if (res.data.insertedId) {
+              Swal.fire({
+                title: 'Logged In',
+                text: 'Logged In Successfully',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+              });
+              navigate("/");
+            }
+          });
       })
       .catch((error) => {
         console.error(error);
