@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { GoogleAuthProvider } from "firebase/auth/web-extension";
 import useAxiosPublic from "../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 import { AuthContext } from './../AuthProviders/AuthProviders';
 import Swal from "sweetalert2";
@@ -27,6 +26,7 @@ const Login = () => {
   const phoneRef = useRef(null);
   const otpRef = useRef(null);
   const [verificationResult, setVerificationResult] = useState(null);
+  const [countryCode, setCountryCode] = useState("+880"); 
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -98,7 +98,7 @@ const Login = () => {
 
   const handlePhoneLogin = (e) => {
     e.preventDefault();
-    const phoneNumber = phoneRef.current.value;
+    const phoneNumber = countryCode + phoneRef.current.value;
     setUpRecaptcha(phoneNumber)
       .then((result) => {
         setVerificationResult(result);
@@ -239,17 +239,35 @@ const Login = () => {
         <form onSubmit={handlePhoneLogin} className="flex flex-col gap-5">
           <div id="recaptcha-container"></div>
           <div className="flex flex-col">
-            <input
-              type="text"
-              id="phone"
-              name="phone"
-              placeholder="Phone number"
-              className="input input-bordered"
-              required
-              ref={phoneRef}
-            />
+            <label htmlFor="phone" className="mb-2">Phone Number</label>
+            <div className="flex">
+              <select
+                id="countryCode"
+                name="countryCode"
+                className="input input-bordered rounded-r-none"
+                value={countryCode}
+                onChange={(e) => setCountryCode(e.target.value)}
+              >
+                <option value="+880">+880 (Bangladesh)</option>
+                <option value="+1">+1 (USA)</option>
+                <option value="+44">+44 (UK)</option>
+                <option value="+61">+61 (Australia)</option>
+                <option value="+81">+81 (Japan)</option>
+                <option value="+91">+91 (India)</option>
+                {/* Add more country codes as needed */}
+              </select>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Phone number"
+                className="input input-bordered rounded-l-none"
+                required
+                ref={phoneRef}
+              />
+            </div>
           </div>
-          <button className="btn bg-[#FF3811] text-white">Send OTP</button>
+          <button className="btn bg-[#FF3811] text-white w-1/2">Send OTP</button>
         </form>
         {verificationResult && (
           <form onSubmit={verifyOtp} className="flex flex-col gap-5 mt-10">
