@@ -3,9 +3,11 @@ import useAxiosPublic from "../../../Shared/Hooks/useAxiosPublic/useAxiosPublic"
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../AuthProviders/AuthProviders";
 import { useQuery } from "@tanstack/react-query";
-import Rating from 'react-rating';
+import Rating from "react-rating";
 import { FaStar, FaRegStar } from "react-icons/fa";
-const Imgae_hosting_key = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`;
+const Imgae_hosting_key = `https://api.imgbb.com/1/upload?key=${
+  import.meta.env.VITE_IMAGE_HOSTING_KEY
+}`;
 
 const AddComment = ({ InfoCard }) => {
   const AxiosPublic = useAxiosPublic();
@@ -16,7 +18,9 @@ const AddComment = ({ InfoCard }) => {
 
   const fetchComments = async () => {
     const res = await AxiosPublic.get(`/comment`);
-    const filteredComments = res.data.filter(comment => comment.code === code);
+    const filteredComments = res.data.filter(
+      (comment) => comment.code === code
+    );
     setReviews(filteredComments);
   };
 
@@ -42,13 +46,20 @@ const AddComment = ({ InfoCard }) => {
       },
     });
     const photo = res.data.data.display_url;
-    const UpdateProducts = { name, photo, customer_rating, review, code, user_name };
-    await AxiosPublic.post('/comment', UpdateProducts);
+    const UpdateProducts = {
+      name,
+      photo,
+      customer_rating,
+      review,
+      code,
+      user_name,
+    };
+    await AxiosPublic.post("/comment", UpdateProducts);
     Swal.fire({
-      title: 'Done',
-      text: 'Comment added ',
-      icon: 'success',
-      confirmButtonText: 'Ok',
+      title: "Done",
+      text: "Comment added ",
+      icon: "success",
+      confirmButtonText: "Ok",
     });
     fetchComments(); // Fetch comments again to update the list
     e.target.reset();
@@ -161,7 +172,9 @@ const AddComment = ({ InfoCard }) => {
                     />
                   </div>
                 </div>
-                <button className="btn mt-5 ml-48">Submit</button>
+                <button className="btn border border-orange-500 hover:bg-orange-500 mt-5 ml-[70px] hover:text-white px-32">
+                  Submit
+                </button>
               </form>
               <div className="modal-action">
                 <form method="dialog">
@@ -180,18 +193,20 @@ const AddComment = ({ InfoCard }) => {
             {reviews.map((review, index) => (
               <li key={index} className="border-b py-2">
                 <div className=" items-center">
-                  
                   <div>
-                   
                     <Rating
-                            initialRating={review?.customer_rating}
-                            readonly
-                            emptySymbol={<FaRegStar color="orange" />}
-                            fullSymbol={<FaStar color="orange" />}
-                          />
-                           <p className="font-bold">{review.user_name}</p>
+                      initialRating={review?.customer_rating}
+                      readonly
+                      emptySymbol={<FaRegStar color="orange" />}
+                      fullSymbol={<FaStar color="orange" />}
+                    />
+                    <p className="font-bold">{review.user_name}</p>
                     <p>{review.review}</p>
-                    <img src={review.photo} alt="Review" className="w-40 h-32" />
+                    <img
+                      src={review.photo}
+                      alt="Review"
+                      className="w-40 h-32"
+                    />
                   </div>
                 </div>
               </li>
