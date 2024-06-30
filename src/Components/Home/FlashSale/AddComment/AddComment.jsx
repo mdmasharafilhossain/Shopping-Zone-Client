@@ -61,9 +61,10 @@ const AddComment = ({ InfoCard }) => {
       icon: "success",
       confirmButtonText: "Ok",
     });
-    fetchComments(); // Fetch comments again to update the list
+    fetchComments(); 
     e.target.reset();
   };
+  
 
   return (
     <div className="mt-10 mx-10">
