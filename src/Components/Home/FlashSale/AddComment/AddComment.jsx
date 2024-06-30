@@ -72,7 +72,7 @@ const AddComment = ({ InfoCard }) => {
   return (
     <div className="mt-10 mx-10">
       <div>
-        <div className="border flex justify-between p-2">
+        <div className="border border-orange-500 flex justify-between p-2">
           <h1 className="text-xl font-bold">Reviews</h1>
           <div>
            { user ? 
