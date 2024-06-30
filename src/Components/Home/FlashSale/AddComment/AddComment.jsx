@@ -191,7 +191,7 @@ const AddComment = ({ InfoCard }) => {
                           />
                            <p className="font-bold">{review.user_name}</p>
                     <p>{review.review}</p>
-                    <img src={review.photo} alt="Review" className="w-40" />
+                    <img src={review.photo} alt="Review" className="w-40 h-32" />
                   </div>
                 </div>
               </li>
