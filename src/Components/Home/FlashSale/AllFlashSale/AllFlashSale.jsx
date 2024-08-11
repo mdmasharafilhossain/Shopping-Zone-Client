@@ -85,13 +85,14 @@ const AllFlashSale = () => {
   const searchQuery = query.get("query") || "";
   const {
     refetch,
-    data: { result: Flashsales = [] } = {},
+    // data: { result: Flashsales = [] } = {},
+    data: Flashsales = [],
     isLoading,
   } = useQuery({
     queryKey: ["Flashsales", sortOrder, selectedColor, typeSelect, searchQuery],
     queryFn: async () => {
       const res = await AxiosPublic.get(
-        `/flashSale?sort=${sortOrder}&color=${selectedColor}&type=${typeSelect}&search=${searchQuery}`
+        `/allProducts?sort=${sortOrder}&color=${selectedColor}&type=${typeSelect}&search=${searchQuery}`
       );
       return res.data;
     },

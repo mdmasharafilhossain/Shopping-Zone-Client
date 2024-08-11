@@ -14,14 +14,16 @@ import useSeller from "../../../useSeller/useSeller";
 import useAdmin from "../../../useAdmin/useAdmin";
 
 const FlashSaleDetails = () => {
-    const CardsInfo = useLoaderData();
+    const ItemsInfo = useLoaderData();
     const AxiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext);
     const { id } = useParams();
+    console.log("Id:",id)
     const navigate = useNavigate();
     const [,refetch] = useCart();
 
-    const InfoCard = CardsInfo?.result?.find(brand => brand._id === id);
+    const InfoCard = ItemsInfo?.find(brand => brand._id === id);
+    console.log("InfoCard:",InfoCard)
     const [quantity, setQuantity] = useState(1);
     const sizes = InfoCard?.size ? InfoCard.size.split(',') : ['One Size'];
     const [selectedSize, setSelectedSize] = useState(sizes[0]);
@@ -162,7 +164,7 @@ const FlashSaleDetails = () => {
                         />
                         <span>({InfoCard?.rating})</span>
                     </div>
-                    <h1 className="text-lg w-[54%]">{InfoCard.details}</h1>
+                    <h1 className="text-lg w-[54%]">{InfoCard?.details}</h1>
                     <p className="text-3xl text-orange-600 ">ট {InfoCard?.discount_price}</p>
                     <div className="flex gap-3">
                         <p className="text-sm text-gray-600 line-through">ট {InfoCard?.price}</p>
