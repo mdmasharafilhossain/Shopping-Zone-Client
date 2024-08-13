@@ -9,7 +9,7 @@ import Rating from "react-rating";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import ImageZoom from "../../FlashSale/FlasSaleDetails/ImageZoom";
 import Header from "../../Header/Header";
-import Footer from "../../Footer/Footer";
+
 import useSeller from "../../../useSeller/useSeller";
 import useAdmin from "../../../useAdmin/useAdmin";
 
@@ -55,8 +55,15 @@ const SpecificCategoryCards = () => {
                 rating: InfoCard.rating,
                 quantity: quantity,
                  Offer_coupon:InfoCard?.Offer_coupon || '',
-                Offer_Percentage:InfoCard?.Offer_Percentage || ''
+                Offer_Percentage:InfoCard?.Offer_Percentage || '',
+                price_11_to_20: InfoCard?.price_11_to_20 || InfoCard.discount_price,
+                price_21_to_50:  InfoCard?.price_21_to_50 ||InfoCard.discount_price,
+                price_51_to_100: InfoCard?.price_51_to_100 || InfoCard.discount_price,
+                price_101_to_200:InfoCard?.price_101_to_200 || InfoCard.discount_price,
+                price_201_to_500:InfoCard?.price_201_to_500 || InfoCard.discount_price,
+                price_501_to_1000:InfoCard?.price_501_to_1000 || InfoCard.discount_price,
             });
+            console.log(" InfoCard.discount_price", InfoCard.discount_price)
             console.log('Added to cart:', res.data);
             if (res.data.insertedId) {
                 Swal.fire({
@@ -105,7 +112,15 @@ const SpecificCategoryCards = () => {
                 customer_email: user?.email,
                 productSize: selectedSize,
                 rating: InfoCard.rating,
-                quantity: quantity
+                quantity: quantity,
+                Offer_coupon:InfoCard?.Offer_coupon || '',
+                Offer_Percentage:InfoCard?.Offer_Percentage || '',
+                price_11_to_20: InfoCard?.price_11_to_20 || "",
+                price_21_to_50:  InfoCard?.price_21_to_50 || "",
+                price_51_to_100: InfoCard?.price_51_to_100 || "",
+                price_101_to_200:InfoCard?.price_101_to_200 || "",
+                price_201_to_500:InfoCard?.price_201_to_500 || "",
+                price_501_to_1000:InfoCard?.price_501_to_1000 || "",
             });
             console.log('Purchased:', res.data);
             if (res.data.success) {
