@@ -17,23 +17,21 @@ const UserCart = () => {
   };
 
   const getPriceBasedOnQuantity = (item) => {
-    const quantity = item.quantity;
+    const quantity = item?.quantity;
     if (quantity >= 1 && quantity <= 10) {
-      return parseFloat(item.price_1_to_10);
+      return parseFloat(item?.discountPrice);
     } else if (quantity >= 11 && quantity <= 20) {
-      return parseFloat(item.price_11_to_20);
+      return parseFloat(item?.price_11_to_20);
     } else if (quantity >= 21 && quantity <= 50) {
-      return parseFloat(item.price_21_to_50);
+      return parseFloat(item?.price_21_to_50);
     } else if (quantity >= 51 && quantity <= 100) {
-      return parseFloat(item.price_51_to_100);
+      return parseFloat(item?.price_51_to_100);
     } else if (quantity >= 101 && quantity <= 200) {
-      return parseFloat(item.price_101_to_200);
+      return parseFloat(item?.price_101_to_200);
     } else if (quantity >= 201 && quantity <= 500) {
-      return parseFloat(item.price_201_to_500);
-    } else if (quantity >= 501 && quantity <= 1000) {
-      return parseFloat(item.price_501_to_1000);
+      return parseFloat(item?.price_201_to_500);
     } else {
-      return parseFloat(item.price_10001_plus);
+      return parseFloat(item?.price_501_to_1000);
     }
   };
 
@@ -68,7 +66,7 @@ const UserCart = () => {
       let newDiscounts = {};
       cart.forEach((item) => {
         const price = getPriceBasedOnQuantity(item);
-        const additionalDiscount = 0; // Add any additional discount logic here
+        const additionalDiscount = 0; 
         const additionalDiscountAmount =
           (additionalDiscount / 100) * price * item.quantity;
         newDiscounts[item._id] = additionalDiscountAmount;
@@ -119,7 +117,7 @@ const UserCart = () => {
   }, 0);
 
   const total = subtotal + shippingCost;
-
+  console.log("Total",total)
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">

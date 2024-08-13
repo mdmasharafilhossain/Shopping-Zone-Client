@@ -13,7 +13,7 @@ const Seller_Product_Upload = () => {
   const { register, handleSubmit } = useForm();
   const axiosPublic = useAxiosPublic();
   const AxiosPublic = useAxiosPublic();
-  const [message, setMessage] = useState();
+  
   const [buttonVisible, setButtonVisible] = useState(true);
   const [isPendingLocal, setIsPendingLocal] = useState(false);
 
@@ -27,7 +27,7 @@ const Seller_Product_Upload = () => {
     },
   });
 
-  const { data: requests = [], isLoading } = useQuery({
+  const { data: requests = [],  } = useQuery({
     queryKey: ["requests", user?.email],
 
     queryFn: async () => {
@@ -114,7 +114,7 @@ const Seller_Product_Upload = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        setMessage("Request sent, please wait for approval");
+        
       } else {
         Swal.fire({
           position: "top-end",
