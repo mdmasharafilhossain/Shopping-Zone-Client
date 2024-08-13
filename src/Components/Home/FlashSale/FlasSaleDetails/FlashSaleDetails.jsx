@@ -165,7 +165,7 @@ const FlashSaleDetails = () => {
                 </div>
 
                 {/* Text div */}
-                <div className="space-y-3 border w-[1500px]">
+                <div className="space-y-3  w-[1500px]">
                     <h1 className="text-3xl font-bold">{InfoCard?.name}</h1>
                     {/* Rating display */}
                     <div className="flex items-center gap-3">
