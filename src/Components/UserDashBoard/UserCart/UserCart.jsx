@@ -49,13 +49,13 @@ const UserCart = () => {
       let additionalDiscount = 0;
 
       if(item.quantity >= 10 && item.quantity < 20){
-        additionalDiscount=10;
+        additionalDiscount=0;
       } else if (item.quantity >= 20 && item.quantity < 50) {
-        additionalDiscount = 20;
+        additionalDiscount = 0;
       } else if (item.quantity >= 50 && item.quantity < 100) {
-        additionalDiscount = 30;
+        additionalDiscount = 0;
       } else if (item.quantity >= 100) {
-        additionalDiscount = 40;
+        additionalDiscount = 0;
       }
 
 
