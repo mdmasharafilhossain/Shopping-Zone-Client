@@ -70,14 +70,14 @@ const Seller_Product_Upload = () => {
         details: data.details,
         type: data.type,
         category: data.category,
-        price_1_to_10: data.price_1_to_10 || "",
+        
         price_11_to_20: data.price_11_to_20 || "",
         price_21_to_50: data.price_21_to_50 || "",
         price_51_to_100: data.price_51_to_100 || "",
         price_101_to_200: data.price_101_to_200 || "",
         price_201_to_500: data.price_201_to_500 || "",
         price_501_to_1000: data.price_501_to_1000 || "",
-        price_10001: data.price_10001 || "",
+        
        
       };
       console.log(ProductsInfo);
@@ -306,20 +306,7 @@ const Seller_Product_Upload = () => {
                     <label className="form-control w-full ">
                       <div className="label">
                         <span className="label-text">
-                          Price of Product For Quantity 1 to 10
-                        </span>
-                      </div>
-                      <input
-                        {...register("price_1_to_10")}
-                        type="text"
-                        placeholder="Enter Price"
-                        className="input input-bordered w-full"
-                      />
-                    </label>
-                    <label className="form-control w-full ">
-                      <div className="label">
-                        <span className="label-text">
-                          Price of Product For Quantity 11 to 20
+                        Price of Product For Quantity 11 to 20
                         </span>
                       </div>
                       <input
@@ -329,13 +316,10 @@ const Seller_Product_Upload = () => {
                         className="input input-bordered w-full"
                       />
                     </label>
-                  </div>
-                {/* 2nd  */}
-                  <div className="flex gap-10 mb-5">
                     <label className="form-control w-full ">
                       <div className="label">
                         <span className="label-text">
-                          Price of Product For Quantity 21 to 50
+                          Price of Product For Quantity  21 to 50
                         </span>
                       </div>
                       <input
@@ -345,6 +329,9 @@ const Seller_Product_Upload = () => {
                         className="input input-bordered w-full"
                       />
                     </label>
+                  </div>
+                {/* 2nd  */}
+                  <div className="flex gap-10 mb-5">
                     <label className="form-control w-full ">
                       <div className="label">
                         <span className="label-text">
@@ -358,9 +345,6 @@ const Seller_Product_Upload = () => {
                         className="input input-bordered w-full"
                       />
                     </label>
-                  </div>
-                {/* 3rd  */}
-                  <div className="flex gap-10 mb-5">
                     <label className="form-control w-full ">
                       <div className="label">
                         <span className="label-text">
@@ -374,6 +358,9 @@ const Seller_Product_Upload = () => {
                         className="input input-bordered w-full"
                       />
                     </label>
+                  </div>
+                {/* 3rd  */}
+                  <div className="flex gap-10 mb-5">
                     <label className="form-control w-full ">
                       <div className="label">
                         <span className="label-text">
@@ -387,13 +374,10 @@ const Seller_Product_Upload = () => {
                         className="input input-bordered w-full"
                       />
                     </label>
-                  </div>
-                {/* 4th  */}
-                  <div className="flex gap-10">
                     <label className="form-control w-full ">
                       <div className="label">
                         <span className="label-text">
-                          Price of Product For Quantity 501 to 1000
+                          Price of Product For Quantity 501+
                         </span>
                       </div>
                       <input
@@ -403,20 +387,8 @@ const Seller_Product_Upload = () => {
                         className="input input-bordered w-full"
                       />
                     </label>
-                    <label className="form-control w-full ">
-                      <div className="label">
-                        <span className="label-text">
-                          Price of Product For Quantity 1000+
-                        </span>
-                      </div>
-                      <input
-                        {...register("price_10001")}
-                        type="text"
-                        placeholder="Enter Price"
-                        className="input input-bordered w-full"
-                      />
-                    </label>
                   </div>
+                
                 </div>
               )}
             </div>
