@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 import useCart from "../../Shared/Hooks/useCart/useCart";
@@ -14,6 +14,25 @@ const UserCart = () => {
 
   const formatNumber = (number) => {
     return number.toFixed(2);
+  };
+
+  const getPriceBasedOnQuantity = (item) => {
+    const quantity = item?.quantity;
+    if (quantity >= 1 && quantity <= 10) {
+      return parseFloat(item?.discountPrice);
+    } else if (quantity >= 11 && quantity <= 20) {
+      return parseFloat(item?.price_11_to_20);
+    } else if (quantity >= 21 && quantity <= 50) {
+      return parseFloat(item?.price_21_to_50);
+    } else if (quantity >= 51 && quantity <= 100) {
+      return parseFloat(item?.price_51_to_100);
+    } else if (quantity >= 101 && quantity <= 200) {
+      return parseFloat(item?.price_101_to_200);
+    } else if (quantity >= 201 && quantity <= 500) {
+      return parseFloat(item?.price_201_to_500);
+    } else {
+      return parseFloat(item?.price_501_to_1000);
+    }
   };
 
   const handleRemove = async (_id) => {
@@ -42,49 +61,35 @@ const UserCart = () => {
     });
   };
 
-  useEffect(()=>{
-   const ApplyQuantityDiscount = ()=>{
-    let newDiscounts = {};
-    cart.forEach((item)=>{
-      let additionalDiscount = 0;
+  useEffect(() => {
+    const ApplyQuantityDiscount = () => {
+      let newDiscounts = {};
+      cart.forEach((item) => {
+        const price = getPriceBasedOnQuantity(item);
+        const additionalDiscount = 0; 
+        const additionalDiscountAmount =
+          (additionalDiscount / 100) * price * item.quantity;
+        newDiscounts[item._id] = additionalDiscountAmount;
+      });
 
-      if(item.quantity >= 10 && item.quantity < 20){
-        additionalDiscount=0;
-      } else if (item.quantity >= 20 && item.quantity < 50) {
-        additionalDiscount = 0;
-      } else if (item.quantity >= 50 && item.quantity < 100) {
-        additionalDiscount = 0;
-      } else if (item.quantity >= 100) {
-        additionalDiscount = 0;
-      }
+      setDiscounts(newDiscounts);
+    };
 
-
-      const additionalDiscountAmount = 
-      (additionalDiscount / 100)* item.discountPrice * item.quantity;
-      newDiscounts[item._id] = additionalDiscountAmount;
-
-    }) 
-
-    setDiscounts(newDiscounts);
-   }
-
-   ApplyQuantityDiscount();
-
-  },[cart])
+    ApplyQuantityDiscount();
+  }, [cart]);
 
   const handleApplyCoupon = () => {
-    let newDiscounts = { ...discounts};
+    let newDiscounts = { ...discounts };
     cart.forEach((item) => {
       if (item.Offer_coupon === coupon) {
         const CauponDiscount =
-          (item.Offer_Percentage / 100) * item.discountPrice * item.quantity;
+          (item.Offer_Percentage / 100) * getPriceBasedOnQuantity(item) * item.quantity;
 
-         const  TotalDiscountAmount = 
-            (newDiscounts[item._id] || 0) + CauponDiscount;
+        const TotalDiscountAmount =
+          (newDiscounts[item._id] || 0) + CauponDiscount;
 
-            const maxDiscountAmount = item.discountPrice * item.quantity;
-            newDiscounts[item._id] = Math.min(TotalDiscountAmount, maxDiscountAmount);
-       
+        const maxDiscountAmount = getPriceBasedOnQuantity(item) * item.quantity;
+        newDiscounts[item._id] = Math.min(TotalDiscountAmount, maxDiscountAmount);
       }
     });
 
@@ -106,12 +111,13 @@ const UserCart = () => {
   };
 
   const subtotal = cart.reduce((acc, item) => {
+    const price = getPriceBasedOnQuantity(item);
     const discount = discounts[item._id] || 0;
-    return acc + (item.discountPrice * item.quantity - discount);
+    return acc + (price * item.quantity - discount);
   }, 0);
 
   const total = subtotal + shippingCost;
-
+  console.log("Total",total)
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -133,10 +139,9 @@ const UserCart = () => {
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-3/4 p-4">
             {cart.map((item) => {
+              const price = getPriceBasedOnQuantity(item);
               const appliedDiscountPercentage =
-              item.discountPercentage + 
-              ((discounts[item._id] / (item.discountPrice * item.quantity)) * 100) || 
-              0;
+                ((discounts[item._id] || 0) / (price * item.quantity)) * 100 || 0;
 
               return (
                 <div
@@ -158,8 +163,7 @@ const UserCart = () => {
                   <div className="flex items-center">
                     <p className="text-xl font-bold">
                       {formatNumber(
-                        item.discountPrice * item.quantity -
-                          (discounts[item._id] || 0)
+                        price * item.quantity - (discounts[item._id] || 0)
                       )}{" "}
                       ৳
                     </p>
