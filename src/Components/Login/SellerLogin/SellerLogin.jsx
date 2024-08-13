@@ -145,7 +145,7 @@ const SellerLogin = () => {
                 }
 
                   <label className="label">
-                    <Link to="/signup">
+                    <Link to="/seller_signUp">
                       <a
                         href="#"
                         className="label-text-alt link link-hover text-base -ml-3 lg:ml-[88px] md:ml-[50px] text-center"

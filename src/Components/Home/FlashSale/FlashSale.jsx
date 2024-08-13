@@ -48,13 +48,14 @@ const FlashSale = () => {
   };
 
   const AxiosPublic = useAxiosPublic();
-  const { data: { result: sales = [] } = {} } = useQuery({
+  const { data: sales = [] } = useQuery({
     queryKey: ["sales"],
     queryFn: async () => {
-      const res = await AxiosPublic.get("/flashSale");
+      const res = await AxiosPublic.get("/allProducts");
       return res.data;
     },
   });
+  console.log("Data:",sales)
 
   const ShowData = sales.slice(0, 7);
 

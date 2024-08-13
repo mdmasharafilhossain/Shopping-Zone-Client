@@ -56,6 +56,22 @@ const AllSellerList = () => {
       }
     });
   };
+
+  // field Request Accept
+  const handleAcceptFieldRequest = (user) => {
+    axiosSecure.patch(`/sellers/admin/field/${user._id}`).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${user.name} is Ready to Add More field`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
   const totalPages = Math.ceil(UsersCount / 10);
   const pagesToShow = 5;
   const pages = Array.from({ length: totalPages }, (_, i) => i);
@@ -115,6 +131,7 @@ const AllSellerList = () => {
                 <th className="text-xl text-black">Email</th>
                 <th className="text-xl text-black">Role</th>
                 <th className="text-xl text-black">Action</th>
+                <th className="text-xl text-black">Field Request</th>
               </tr>
             </thead>
             <tbody>
@@ -174,6 +191,19 @@ const AllSellerList = () => {
                     >
                       Remove
                     </button>
+                  </td>
+                  <td>
+                  {
+                    user?.status === 'Pending' ? 
+                    <button
+                    onClick={() => handleAcceptFieldRequest(user)}
+                    className="btn btn-xs bg-green-600 text-xs text-white font-bold"
+                  >
+                    Approve
+                  </button>
+                  :
+                  <p>No Request</p>
+                  }
                   </td>
                 </tr>
               ))}
