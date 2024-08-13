@@ -202,7 +202,7 @@ const AllSellerList = () => {
                     Approve
                   </button>
                   :
-                  <p>No Request</p>
+                  <p className="font-bold">No Request</p>
                   }
                   </td>
                 </tr>
