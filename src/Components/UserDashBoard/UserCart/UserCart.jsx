@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
 import useCart from "../../Shared/Hooks/useCart/useCart";
@@ -8,9 +8,9 @@ const UserCart = () => {
   const [cart, refetch, isLoading] = useCart();
   const [coupon, setCoupon] = useState("");
   const [discounts, setDiscounts] = useState({});
+  const [isCouponApplied, setIsCouponApplied] = useState(false);
   const shippingCost = 70;
   const AxiosPublic = useAxiosPublic();
-  console.log("data", cart);
 
   const formatNumber = (number) => {
     return number.toFixed(2);
@@ -28,7 +28,6 @@ const UserCart = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await AxiosPublic.delete(`cart/user/${_id}`);
-        console.log(res.data);
         if (res.data.deletedCount) {
           refetch();
           Swal.fire({
@@ -43,18 +42,55 @@ const UserCart = () => {
     });
   };
 
-  const handleApplyCoupon = () => {
+  useEffect(()=>{
+   const ApplyQuantityDiscount = ()=>{
     let newDiscounts = {};
+    cart.forEach((item)=>{
+      let additionalDiscount = 0;
+
+      if(item.quantity >= 10 && item.quantity < 20){
+        additionalDiscount=10;
+      } else if (item.quantity >= 20 && item.quantity < 50) {
+        additionalDiscount = 20;
+      } else if (item.quantity >= 50 && item.quantity < 100) {
+        additionalDiscount = 30;
+      } else if (item.quantity >= 100) {
+        additionalDiscount = 40;
+      }
+
+
+      const additionalDiscountAmount = 
+      (additionalDiscount / 100)* item.discountPrice * item.quantity;
+      newDiscounts[item._id] = additionalDiscountAmount;
+
+    }) 
+
+    setDiscounts(newDiscounts);
+   }
+
+   ApplyQuantityDiscount();
+
+  },[cart])
+
+  const handleApplyCoupon = () => {
+    let newDiscounts = { ...discounts};
     cart.forEach((item) => {
       if (item.Offer_coupon === coupon) {
-        const discountAmount =
+        const CauponDiscount =
           (item.Offer_Percentage / 100) * item.discountPrice * item.quantity;
-        newDiscounts[item._id] = discountAmount;
+
+         const  TotalDiscountAmount = 
+            (newDiscounts[item._id] || 0) + CauponDiscount;
+
+            const maxDiscountAmount = item.discountPrice * item.quantity;
+            newDiscounts[item._id] = Math.min(TotalDiscountAmount, maxDiscountAmount);
+       
       }
     });
 
     if (Object.keys(newDiscounts).length > 0) {
       setDiscounts(newDiscounts);
+      setIsCouponApplied(true);
       Swal.fire({
         icon: "success",
         title: "Coupon Applied Successfully!",
@@ -96,45 +132,53 @@ const UserCart = () => {
       ) : (
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-3/4 p-4">
-            {cart.map((item) => (
-              <div
-                key={item._id}
-                className="flex justify-between items-center border-b py-4"
-              >
-                <div className="flex items-center max-w-72">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-20 h-20 object-cover"
-                  />
-                  <div className="ml-4">
-                    <p className="font-bold">{item.name}</p>
-                    <p>Seller Email: {item.seller_email}</p>
-                    <p>Quantity: {item.quantity}</p>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <p className="text-xl font-bold">
-                    {formatNumber(
-                      item.discountPrice * item.quantity -
-                        (discounts[item._id] || 0)
-                    )}{" "}
-                    ৳
-                  </p>
-                   {item.discountPercentage && (
-                    <div className="ml-2 bg-orange-500 text-white text-sm p-1 rounded">
-                      -{item.discountPercentage + item?.Offer_Percentage}%
-                    </div>
-                  )}
-                </div>
-                <button
-                  onClick={() => handleRemove(item._id)}
-                  className="ml-4 text-red-500"
+            {cart.map((item) => {
+              const appliedDiscountPercentage =
+              item.discountPercentage + 
+              ((discounts[item._id] / (item.discountPrice * item.quantity)) * 100) || 
+              0;
+
+              return (
+                <div
+                  key={item._id}
+                  className="flex justify-between items-center border-b py-4"
                 >
-                  REMOVE
-                </button>
-              </div>
-            ))}
+                  <div className="flex items-center max-w-72">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-20 h-20 object-cover"
+                    />
+                    <div className="ml-4">
+                      <p className="font-bold">{item.name}</p>
+                      <p>Seller Email: {item.seller_email}</p>
+                      <p>Quantity: {item.quantity}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <p className="text-xl font-bold">
+                      {formatNumber(
+                        item.discountPrice * item.quantity -
+                          (discounts[item._id] || 0)
+                      )}{" "}
+                      ৳
+                    </p>
+                   
+                    {appliedDiscountPercentage > 0 && (
+                      <div className="ml-2 bg-orange-500 text-white text-sm p-1 rounded">
+                        -{appliedDiscountPercentage.toFixed(2)}%
+                      </div>
+                    )}
+                  </div>
+                  <button
+                    onClick={() => handleRemove(item._id)}
+                    className="ml-4 text-red-500"
+                  >
+                    REMOVE
+                  </button>
+                </div>
+              );
+            })}
           </div>
           <div className="w-full md:w-1/4 p-4 relative top-0">
             <div className="border border-orange-500 p-4 rounded">
@@ -165,11 +209,13 @@ const UserCart = () => {
                   value={coupon}
                   onChange={(e) => setCoupon(e.target.value)}
                   placeholder="Enter Coupon Code"
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-orange-500"
+                  disabled={isCouponApplied}
                 />
                 <button
                   onClick={handleApplyCoupon}
-                  className="mt-2 w-full bg-green-500 text-white py-2 rounded"
+                  className={`mt-2 w-full  py-2 rounded ${isCouponApplied ? "bg-gray-300 text-gray-500":"bg-green-500 text-white"}`}
+                  disabled={isCouponApplied}
                 >
                   Apply Coupon
                 </button>
