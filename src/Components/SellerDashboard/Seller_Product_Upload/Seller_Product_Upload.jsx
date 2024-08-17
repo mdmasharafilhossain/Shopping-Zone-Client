@@ -56,7 +56,7 @@ const Seller_Product_Upload = () => {
     console.log(res.data);
     if (res.data.success) {
       const ProductsInfo = {
-        code: AllProducts.length + 1,
+         code: AllProducts.length + 1,
         image: res.data.data.display_url,
         name: data.name,
         color: data.color,
