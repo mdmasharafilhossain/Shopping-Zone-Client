@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 import toast from "react-hot-toast";
-import useAxiosPublic from "../../Shared/Hooks/useAxiosPublic/useAxiosPublic";
+
 import { AuthContext } from "../../AuthProviders/AuthProviders";
 import app from "../../FireBase/firebase";
 const auth = getAuth(app);
@@ -86,7 +86,7 @@ const SellerLogin = () => {
             <div className="flex flex-col w-full">
               <div className="text-center">
                 <h1 className="text-2xl md:text-3xl font-semibold mb-5">
-                  Seller Log in  <span className="text-orange-600">ShoppingZone</span>{" "}
+                  Seller Log in  <span className="text-blue-600">Niyamat Shopping</span>{" "}
                 </h1>
               </div>
               <div>
@@ -135,7 +135,7 @@ const SellerLogin = () => {
                   {/* <Link to='/login'> */}
                   <div className="form-control">
                     <p className="text-red-500">{invalidAuth}</p>
-                    <button className="btn bg-[#FF3811] text-white">
+                    <button className="btn bg-blue-600 text-white">
                       Login
                     </button>
                   </div>

@@ -12,7 +12,7 @@ import { FaPeopleGroup } from "react-icons/fa6";
 
 import { FcStatistics } from "react-icons/fc";
 import { AuthContext } from "../AuthProviders/AuthProviders";
-import useSeller from "../useSeller/useSeller";
+
 import useAdmin from "../useAdmin/useAdmin";
 
 const AdminDashboard = () => {
@@ -51,7 +51,7 @@ const AdminDashboard = () => {
             {/* Page content here */}
             <label
               htmlFor='my-drawer-2'
-              className='btn  bg-orange-500 drawer-button lg:hidden'
+              className='btn  bg-blue-500 drawer-button lg:hidden'
             >
               <FiAlignJustify />
             </label>
@@ -62,7 +62,7 @@ const AdminDashboard = () => {
               aria-label='close sidebar'
               className='drawer-overlay'
             ></label>
-            <ul className='menu p-4 sticky top-0  w-60 min-h-screen z-50 bg-orange-600 text-base-content '>
+            <ul className='menu p-4 sticky top-0  w-60 min-h-screen z-50 bg-blue-600 text-base-content '>
               <div className='space-y-2 mb-10'>
                 <img
                   className='w-20 ml-16 mt-6 rounded-full'
@@ -259,7 +259,7 @@ const AdminDashboard = () => {
         <div>
           <h1 className='text-5xl font-bold mt-60 ml-32'>
             Welcome Admin{" "}
-            <span className='text-orange-600'>{user?.displayName}</span>!!!
+            <span className='text-blue-600'>{user?.displayName}</span>!!!
           </h1>
         </div>
       )}
@@ -271,7 +271,7 @@ const AdminDashboard = () => {
 <div >
                     <h2 className="text-5xl font-bold  text-red-700">DashBoard Only For Admin!!!</h2> 
 
-                    <Link to="/"><button className="btn  bg-orange-600 text-white text-lg">Go To Home</button></Link>
+                    <Link to="/"><button className="btn  bg-blue-600 text-white text-lg">Go To Home</button></Link>
                     
                 </div>
 </>

@@ -71,10 +71,10 @@ const AdminUploadProducts = () => {
     return (
         <div>
             <div className="flex justify-evenly my-6 mb-10">
-                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">Upload <span className='text-[#FF3811]'>Products</span></h2>
+                <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">Upload <span className='text-blue-600'>Products</span></h2>
             </div>
             
-            <div className="mt-10 border-2 mb-10 rounded-md border-orange-500 ml-10">
+            <div className="mt-10 border-2 mb-10 rounded-md border-blue-500 ml-10">
             
 
             <div className="px-10 py-10">
@@ -232,7 +232,7 @@ const AdminUploadProducts = () => {
                     type="file" 
                     className="file-input file-input-bordered w-full max-w-xs" />
                     </div>
-                    <input className="btn w-full bg-orange-600 text-white" type="submit" />
+                    <input className="btn w-full bg-blue-600 text-white" type="submit" />
                 </form>
             </div>
         </div>

@@ -55,7 +55,7 @@ const AdminAllOrder = () => {
       <div className="flex justify-evenly my-6 mb-10">
         <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">
           {" "}
-          All <span className="text-[#FF3811]">Orders</span>
+          All <span className="text-blue-600">Orders</span>
         </h2>
       </div>
       <div>
@@ -63,7 +63,7 @@ const AdminAllOrder = () => {
           <p className="text-gray-500">No orders found.</p>
         ) : (
           Object.keys(groupedPayments).map((email) => (
-            <div key={email} className="mb-8 ml-5 p-5 rounded-md shadow-lg text-center border border-orange-500">
+            <div key={email} className="mb-8 ml-5 p-5 rounded-md shadow-lg text-center border border-blue-500">
               <h2 className="text-2xl font-bold mb-4 ml-5">User: {email}</h2>
               {groupedPayments[email].map((payment) => (
                 <div
@@ -101,13 +101,13 @@ const AdminAllOrder = () => {
                   {payment.status === "pending" ? (
                     <button
                       onClick={() => handleDeliveryClick(payment.transaction_ID)}
-                      className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded mt-2"
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mt-2"
                     >
                       Mark as Delivered
                     </button>
                   ) :(<button
                     
-                    className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded mt-2"
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mt-2"
                   >
                     Delivered
                   </button>)

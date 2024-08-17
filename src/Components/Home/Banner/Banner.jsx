@@ -30,7 +30,7 @@ const Banner = () => {
               alt="Banner 1"
             />
             <Link to="/flashSale">
-            <button className=" hidden md:block lg:block btn absolute border-orange-500 hover:bg-orange-400 lg:px-10   top-3/4 text-[6px] md:text-xs lg:text-sm md:left-[200px] lg:left-[500px] transform -translate-y-1/2">
+            <button className=" hidden md:block lg:block btn absolute border-blue-500 hover:bg-blue-400 lg:px-10   top-3/4 text-[6px] md:text-xs lg:text-sm md:left-[200px] lg:left-[500px] transform -translate-y-1/2">
               Shop Now
             </button>
             </Link>
@@ -43,7 +43,7 @@ const Banner = () => {
             alt="Banner 2"
           />
           <Link to="/flashSale">
-          <button className=" hidden md:block lg:block btn absolute border-orange-500 hover:bg-orange-400 lg:px-10   top-3/4 text-[6px] md:text-xs lg:text-sm md:left-[200px] lg:left-[500px] transform -translate-y-1/2">
+          <button className=" hidden md:block lg:block btn absolute border-blue-500 hover:bg-blue-400 lg:px-10   top-3/4 text-[6px] md:text-xs lg:text-sm md:left-[200px] lg:left-[500px] transform -translate-y-1/2">
             Shop Now
           </button>
           </Link>
@@ -75,7 +75,7 @@ const Banner = () => {
             src={banner5}
             alt="Banner 3"
           />
-          <Link to="/flashSale"><button className="hidden md:block lg:block btn absolute border-orange-500 hover:bg-orange-400 lg:px-10  top-[75%] lg:top-[80%] [6px] md:text-xs lg:text-sm md:left-[50px] lg:left-[300px] transform -translate-y-1/2">
+          <Link to="/flashSale"><button className="hidden md:block lg:block btn absolute border-blue-500 hover:bg-blue-400 lg:px-10  top-[75%] lg:top-[80%] [6px] md:text-xs lg:text-sm md:left-[50px] lg:left-[300px] transform -translate-y-1/2">
             Shop Now
           </button></Link>
         </SwiperSlide>

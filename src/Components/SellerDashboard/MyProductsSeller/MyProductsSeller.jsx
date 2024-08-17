@@ -70,7 +70,7 @@ const MyProductsSeller = () => {
     <div>
       <div className="flex justify-evenly my-6 mb-10">
         <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">
-          My <span className="text-[#FF3811]">Products</span>
+          My <span className="text-blue-600">Products</span>
         </h2>
       </div>
 
@@ -82,7 +82,7 @@ const MyProductsSeller = () => {
           return (
             <div key={sale._id}>
               <div className="flex">
-                <div className="border p-6 w-60 h-96 rounded-lg bg-white hover:border-orange-500 hover:shadow-xl relative">
+                <div className="border p-6 w-60 h-96 rounded-lg bg-white hover:border-blue-500 hover:shadow-xl relative">
                   <div className="absolute top-2 left-2">
                     <p className="text-sm bg-yellow-400 text-black px-2 py-1 rounded">
                       -{DiscountPercentage}%
@@ -104,7 +104,7 @@ const MyProductsSeller = () => {
                     <h3 className="text-base font-semibold mt-3">
                       {sale.name}
                     </h3>
-                    <p className="text-base text-orange-600 ">
+                    <p className="text-base text-blue-600 ">
                       ট {sale.discount_price}
                     </p>
                     <div className="flex gap-3">
@@ -116,14 +116,14 @@ const MyProductsSeller = () => {
                       <Rating
                         initialRating={sale?.rating}
                         readonly
-                        emptySymbol={<FaRegStar color="orange" />}
-                        fullSymbol={<FaStar color="orange" />}
+                        emptySymbol={<FaRegStar color="blue" />}
+                        fullSymbol={<FaStar color="blue" />}
                       />
                       <span className="">({sale?.rating})</span>
                     </div>
                     <div className="flex gap-2 mt-2">
                       <Link to={`/SellerDashboard/product/seller/${sale._id}`}>
-                        <button className="border flex py-2 px-3 text-sm font-bold rounded-md border-orange-600 hover:bg-orange-600 hover:shadow-xl hover:text-white">
+                        <button className="border flex py-2 px-3 text-sm font-bold rounded-md border-blue-600 hover:bg-blue-600 hover:shadow-xl hover:text-white">
                           <CgDetailsMore className="mt-1" /> Details
                         </button>
                       </Link>

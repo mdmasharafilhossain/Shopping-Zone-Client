@@ -118,14 +118,14 @@ const AllSellerList = () => {
       <div>
          <div className="flex justify-evenly my-6 mb-10">
           <h2 className="text-4xl font-bold">
-            All <span className="text-[#FF3811]">Seller List</span>
+            All <span className="text-blue-600">Seller List</span>
           </h2>
         </div>
         <div className="overflow-x-auto ml-10">
           <table className="table border-separate">
             {/* head */}
             <thead>
-              <tr className="bg-orange-400">
+              <tr className="bg-blue-400">
                 <th className="text-xl text-black">Image</th>
                 <th className="text-xl text-black">Name</th>
                 <th className="text-xl text-black">Email</th>
@@ -139,7 +139,7 @@ const AllSellerList = () => {
               {HiringManagers.map((user, index) => (
                 <tr
                   key={user._id}
-                  className={index % 2 === 0 ? "bg-[#F2F2F2]" : "bg-orange-100"}
+                  className={index % 2 === 0 ? "bg-[#F2F2F2]" : "bg-blue-100"}
                 >
                   <td>
                     <div className="flex items-center gap-3">
@@ -169,7 +169,7 @@ const AllSellerList = () => {
                     {user.role2 === "admin" ? (
                       <button
                         onClick={() => handleRemoveAdmin(user)}
-                        className="btn bg-orange-600 btn-xs text-white font-bold"
+                        className="btn bg-blue-600 btn-xs text-white font-bold"
                       >
                         {" "}
                         Remove Admin
@@ -213,11 +213,11 @@ const AllSellerList = () => {
         </div>
         <div className="text-center  mt-10 mb-10">
           <Button
-            colorScheme="orange"
+            colorScheme="blue"
             variant="outline"
             onClick={handlePreviousPage}
             isDisabled={page === 0}
-            className="btn mr-1 btn-sm bg-orange-600 text-white"
+            className="btn mr-1 btn-sm bg-blue-600 text-white"
           >
             {<ArrowLeftIcon />}
           </Button>
@@ -237,7 +237,7 @@ const AllSellerList = () => {
                   className={`btn btn-sm mr-1 border ${
                     page === pageNumber
                       ? "bg-slate-300 text-black"
-                      : "bg-orange-600 text-white"
+                      : "bg-blue-600 text-white"
                   }`}
                 >
                   {pageNumber + 1}
@@ -262,11 +262,11 @@ const AllSellerList = () => {
             return null;
           })}
           <Button
-            colorScheme="orange"
+            colorScheme="blue"
             variant="outline"
             onClick={handleNextPage}
             isDisabled={page === totalPages - 1}
-            className="btn ml-1 btn-sm bg-orange-600 text-white"
+            className="btn ml-1 btn-sm bg-blue-600 text-white"
           >
             {<ArrowRightIcon />}
           </Button>

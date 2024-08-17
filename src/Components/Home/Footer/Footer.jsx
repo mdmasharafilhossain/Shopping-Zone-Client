@@ -6,7 +6,7 @@ import {
   } from "react-icons/fa";
   import { FaSquareTwitter, FaInstagram } from "react-icons/fa6";
   import { Link } from "react-router-dom";
-  
+  import logo from "../../../assets/niyamotlogo.png"
   
   const Footer = () => {
     return (
@@ -15,7 +15,7 @@ import {
         <div className=' w-28 md:w-40 lg:w-60'>
           
               
-          <img src="https://i.ibb.co/6mSmPck/website-logo.png" alt="HireMaster Logo" />
+          <img className="w-20" src={logo} alt="NIYAMAT Logo" />
       </div>
           {/* <nav className='flex flex-wrap items-center justify-center gap-4 font-medium'>
             <Link
@@ -88,7 +88,7 @@ import {
           
   
           <aside>
-            <p>Copyright &copy; 2024 - All right reserved by ShoppingZone</p>
+            <p>Copyright &copy; 2024 - All right reserved by NIYAMAT IT</p>
           </aside>
         </footer>
         <hr />

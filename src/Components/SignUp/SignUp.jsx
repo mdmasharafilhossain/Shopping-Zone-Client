@@ -133,7 +133,7 @@ const SignUp = () => {
            <div className="container mx-auto w-3/4 lg:w-3/5 overflow-hidden my-20 md:my-32 ">
         <div className="border px-10 md:px-16 lg:px-24 py-10 md:py-14 lg:py-20 rounded-2xl space-y-10">
           <h2 className="text-2xl md:text-3xl font-semibold text-center">
-            Sign up to <span className="text-orange-500">ShoppingZone</span>
+            Sign up to <span className="text-blue-500">Niyamat Shopping</span>
           </h2>
           <button
             onClick={hadleGoogleLogin}
@@ -142,9 +142,9 @@ const SignUp = () => {
             <FcGoogle className="text-xl" /> Continue with Google
           </button>
           <div className="flex justify-center items-center">
-            <span className="w-full border border-[#FF3811]"></span>
+            <span className="w-full border border-blue-600"></span>
             <span className="px-4">Or</span>
-            <span className="w-full border border-[#FF3811]"></span>
+            <span className="w-full border border-blue-600"></span>
           </div>
           <div className="card ">
             <div className="flex flex-col w-full">
@@ -227,7 +227,7 @@ const SignUp = () => {
                   <div className="form-control">
                     <button
                       type="submit"
-                      className="text-xs sm:text-base group relative overflow-hidden py-2 rounded-2xl bg-[#FF3811] font-semibold text-white"
+                      className="text-xs sm:text-base group relative overflow-hidden py-2 rounded-2xl bg-blue-600 font-semibold text-white"
                     >
                       Create Account
                       <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
@@ -238,7 +238,7 @@ const SignUp = () => {
                       Already have an account?
                     </p>
                     <Link to="/login" className="">
-                      <button className="text-xs sm:text-base underline text-amber-500 font-bold">
+                      <button className="text-xs sm:text-base underline text-blue-600 font-bold">
                         Login
                       </button>
                     </Link>
@@ -248,7 +248,7 @@ const SignUp = () => {
                       Want to be seller?
                     </p>
                     <Link to="/seller_signUp" className="">
-                      <button className="text-xs sm:text-base underline text-amber-500 font-bold">
+                      <button className="text-xs sm:text-base underline text-blue-600 font-bold">
                         SignUp
                       </button>
                     </Link>

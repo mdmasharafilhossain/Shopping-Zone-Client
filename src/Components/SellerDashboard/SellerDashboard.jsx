@@ -50,7 +50,7 @@ const SellerDashboard = () => {
             {/* Page content here */}
             <label
               htmlFor='my-drawer-2'
-              className='btn  bg-orange-500 drawer-button lg:hidden'
+              className='btn  bg-blue-500 drawer-button lg:hidden'
             >
               <FiAlignJustify />
             </label>
@@ -61,7 +61,7 @@ const SellerDashboard = () => {
               aria-label='close sidebar'
               className='drawer-overlay'
             ></label>
-            <ul className='menu p-4 sticky top-0  w-60 min-h-screen z-50 bg-orange-600 text-base-content '>
+            <ul className='menu p-4 sticky top-0  w-60 min-h-screen z-50 bg-blue-600 text-base-content '>
               <div className='space-y-2 mb-10'>
                 <img
                   className='w-20 ml-16 mt-6 rounded-full'
@@ -175,7 +175,7 @@ const SellerDashboard = () => {
         <div>
           <h1 className='text-5xl font-bold mt-60 ml-32'>
             Welcome Seller{" "}
-            <span className='text-orange-600'>{user?.displayName}</span>!!!
+            <span className='text-blue-600'>{user?.displayName}</span>!!!
           </h1>
         </div>
       )}
@@ -187,7 +187,7 @@ const SellerDashboard = () => {
 <div >
                     <h2 className="text-5xl font-bold  text-red-700">DashBoard Only For Seller!!!</h2> 
 
-                    <Link to="/"><button className="btn  bg-orange-600 text-white text-lg">Go To Home</button></Link>
+                    <Link to="/"><button className="btn  bg-blue-600 text-white text-lg">Go To Home</button></Link>
                     
                 </div>
 </>

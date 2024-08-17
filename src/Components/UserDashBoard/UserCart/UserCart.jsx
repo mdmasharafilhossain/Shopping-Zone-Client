@@ -129,7 +129,7 @@ const UserCart = () => {
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-center font-bold mt-6 text-2xl md:text-4xl">
-        My <span className="text-[#FF3811]">Cart</span>
+        My <span className="text-blue-600">Cart</span>
       </h2>
       <hr className="my-2" />
 
@@ -169,7 +169,7 @@ const UserCart = () => {
                     </p>
                    
                     {appliedDiscountPercentage > 0 && (
-                      <div className="ml-2 bg-orange-500 text-white text-sm p-1 rounded">
+                      <div className="ml-2 bg-blue-500 text-white text-sm p-1 rounded">
                         -{appliedDiscountPercentage.toFixed(2)}%
                       </div>
                     )}
@@ -185,7 +185,7 @@ const UserCart = () => {
             })}
           </div>
           <div className="w-full md:w-1/4 p-4 relative top-0">
-            <div className="border border-orange-500 p-4 rounded">
+            <div className="border border-blue-500 p-4 rounded">
               <h3 className="font-bold text-lg">Order Summary</h3>
               <div className="mt-4">
                 <div className="flex justify-between">
@@ -202,7 +202,7 @@ const UserCart = () => {
                   <p>{formatNumber(total)} ৳</p>
                 </div>
                 <Link to="/MakePaymentRoute">
-                  <button className="mt-4 w-full bg-orange-500 text-white py-2 rounded">
+                  <button className="mt-4 w-full bg-blue-500 text-white py-2 rounded">
                     Make Payment
                   </button>
                 </Link>
@@ -213,7 +213,7 @@ const UserCart = () => {
                   value={coupon}
                   onChange={(e) => setCoupon(e.target.value)}
                   placeholder="Enter Coupon Code"
-                  className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-orange-500"
+                  className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
                   disabled={isCouponApplied}
                 />
                 <button

@@ -181,7 +181,7 @@ const AllFlashSale = () => {
                         name="brand"
                         value={color}
                         id={color}
-                        className="radio radio-primary border-orange-600 hover:border-orange-600 checked:bg-orange-600 checked:border-orange-600"
+                        className="radio radio-primary border-blue-600 hover:border-blue-600 checked:bg-blue-600 checked:border-blue-600"
                         onChange={handleColorSort}
                         checked={selectedColor === color}
                       />
@@ -208,7 +208,7 @@ const AllFlashSale = () => {
                         name="type"
                         value={type}
                         id={type}
-                        className="radio radio-primary border-orange-600 hover:border-orange-600 checked:bg-orange-600 checked:border-orange-600"
+                        className="radio radio-primary border-blue-600 hover:border-blue-600 checked:bg-blue-600 checked:border-blue-600"
                         onChange={handleTypeSort}
                         checked={typeSelect === type}
                       />
@@ -239,7 +239,7 @@ const AllFlashSale = () => {
               return (
                 <div
                   key={sale?._id}
-                  className="border p-6 w-60 h-80 rounded-lg bg-white hover:border-orange-500 hover:shadow-xl relative"
+                  className="border p-6 w-60 h-80 rounded-lg bg-white hover:border-blue-500 hover:shadow-xl relative"
                 >
                   <div className="absolute top-2 left-2">
                     <p className="text-sm bg-yellow-400 text-black px-2 py-1 rounded">
@@ -249,7 +249,7 @@ const AllFlashSale = () => {
                   <div className="absolute top-2 right-2">
                     <button
                       onClick={() => handleWhiteList(sale)}
-                      className="text-orange-500 hover:text-orange-700"
+                      className="text-blue-500 hover:text-blue-700"
                     >
                       <AiOutlineHeart size={24} />
                     </button>
@@ -264,7 +264,7 @@ const AllFlashSale = () => {
                       <h3 className="text-base font-semibold mt-3">
                         {sale.name}
                       </h3>
-                      <p className="text-base text-orange-600">
+                      <p className="text-base text-blue-600">
                         ট {sale.discount_price}
                       </p>
                       <div className="flex gap-3">
@@ -277,8 +277,8 @@ const AllFlashSale = () => {
                         <Rating
                           initialRating={sale?.rating}
                           readonly
-                          emptySymbol={<FaRegStar color="orange" />}
-                          fullSymbol={<FaStar color="orange" />}
+                          emptySymbol={<FaRegStar color="blue" />}
+                          fullSymbol={<FaStar color="blue" />}
                         />
                         <span className="">({sale?.rating})</span>
                       </div>

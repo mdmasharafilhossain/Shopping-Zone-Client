@@ -89,7 +89,7 @@ const Seller_Product_Upload = () => {
           icon: "success",
           title: "Product Added Successfully",
           showConfirmButton: false,
-          timer: 1500,use
+          timer: 1500,
         });
       }
     }
@@ -141,11 +141,11 @@ const Seller_Product_Upload = () => {
     <div>
       <div className="flex justify-evenly my-6 mb-10">
         <h2 className="text-xl md:text-4xl lg:text-4xl font-bold">
-          Upload <span className="text-[#FF3811]">Products</span>
+          Upload <span className="text-blue-600">Products</span>
         </h2>
       </div>
 
-      <div className="mt-10 border-2 mb-10 rounded-md border-orange-500 ml-10">
+      <div className="mt-10 border-2 mb-10 rounded-md border-blue-500 ml-10">
         <div className="px-10 py-10">
           <form
             className="container mx-auto space-y-5"
@@ -404,7 +404,7 @@ const Seller_Product_Upload = () => {
   {buttonVisible && !isApprove && !isPending && !isPendingLocal && (
     <button
       onClick={handleClick}
-      className="btn bg-orange-600 text-white"
+      className="btn bg-blue-600 text-white"
     >
       Request For More Input Field
     </button>
@@ -418,7 +418,7 @@ const Seller_Product_Upload = () => {
             </div>
 
             <input
-              className="btn w-full bg-orange-600 text-white"
+              className="btn w-full bg-blue-600 text-white"
               type="submit"
             />
           </form>
