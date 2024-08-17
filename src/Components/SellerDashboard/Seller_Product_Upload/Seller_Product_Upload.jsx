@@ -89,7 +89,7 @@ const Seller_Product_Upload = () => {
           icon: "success",
           title: "Product Added Successfully",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 1500,use
         });
       }
     }
