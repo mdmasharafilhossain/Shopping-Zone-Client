@@ -103,7 +103,7 @@ const UserWhiteList = () => {
     return (
         <div>
             <h2 className="text-center font-bold mt-6 text-2xl md:text-4xl">
-                My <span className="text-[#FF3811]">White List</span>
+                My <span className="text-blue-600">White List</span>
             </h2>
             <hr className="my-2" />
             {whiteList.length === 0 ? (
@@ -114,7 +114,7 @@ const UserWhiteList = () => {
                         const DiscountPercentage = Math.round(((sale.price - sale.discount_price) / sale.price) * 100);
                         return (
                             <div key={sale._id}>
-                                <div className="border p-6 w-60 h-96 rounded-lg bg-white hover:border-orange-500 hover:shadow-xl relative">
+                                <div className="border p-6 w-60 h-96 rounded-lg bg-white hover:border-blue-500 hover:shadow-xl relative">
                                     <div className="absolute top-2 left-2">
                                         <p className="text-sm bg-yellow-400 text-black px-2 py-1 rounded">
                                             -{DiscountPercentage}%
@@ -123,7 +123,7 @@ const UserWhiteList = () => {
                                     <div>
                                         <img className="w-40 h-40 mb-2 mx-auto object-scale-down hover:scale-110 transition-all" src={sale.image} alt={sale.name} />
                                         <h3 className="text-base font-semibold mt-3">{sale.name}</h3>
-                                        <p className="text-base text-orange-600 ">ট {sale.discount_price}</p>
+                                        <p className="text-base text-blue-600 ">ট {sale.discount_price}</p>
                                         <div className="flex gap-3">
                                             <p className="text-sm text-gray-600 line-through">ট {sale.price}</p>
                                         </div>
@@ -131,14 +131,14 @@ const UserWhiteList = () => {
                                             <Rating
                                                 initialRating={sale?.rating}
                                                 readonly
-                                                emptySymbol={<FaRegStar color="orange" />}
-                                                fullSymbol={<FaStar color="orange" />}
+                                                emptySymbol={<FaRegStar color="blue" />}
+                                                fullSymbol={<FaStar color="blue" />}
                                             />
                                             <span>({sale?.rating})</span>
                                         </div>
                                         <div className="flex gap-2 mt-2">
                                             <button onClick={() => handleAddToCart(sale)}
-                                                className="border py-2 px-2 text-sm font-bold rounded-md border-orange-600 hover:bg-orange-600 hover:shadow-xl hover:text-white">
+                                                className="border py-2 px-2 text-sm font-bold rounded-md border-blue-600 hover:bg-blue-600 hover:shadow-xl hover:text-white">
                                                 Add To Cart
                                             </button>
                                             <button onClick={() =>handleRemove (sale?._id)}

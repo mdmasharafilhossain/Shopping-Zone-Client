@@ -36,14 +36,14 @@ const MyOrder = () => {
     return (
         <div className="container mx-auto p-4">
             <h2 className="text-center font-bold mt-6 text-2xl md:text-4xl">
-                My <span className="text-[#FF3811]">Orders</span>
+                My <span className="text-blue-600">Orders</span>
             </h2>
             <hr className="my-2" />
             {Object.keys(groupedPayments).length === 0 ? (
                 <p className="text-gray-500">No orders found.</p>
             ) : (
                 Object.keys(groupedPayments).map((transactionId) => (
-                    <div key={transactionId} className="mb-8 ml-5 p-5 rounded-md shadow-lg text-center border border-orange-500">
+                    <div key={transactionId} className="mb-8 ml-5 p-5 rounded-md shadow-lg text-center border border-blue-500">
                         <h2 className="text-xl font-semibold mb-2">Payment ID: {transactionId}</h2>
                         {groupedPayments[transactionId].map((payment) => (
                             <div key={payment._id} className="bg-white rounded-lg p-4 mb-4">

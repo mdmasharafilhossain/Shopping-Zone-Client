@@ -26,19 +26,19 @@ const FlashSale = () => {
     } else {
       return (
         <div className="flex space-x-2 text-white text-xs md:text-lg lg:text-lg font-semibold mt-20">
-          <div className="bg-orange-500 px-3 py-2 rounded-lg">
+          <div className="bg-blue-500 px-3 py-2 rounded-lg">
             <span>End: {days}</span>
             <span>d</span>
           </div>
-          <div className="bg-orange-500 px-3 py-2 rounded-lg">
+          <div className="bg-blue-500 px-3 py-2 rounded-lg">
             <span>{hours}</span>
             <span>h</span>
           </div>
-          <div className="bg-orange-500 px-3 py-2 rounded-lg">
+          <div className="bg-blue-500 px-3 py-2 rounded-lg">
             <span>{minutes}</span>
             <span>m</span>
           </div>
-          <div className="bg-orange-500 px-3 py-2 rounded-lg">
+          <div className="bg-blue-500 px-3 py-2 rounded-lg">
             <span>{seconds}</span>
             <span>s</span>
           </div>
@@ -131,7 +131,7 @@ const FlashSale = () => {
         <SectionTitle heading={"Flash Sale"} />
         <Countdown date={Date.now() + 1000000000} renderer={renderer} />
         <Link to="/flashSale">
-          <button className="bg-orange-500 mt-20 text-white text-xs md:text-lg lg:text-lg px-2 ml-2 md:px-4 lg:px-4 py-2 rounded-lg shadow hover:bg-orange-600 transition">
+          <button className="bg-blue-500 mt-20 text-white text-xs md:text-lg lg:text-lg px-2 ml-2 md:px-4 lg:px-4 py-2 rounded-lg shadow hover:bg-blue-600 transition">
             View All
           </button>
         </Link>
@@ -161,7 +161,7 @@ const FlashSale = () => {
             return (
               <SwiperSlide key={sale._id}>
                 <div className="flex">
-                  <div className="border p-6 w-60 h-80 rounded-lg bg-white hover:border-orange-500 hover:shadow-xl relative">
+                  <div className="border p-6 w-60 h-80 rounded-lg bg-white hover:border-blue-500 hover:shadow-xl relative">
                     <div className="absolute top-2 left-2">
                       <p className="text-sm bg-yellow-400 text-black px-2 py-1 rounded">
                         -{DiscountPercentage}%
@@ -182,7 +182,7 @@ const FlashSale = () => {
                       <div className="absolute top-2 right-2">
                       <button
                         onClick={() => handleWhiteList(sale)}
-                        className="text-orange-500 hover:text-orange-700"
+                        className="text-blue-500 hover:text-blue-700"
                       >
                         <AiOutlineHeart size={24} />
                       </button>
@@ -199,7 +199,7 @@ const FlashSale = () => {
                         <h3 className="text-base font-semibold mt-3">
                           {sale.name}
                         </h3>
-                        <p className="text-base text-orange-600 ">
+                        <p className="text-base text-blue-600 ">
                           ট {sale.discount_price}
                         </p>
                         <div className="flex gap-3">
@@ -212,8 +212,8 @@ const FlashSale = () => {
                           <Rating
                             initialRating={sale?.rating}
                             readonly
-                            emptySymbol={<FaRegStar color="orange" />}
-                            fullSymbol={<FaStar color="orange" />}
+                            emptySymbol={<FaRegStar color="blue" />}
+                            fullSymbol={<FaStar color="blue" />}
                           />
                           <span className="">({sale?.rating})</span>
                         </div>

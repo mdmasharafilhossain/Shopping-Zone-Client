@@ -180,7 +180,7 @@ const Login = () => {
             <div className="flex flex-col w-full">
               <div className="text-center">
                 <h1 className="text-2xl md:text-3xl font-semibold mb-5">
-                  Log in to <span className="text-orange-600">ShoppingZone</span>{" "}
+                  Log in to <span className="text-blue-600">Niyamat Shopping</span>{" "}
                 </h1>
               </div>
               <div>
@@ -223,7 +223,7 @@ const Login = () => {
                   </div>
                   <div className="form-control">
                     <p className="text-red-500">{invalidAuth}</p>
-                    <button className="btn bg-[#FF3811] text-white">
+                    <button className="btn bg-blue-600 text-white">
                       Login
                     </button>
                   </div>
@@ -251,7 +251,7 @@ const Login = () => {
                   <div className="sm:flex items-center justify-center sm:space-x-2">
                     <p className="text-xs sm:text-base">You are a Seller?</p>
                     <Link to="/seller_login" className="">
-                      <button className="text-xs sm:text-base underline text-amber-500 font-bold">
+                      <button className="text-xs sm:text-base underline text-blue-600 font-bold">
                         Login
                       </button>
                     </Link>
@@ -295,7 +295,7 @@ const Login = () => {
               />
             </div>
           </div>
-          <button className="btn bg-[#FF3811] text-white w-1/2 mx-auto">Send OTP</button>
+          <button className="btn bg-blue-600 text-white w-1/2 mx-auto">Send OTP</button>
         </form>
         {verificationResult && (
           <form onSubmit={verifyOtp} className="flex flex-col gap-5 mt-10">
@@ -310,7 +310,7 @@ const Login = () => {
                 ref={otpRef}
               />
             </div>
-            <button className="btn bg-[#FF3811] text-white w-1/2 mx-auto">Verify OTP</button>
+            <button className="btn bg-blue-600 text-white w-1/2 mx-auto">Verify OTP</button>
           </form>
         )}
       </div>

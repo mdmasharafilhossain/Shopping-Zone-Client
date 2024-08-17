@@ -56,7 +56,7 @@ const EditUserProfile = () => {
   return (
     <div>
       <h2 className='text-center font-bold mt-6 text-2xl md:text-4xl'>
-         Edit <span className='text-[#FF3811]'>Profile</span>
+         Edit <span className='text-blue-600'>Profile</span>
       </h2>
       <hr className='my-2' />
 
@@ -146,7 +146,7 @@ const EditUserProfile = () => {
                     type='submit'
                     className='group relative my-2 h-10 w-full overflow-hidden bg-white text-base shadow-md rounded-full'
                   >
-                    <div className='absolute inset-0 w-1/12 bg-[#FF3811] transition-all duration-[300ms] ease-out group-hover:w-full'></div>
+                    <div className='absolute inset-0 w-1/12 bg-blue-600 transition-all duration-[300ms] ease-out group-hover:w-full'></div>
                     <span className='relative group-hover:text-white text-black uppercase font-semibold tracking-wider'>
                       Update Profile
                     </span>

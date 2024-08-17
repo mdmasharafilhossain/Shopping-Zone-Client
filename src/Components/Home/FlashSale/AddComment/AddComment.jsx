@@ -72,12 +72,12 @@ const AddComment = ({ InfoCard }) => {
   return (
     <div className="mt-10 mx-10">
       <div>
-        <div className="border border-orange-500 flex justify-between p-2">
+        <div className="border border-blue-500 flex justify-between p-2">
           <h1 className="text-xl font-bold">Reviews</h1>
           <div>
            { user ? 
               <button
-              className="text-xs p-2 border rounded-md hover:bg-orange-500 hover:text-white"
+              className="text-xs p-2 border rounded-md hover:bg-blue-500 hover:text-white"
               onClick={() => document.getElementById("my_modal_1").showModal()}
             >
               Write a review
@@ -90,7 +90,7 @@ const AddComment = ({ InfoCard }) => {
             <div className="modal-box">
               <form onSubmit={handleSubmit}>
                 <div className="space-y-4">
-                  <h1 className="text-2xl text-orange-500 mb-5">
+                  <h1 className="text-2xl text-blue-500 mb-5">
                     Write a Review
                   </h1>
                   <div className="flex flex-col md:flex-row lg:flex-row gap-5">
@@ -180,7 +180,7 @@ const AddComment = ({ InfoCard }) => {
                     />
                   </div>
                 </div>
-                <button className="btn border border-orange-500 hover:bg-orange-500 mt-5 ml-[70px] hover:text-white px-32">
+                <button className="btn border border-blue-500 hover:bg-blue-500 mt-5 ml-[70px] hover:text-white px-32">
                   Submit
                 </button>
               </form>
@@ -205,8 +205,8 @@ const AddComment = ({ InfoCard }) => {
                     <Rating
                       initialRating={review?.customer_rating}
                       readonly
-                      emptySymbol={<FaRegStar color="orange" />}
-                      fullSymbol={<FaStar color="orange" />}
+                      emptySymbol={<FaRegStar color="blue" />}
+                      fullSymbol={<FaStar color="blue" />}
                     />
                     <p className="font-bold">{review.user_name}</p>
                     <p>{review.review}</p>

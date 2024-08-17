@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import logo from "../../../assets/website_logo.png";
+import logo from "../../../assets/niyamotlogo.png";
 import { FiAlignJustify } from "react-icons/fi";
 import { IoIosSearch, IoMdContact } from "react-icons/io";
 import { FaCartPlus, FaListAlt, FaStore } from "react-icons/fa";
@@ -16,7 +16,7 @@ const Header = () => {
   const [subMenuOpen, setSubMenuOpen] = useState({});
   const { user, LogOut } = useContext(AuthContext);
   const [cart] = useCart();
-  const [categoryOpen, setCategoryOpen] = useState(false);
+  
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [isSeller] = useSeller();
@@ -99,11 +99,11 @@ const Header = () => {
                       isPending
                         ? "pending"
                         : isActive
-                          ? "text-orange-500 underline"
+                          ? "text-blue-500 underline"
                           : ""
                     }
                   >
-                    <IoHomeOutline className="text-orange-500 text-2xl" />
+                    <IoHomeOutline className="text-blue-500 text-2xl" />
                     Home
                   </NavLink>
                 </li>
@@ -115,7 +115,7 @@ const Header = () => {
                     className="flex justify-between items-center"
                   >
                     <summary className="text-[15px] font-bold">
-                      <FaListAlt className="inline text-orange-500 text-2xl mr-1" />
+                      <FaListAlt className="inline text-blue-500 text-2xl mr-1" />
                       All Category
                     </summary>
                     {subMenuOpen["parent1"] ? "-" : "+"}
@@ -147,11 +147,11 @@ const Header = () => {
                       isPending
                         ? "pending"
                         : isActive
-                          ? "text-orange-700 underline"
+                          ? "text-blue-700 underline"
                           : ""
                     }
                   >
-                    <IoMdContact className="text-orange-500 text-2xl" />
+                    <IoMdContact className="text-blue-500 text-2xl" />
                     Contact Us
                   </NavLink>
                 </li>
@@ -168,7 +168,7 @@ const Header = () => {
                           : ""
                     }
                   >
-                    <FaStore className="text-orange-500 text-2xl" />
+                    <FaStore className="text-blue-500 text-2xl" />
                     Become Seller
                   </NavLink>
                 </li>
@@ -178,7 +178,7 @@ const Header = () => {
           {/* Website Logo */}
           <div>
             <Link to="/">
-              <img className="w-28 md:w-44 lg:w-44 " src={logo} alt="Website Logo" />
+              <img className="w-12 md:w-12 lg:w-12" src={logo} alt="Website Logo" />
             </Link>
           </div>
         </div>
@@ -186,7 +186,7 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex h-2">
           <ul className="menu menu-horizontal">
             {/* Home NavLink */}
-            <li className="border-r-2 border-orange-500">
+            <li className="border-r-2 border-blue-500">
               <NavLink
                 to="/"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
@@ -194,22 +194,22 @@ const Header = () => {
                   isPending
                     ? "pending"
                     : isActive
-                      ? "text-orange-500 underline"
+                      ? "text-blue-500 underline"
                       : ""
                 }
               >
-                <IoHomeOutline className="text-orange-500 text-2xl" />
+                <IoHomeOutline className="text-blue-500 text-2xl" />
                 Home
               </NavLink>
             </li>
             {/* Category Dropdown */}
-            <li className="border-r-2 border-orange-500 pr-1 z-50">
+            <li className="border-r-2 border-blue-500 pr-1 z-50">
               <details>
                 <summary className="text-[15px] font-bold">
-                  <FaListAlt className="inline text-orange-500 text-2xl mr-1" />
+                  <FaListAlt className="inline text-blue-500 text-2xl mr-1" />
                   All Category
                 </summary>
-                <ul className="p-2 w-60 border border-orange-500">
+                <ul className="p-2 w-60 border border-blue-500">
                   <li>
                     <span>
                       <FaFemale />
@@ -226,7 +226,7 @@ const Header = () => {
               </details>
             </li>
             {/* Contact Us NavLink */}
-            <li className="border-r-2 border-orange-500 pr-1" style={{ marginRight: "1rem" }}>
+            <li className="border-r-2 border-blue-500 pr-1" style={{ marginRight: "1rem" }}>
               <NavLink
                 to="/contact"
                 style={{ fontWeight: "bold", fontSize: "15px" }}
@@ -234,11 +234,11 @@ const Header = () => {
                   isPending
                     ? "pending"
                     : isActive
-                      ? "text-orange-700 underline"
+                      ? "text-blue-700 underline"
                       : ""
                 }
               >
-                <IoMdContact className="text-orange-500 text-2xl" />
+                <IoMdContact className="text-blue-500 text-2xl" />
                 Contact Us
               </NavLink>
             </li>
@@ -255,7 +255,7 @@ const Header = () => {
                       : ""
                 }
               >
-                <FaStore className="text-orange-500 text-2xl" />
+                <FaStore className="text-blue-500 text-2xl" />
                 Become Seller
               </NavLink>
             </li>
@@ -268,16 +268,16 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search For Products"
-              className="border rounded-lg py-2 px-6 focus:border-orange-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-[450px] xl:w-96"
+              className="border rounded-lg py-2 px-6 focus:border-blue-500 focus:outline-none w-32 sm:w-48 md:w-64 lg:w-[450px] xl:w-96"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
               onKeyDown={handleSearch}
             />
             <button
               onClick={handleSearchButtonClick}
-              className="-ml-6 border px-1 rounded-r-md bg-orange-100 hover:bg-orange-400"
+              className="-ml-6 border px-1 rounded-r-md bg-blue-100 hover:bg-blue-400"
             >
-              <IoIosSearch className="text-2xl text-orange-600 hover:text-white" />
+              <IoIosSearch className="text-2xl text-blue-600 hover:text-white" />
             </button>
           </div>
           {/* User Authentication and Cart */}
@@ -340,7 +340,7 @@ const Header = () => {
               // Login/SignUp Button
               <div>
                 <Link to="/login">
-                  <button className="ml-2 border border-orange-500 text-xs md:text-base lg:text-base font-medium rounded-md hover:border-orange-500 hover:bg-orange-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
+                  <button className="ml-2 border border-blue-500 text-xs md:text-base lg:text-base font-medium rounded-md hover:border-blue-500 hover:bg-blue-500 hover:text-white px-1 md:px-4 lg:px-4 py-[2px] md:py-2 lg:py-2 transition duration-300">
                     Login/SignUp
                   </button>
                 </Link>
@@ -358,7 +358,7 @@ const Header = () => {
               className="relative">
               <FaCartPlus className="text-2xl" />
               {/* Display cart item count */}
-              <span className="absolute -top-2 -right-2 h-5 w-5 bg-orange-500 text-white text-xs flex items-center justify-center rounded-full">
+              <span className="absolute -top-2 -right-2 h-5 w-5 bg-blue-500 text-white text-xs flex items-center justify-center rounded-full">
                 {cart.length}
               </span>
             </button>
